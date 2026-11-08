@@ -1,0 +1,38 @@
+{
+  "name": "choicestacks-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Node.js and MySQL API for the Choicestakes portal",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --import tsx --watch src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node --env-file-if-exists=.env dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "db:check": "node --env-file-if-exists=.env --import tsx src/database/check.ts",
+    "db:migrate": "node --env-file-if-exists=.env --import tsx src/database/migrate.ts",
+    "db:auth:test": "node --env-file-if-exists=.env --import tsx src/database/check-auth.ts",
+    "games:check": "node --env-file-if-exists=.env --import tsx src/modules/gaming/check.ts",
+    "games:sync": "node --env-file-if-exists=.env --import tsx src/modules/gaming/sync.ts",
+    "games:sync:watch": "node --env-file-if-exists=.env --import tsx src/modules/gaming/sync.ts --watch",
+    "db:games:test": "node --env-file-if-exists=.env --import tsx --test tests/gaming.mysql.ts"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.1.5",
+    "@fastify/cors": "^11.4.1",
+    "@fastify/helmet": "^13.2.0",
+    "@fastify/rate-limit": "^11.2.2",
+    "fastify": "^5.12.8",
+    "mysql2": "^3.24.6",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^7.0.2"
+  }
+}
