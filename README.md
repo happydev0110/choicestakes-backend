@@ -116,11 +116,11 @@ npm run games:sync:watch
 
 The watcher synchronizes immediately and every 15 minutes. Each run reads every catalog page before updating MySQL. Failed/incomplete runs retain existing games. Successful runs disable missing games. A MySQL advisory lock prevents overlapping syncs. Only provider-hosted artwork from https://static.api-matic.com is accepted; missing artwork uses a placeholder.
 
-Visit /provider-games in the portal. Once credentials are configured, /casino and /providers use the synchronized collection. Cards link to authenticated /play/{uuid}. Existing reference/category pages remain visual previews and are never mapped to provider games by a guessed title. The player offers sandbox play, optional demo mode, an iframe, an external-tab fallback, and test-credit balance. Vendor mode real means normal wallet-enabled play on the sandbox host; it does not enable real-money play. Demo availability and wallet calls depend on the vendor.
+The portal uses the synchronized catalog across home, Casino, Search, manual category pages, provider pages, public game details, and browser favorites. Cards use provider UUIDs; retired sample-title URLs return 404. See [provider catalog setup and manual classification](docs/provider-catalog.md) for migration, sync, deployment, and category commands. Authenticated `/play/{uuid}` offers sandbox play with test credits after callback configuration; it does not enable real-money play.
 
 | Endpoint | Purpose |
 | --- | --- |
-| GET /api/v1/gaming/games | MySQL catalog; page, search and provider filters |
+| GET /api/v1/gaming/games | MySQL catalog; page, search, provider, category, sort and UUID filters |
 | GET /api/v1/gaming/games/:uuid | One available game |
 | POST /api/v1/gaming/games/:uuid/launch | Authenticated/CSRF-checked launch with requestId UUID and mode real/demo |
 | GET /api/v1/gaming/wallet | Authenticated sandbox balance and recent activity |

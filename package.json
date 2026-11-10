@@ -19,7 +19,9 @@
     "games:check": "node --env-file-if-exists=.env --import tsx src/modules/gaming/check.ts",
     "games:sync": "node --env-file-if-exists=.env --import tsx src/modules/gaming/sync.ts",
     "games:sync:watch": "node --env-file-if-exists=.env --import tsx src/modules/gaming/sync.ts --watch",
-    "db:games:test": "node --env-file-if-exists=.env --import tsx --test tests/gaming.mysql.ts"
+    "games:classify": "node --env-file-if-exists=.env --import tsx src/modules/gaming/classify.ts",
+    "db:games:test": "node --env-file-if-exists=.env --import tsx --test tests/gaming.mysql.ts",
+    "db:catalog:test": "node --env-file-if-exists=.env --import tsx --test tests/catalog.mysql.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^11.1.5",

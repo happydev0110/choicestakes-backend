@@ -15,6 +15,7 @@ import { postbackSchema } from "./contracts.js";
 import { verifyPostback } from "./signing.js";
 import { callbackReply } from "./money.js";
 import { WalletError } from "./wallet.js";
+import { catalogFilters } from "./catalog-filters.js";
 
 export async function registerGamingRoutes(
   app: FastifyInstance,
@@ -43,13 +44,7 @@ export async function registerGamingRoutes(
         reply.header("Cache-Control", "no-store");
       });
       gaming.get("/games", async (request) => {
-        const parsed = z
-          .object({
-            page: z.coerce.number().int().min(1).max(10000).default(1),
-            search: z.string().max(100).default(""),
-            provider: z.string().max(128).default(""),
-          })
-          .safeParse(request.query);
+        const parsed = catalogFilters.safeParse(request.query);
         if (!parsed.success)
           throw new AuthError(400, "INVALID_FILTERS", "Invalid game filters.");
         const configured = catalogReady(config);
@@ -58,11 +53,13 @@ export async function registerGamingRoutes(
               parsed.data.page,
               parsed.data.search,
               parsed.data.provider,
+              parsed.data,
             )
           : {
               games: [],
               total: 0,
               providers: [],
+              providerCounts: [],
               page: 1,
               perPage: 28,
               syncedAt: null,

@@ -14,6 +14,7 @@ import {
   type WalletTransaction,
 } from "./wallet.js";
 import { formatAmount, parseAmount } from "./money.js";
+import type { CatalogOptions } from "./catalog-filters.js";
 
 type Row = RowDataPacket & Record<string, any>;
 const hash = (value: string) =>
@@ -175,37 +176,50 @@ export function createGamingStore(database: Database, config: Config) {
     }
   }
   return {
-    async catalog(page: number, search: string, provider: string) {
+    async catalog(page: number, search: string, provider: string, options: Partial<CatalogOptions> = {}) {
       return ready(() =>
         database.withConnection(async (connection) => {
           const pattern = "%" + search.replace(/[=%_]/g, "=$&") + "%";
-          const where =
-            "currency = ? AND available = TRUE AND (name LIKE ? ESCAPE '=' OR provider LIKE ? ESCAPE '=') AND (? = '' OR provider = ?)";
-          const params = [
+          let where =
+            "g.currency = ? AND g.available = TRUE AND (g.name LIKE ? ESCAPE '=' OR g.provider LIKE ? ESCAPE '=') AND (? = '' OR g.provider = ?)";
+          const params: (string | number)[] = [
             config.APIMATIC_CURRENCY,
             pattern,
             pattern,
             provider,
             provider,
           ];
-          const [rows] = await connection.query<Row[]>(
-            `SELECT * FROM apimatic_games WHERE ${where} ORDER BY provider, name, game_uuid LIMIT 28 OFFSET ?`,
-            [...params, (page - 1) * 28],
-          );
+          if (options.category) {
+            where += " AND EXISTS (SELECT 1 FROM apimatic_game_categories c WHERE c.currency=g.currency AND c.game_uuid=g.game_uuid AND c.category=?)";
+            params.push(options.category);
+          }
+          if (options.ids !== undefined) {
+            where += options.ids.length ? ` AND g.game_uuid IN (${options.ids.map(() => "?").join(",")})` : " AND FALSE";
+            params.push(...options.ids.map((id) => id.toLowerCase()));
+          }
           const [counts] = await connection.execute<Row[]>(
-            `SELECT COUNT(*) AS total, MAX(synced_at) AS synced_at FROM apimatic_games WHERE ${where}`,
+            `SELECT COUNT(*) AS total, MAX(g.synced_at) AS synced_at FROM apimatic_games g WHERE ${where}`,
             params,
           );
+          const total = Number(counts[0]?.total ?? 0);
+          const currentPage = Math.min(page, Math.max(1, Math.ceil(total / 28)));
+          const order = options.sort === "name" ? "g.name, g.game_uuid"
+            : options.sort === "name-desc" ? "g.name DESC, g.game_uuid" : "g.provider, g.name, g.game_uuid";
+          const [rows] = await connection.query<Row[]>(
+            `SELECT g.* FROM apimatic_games g WHERE ${where} ORDER BY ${order} LIMIT 28 OFFSET ?`,
+            [...params, (currentPage - 1) * 28],
+          );
           const [providers] = await connection.execute<Row[]>(
-            "SELECT DISTINCT provider FROM apimatic_games WHERE currency = ? AND available = TRUE ORDER BY provider",
+            "SELECT provider, COUNT(*) AS total FROM apimatic_games WHERE currency = ? AND available = TRUE GROUP BY provider ORDER BY provider",
             [config.APIMATIC_CURRENCY],
           );
           return {
             games: rows.map(toGame),
-            total: Number(counts[0]?.total ?? 0),
-            page,
+            total,
+            page: currentPage,
             perPage: 28,
             providers: providers.map((row) => String(row.provider)),
+            providerCounts: providers.map((row) => ({ provider: String(row.provider), total: Number(row.total) })),
             syncedAt: counts[0]?.synced_at ?? null,
           };
         }),
