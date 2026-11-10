@@ -1,6 +1,24 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { runTransaction } from '../src/database/mysql.js';
+import { assertAdvisoryLockAcquired } from '../src/database/locks.js';
+
+test('advisory locks accept numeric and BIGINT-string success results', () => {
+  assert.doesNotThrow(() => assertAdvisoryLockAcquired(1, 'lock is busy'));
+  assert.doesNotThrow(() => assertAdvisoryLockAcquired('1', 'lock is busy'));
+});
+
+test('advisory lock timeouts still prevent protected work for both result formats', () => {
+  for (const value of [0, '0']) {
+    assert.throws(() => assertAdvisoryLockAcquired(value, 'lock is busy'), { message: 'lock is busy' });
+  }
+});
+
+test('missing or invalid lock results are errors rather than lock contention or success', () => {
+  for (const value of [null, undefined, true, false, '', 'unexpected', 2]) {
+    assert.throws(() => assertAdvisoryLockAcquired(value, 'lock is busy'), /MySQL could not acquire the advisory lock/);
+  }
+});
 
 function connection(rollbackFails = false) {
   const events: string[] = [];

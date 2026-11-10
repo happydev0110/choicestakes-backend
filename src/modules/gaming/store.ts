@@ -2,6 +2,7 @@ import { createHash, randomUUID } from "node:crypto";
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
 import type { Config } from "../../config/env.js";
 import type { Database } from "../../database/mysql.js";
+import { assertAdvisoryLockAcquired } from "../../database/locks.js";
 import { AuthError } from "../auth/types.js";
 import type { CatalogGame, Postback, ProviderGame } from "./contracts.js";
 import {
@@ -230,8 +231,7 @@ export function createGamingStore(database: Database, config: Config) {
             "SELECT GET_LOCK(?, 0) AS acquired",
             [lock],
           );
-          if (locks[0]?.acquired !== 1)
-            throw new Error("A catalogue sync is already running.");
+          assertAdvisoryLockAcquired(locks[0]?.acquired, "A catalogue sync is already running.");
           try {
             // Do not disable any games until every upstream page has been successfully validated.
             const games = await fetchCatalog();

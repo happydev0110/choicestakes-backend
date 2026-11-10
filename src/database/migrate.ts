@@ -3,13 +3,14 @@ import type { RowDataPacket } from 'mysql2/promise';
 import { loadConfig } from '../config/env.js';
 import { createDatabase } from './mysql.js';
 import { migrations } from './migrations.js';
+import { assertAdvisoryLockAcquired } from './locks.js';
 
 async function main() {
   const database = createDatabase(loadConfig());
   try {
     await database.withConnection(async (connection) => {
-      const [locks] = await connection.query<(RowDataPacket & { acquired: number })[]>("SELECT GET_LOCK('choicestacks_auth_migrations', 10) AS acquired");
-      if (locks[0]?.acquired !== 1) throw new Error('Another migration is running. Try again later.');
+      const [locks] = await connection.query<(RowDataPacket & { acquired: number | string | null })[]>("SELECT GET_LOCK('choicestacks_auth_migrations', 10) AS acquired");
+      assertAdvisoryLockAcquired(locks[0]?.acquired, 'Another migration is running. Try again later.');
       try {
         await connection.query(`CREATE TABLE IF NOT EXISTS schema_migrations (
           name VARCHAR(100) PRIMARY KEY, checksum CHAR(64) NOT NULL,
