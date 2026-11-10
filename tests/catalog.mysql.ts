@@ -6,6 +6,7 @@ import { createDatabase } from "../src/database/mysql.js";
 import { createGamingStore } from "../src/modules/gaming/store.js";
 import { classifyGames } from "../src/modules/gaming/classify.js";
 import { buildApp } from "../src/app.js";
+import { ApiMaticError } from "../src/modules/gaming/provider-error.js";
 
 test("MySQL catalog: complete pagination, literal search, provider counts, favorites, persistent manual categories and atomic imports", async () => {
   const original = loadConfig();
@@ -33,6 +34,73 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
   }));
   const app = await buildApp(config, { database, gamingStore: store });
   try {
+    assert.equal((await store.catalogStatus()).status, "not_synced");
+    await assert.rejects(
+      store.sync(async () => {
+        throw new ApiMaticError(401, "INVALID_SIGNATURE");
+      }),
+    );
+    assert.equal((await store.catalogStatus()).status, "failed");
+    await store.sync(async () => games);
+    const imported = await store.catalogStatus();
+    assert.equal(imported.status, "ready");
+    assert.equal(imported.total, 65);
+    assert.equal(imported.providerTotal, 65);
+    assert.ok(imported.lastSuccessAt);
+    const noMatches = await store.catalog(1, "not a real game name", "");
+    assert.equal(noMatches.total, 0);
+    assert.equal(noMatches.catalog.total, 65);
+    assert.equal(noMatches.syncedAt, imported.lastSuccessAt);
+
+    let fetching!: () => void;
+    const started = new Promise<void>((resolve) => {
+      fetching = resolve;
+    });
+    let rejectFetch!: (error: Error) => void;
+    const pending = store.sync(() => {
+      fetching();
+      return new Promise<typeof games>((_, reject) => {
+        rejectFetch = reject;
+      });
+    });
+    // Attach the rejection handler before releasing the held provider request.
+    const failed = assert.rejects(pending, {
+      providerCode: "INVALID_SIGNATURE",
+    });
+    await started;
+    try {
+      assert.equal((await store.catalogStatus()).status, "syncing");
+      assert.equal((await store.catalog(1, "", "")).total, 65);
+      await assert.rejects(
+        store.sync(async () => []),
+        { code: "CATALOG_SYNC_IN_PROGRESS" },
+      );
+      assert.equal((await store.catalogStatus()).status, "syncing");
+    } finally {
+      rejectFetch(new ApiMaticError(401, "INVALID_SIGNATURE"));
+      await failed;
+    }
+    const stale = await store.catalogStatus();
+    assert.equal(stale.status, "stale");
+    assert.equal(stale.total, 65);
+    assert.equal(stale.lastSuccessAt, imported.lastSuccessAt);
+    assert.equal(stale.lastErrorCode, "INVALID_SIGNATURE");
+    const publicResponse = await app.inject("/api/v1/gaming/games");
+    assert.equal(publicResponse.json().data.catalog.status, "stale");
+    assert.doesNotMatch(
+      publicResponse.body,
+      /INVALID_SIGNATURE|lastErrorCode|MYSQL|secret/,
+    );
+
+    // A SQL failure after an upsert must roll back the entire replacement catalog.
+    await assert.rejects(
+      store.sync(async () => [
+        { ...games[0]!, name: "Must roll back" },
+        { ...games[1]!, name: "x".repeat(10000) },
+      ]),
+    );
+    assert.equal((await store.game(games[0]!.uuid))?.name, games[0]!.name);
+    assert.equal((await store.catalogStatus()).total, 65);
     await store.sync(async () => games);
     const pages = await Promise.all(
       [1, 2, 3].map((page) => store.catalog(page, "", "")),
@@ -146,12 +214,26 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
         400,
       );
     }
+    await store.sync(async () => []);
+    const empty = await store.catalogStatus();
+    assert.equal(empty.status, "empty");
+    assert.equal(empty.total, 0);
+    assert.equal(empty.providerTotal, 0);
+    assert.equal(empty.lastErrorCode, null);
+    assert.ok(empty.lastSuccessAt);
+    assert.equal((await store.catalog(1, "", "")).total, 0);
+    await store.sync(async () => games);
+    assert.equal((await store.catalogStatus()).status, "ready");
   } finally {
-    await database.withConnection((connection) =>
-      connection.execute("DELETE FROM apimatic_games WHERE currency=?", [
+    await database.withConnection(async (connection) => {
+      await connection.execute("DELETE FROM apimatic_games WHERE currency=?", [
         currency,
-      ]),
-    );
+      ]);
+      await connection.execute(
+        "DELETE FROM apimatic_catalog_sync WHERE currency=?",
+        [currency],
+      );
+    });
     await app.close();
   }
 });

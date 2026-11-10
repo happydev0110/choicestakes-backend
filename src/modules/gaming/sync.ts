@@ -23,6 +23,7 @@ async function main() {
   const store = createGamingStore(database, config);
   const client = new ApiMaticClient(config);
   const watch = process.argv.includes("--watch");
+  console.log(`Import target: sandbox ${config.APIMATIC_CURRENCY}; MySQL ${config.MYSQL_HOST}:${config.MYSQL_PORT}/${config.MYSQL_DATABASE}.`);
   const controller = new AbortController();
   for (const signal of ["SIGINT", "SIGTERM"] as const)
     process.once(signal, () => controller.abort());
@@ -30,7 +31,7 @@ async function main() {
     do {
       try {
         console.log(
-          `Synchronized ${await store.sync(() => client.catalog())} sandbox games for ${config.APIMATIC_CURRENCY}.`,
+          `Synchronized ${await store.sync(() => client.catalog(controller.signal))} sandbox games for ${config.APIMATIC_CURRENCY}.`,
         );
       } catch (error) {
         if (!watch) throw error;
@@ -39,7 +40,7 @@ async function main() {
         );
       }
       if (watch)
-        await setTimeout(15 * 60000, undefined, {
+        await setTimeout(config.APIMATIC_SYNC_INTERVAL_MINUTES * 60000, undefined, {
           signal: controller.signal,
         }).catch(() => {});
     } while (watch && !controller.signal.aborted);

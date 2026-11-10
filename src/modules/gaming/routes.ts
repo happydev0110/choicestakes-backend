@@ -63,6 +63,7 @@ export async function registerGamingRoutes(
               page: 1,
               perPage: 28,
               syncedAt: null,
+              catalog: { status: "not_configured", total: 0, lastAttemptAt: null, lastSuccessAt: null },
             };
         return {
           success: true,

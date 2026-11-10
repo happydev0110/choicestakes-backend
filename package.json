@@ -17,6 +17,7 @@
     "db:migrate": "node --env-file-if-exists=.env --import tsx src/database/migrate.ts",
     "db:auth:test": "node --env-file-if-exists=.env --import tsx src/database/check-auth.ts",
     "games:check": "node --env-file-if-exists=.env --import tsx src/modules/gaming/check.ts",
+    "games:status": "node --env-file-if-exists=.env --import tsx src/modules/gaming/status.ts",
     "games:sync": "node --env-file-if-exists=.env --import tsx src/modules/gaming/sync.ts",
     "games:sync:watch": "node --env-file-if-exists=.env --import tsx src/modules/gaming/sync.ts --watch",
     "games:classify": "node --env-file-if-exists=.env --import tsx src/modules/gaming/classify.ts",

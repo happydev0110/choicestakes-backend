@@ -370,6 +370,7 @@ test("MySQL integration: signed callbacks, concurrent retries, rollback, audit t
           "DELETE FROM apimatic_games WHERE currency=?",
           [currency],
         );
+        await connection.execute("DELETE FROM apimatic_catalog_sync WHERE currency=?", [currency]);
       });
     } finally {
       await app.close();

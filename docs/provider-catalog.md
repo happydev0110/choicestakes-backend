@@ -10,12 +10,39 @@ Deploy both the backend and portal changes. In the backend directory, with MySQL
 npm run db:migrate
 npm run games:check
 npm run games:sync
+npm run games:status
 npm run build
 ```
 
 Restart the backend after deployment. Set the portal's **server-side** `BACKEND_URL=https://api.choicestakes.com`, then build and restart the portal. The backend's `CORS_ORIGINS` must include `https://choicestakes.com` for authenticated actions. Keep credentials out of `NEXT_PUBLIC_*` variables.
 
-Run `npm run games:sync:watch` under your process manager to refresh immediately and every 15 minutes. An incomplete sync retains the previous catalog; a complete sync disables unavailable games. Nothing needs to be rebuilt when games or categories change. `APIMATIC_ENABLED=false` allows catalog browsing and sync while gameplay/callback setup is unfinished.
+Migration `004_catalog_sync_status` must be applied before restarting the updated backend. The backend now imports immediately after its HTTP listener starts and refreshes every 15 minutes. It runs independently of visitor requests. Configuration:
+
+```dotenv
+APIMATIC_SYNC_ENABLED=true
+APIMATIC_SYNC_INTERVAL_MINUTES=15
+APIMATIC_ENABLED=false
+```
+
+Automatic imports require `DB_ENABLED=true`, a sandbox API key, and its matching 64-character hexadecimal secret. The key has no required prefix in this application; use the exact sandbox credentials. Catalog requests always use `https://sandbox-api.api-matic.com`. Set `APIMATIC_CURRENCY=USD` if USD is enabled for your sandbox account. A callback URL is not required for the catalog; `APIMATIC_ENABLED=false` keeps play disabled while callback setup is unfinished.
+
+An incomplete or failed sync retains the previous catalog; a complete sync disables missing games. A successful empty response means the provider returned no available games for the configured currency. Check the currency, vendor, provider, and game switches in the provider dashboard. Manual category assignments survive refreshes. Nothing needs to be rebuilt when games or categories change.
+
+For a separate worker process instead, set `APIMATIC_SYNC_ENABLED=false` on the HTTP backend and run `npm run games:sync:watch` under your process manager. It uses the same interval setting. The database lock prevents concurrent imports for a currency. Shut down the process gracefully to cancel outstanding provider requests before closing the database.
+
+## Diagnose an empty collection
+
+Run these commands from the **same backend deployment directory and environment** as the running API:
+
+| Command | What it checks |
+| --- | --- |
+| `npm run games:check` | Read-only provider authentication and currency access; reports the provider's total |
+| `npm run games:status` | Read-only MySQL import status, target database, total, timestamps, and safe last error code |
+| `npm run games:sync` | Imports every provider page into that database immediately |
+
+`games:status` distinguishes `not_synced`, `syncing`, `ready`, `empty`, `failed`, and `stale` (the previous collection remains available after a failed refresh). `lastSuccessAt` is retained even when a successful import returned zero games. The public API exposes only the collection state/count and attempt/success timestamps; operator error details remain in the CLI/logs. `configured:true` means credentials pass local validation, not that the provider accepted them. `launchEnabled` is independent of catalog availability.
+
+If `games:check` reports games but the portal remains empty, compare `games:status` with `GET https://api.choicestakes.com/api/v1/gaming/games` and `GET https://choicestakes.com/api/gaming/games`. Confirm the API process uses the same MySQL database and currency as the import command, and the portal's server-side `BACKEND_URL` points to this API. Restart processes after environment changes. The player UI refreshes a first import every eight seconds for up to two minutes and provides a manual refresh button thereafter.
 
 ## Manual categories
 

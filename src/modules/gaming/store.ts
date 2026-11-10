@@ -2,7 +2,7 @@ import { createHash, randomUUID } from "node:crypto";
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
 import type { Config } from "../../config/env.js";
 import type { Database } from "../../database/mysql.js";
-import { assertAdvisoryLockAcquired } from "../../database/locks.js";
+import { catalogFailure, readCatalogStatus, synchronizeCatalog } from "./catalog-sync.js";
 import { AuthError } from "../auth/types.js";
 import type { CatalogGame, Postback, ProviderGame } from "./contracts.js";
 import {
@@ -213,6 +213,7 @@ export function createGamingStore(database: Database, config: Config) {
             "SELECT provider, COUNT(*) AS total FROM apimatic_games WHERE currency = ? AND available = TRUE GROUP BY provider ORDER BY provider",
             [config.APIMATIC_CURRENCY],
           );
+          const status = await readCatalogStatus(connection, config.APIMATIC_CURRENCY);
           return {
             games: rows.map(toGame),
             total,
@@ -220,7 +221,13 @@ export function createGamingStore(database: Database, config: Config) {
             perPage: 28,
             providers: providers.map((row) => String(row.provider)),
             providerCounts: providers.map((row) => ({ provider: String(row.provider), total: Number(row.total) })),
-            syncedAt: counts[0]?.synced_at ?? null,
+            syncedAt: status.lastSuccessAt,
+            catalog: {
+              status: status.status,
+              total: status.total,
+              lastAttemptAt: status.lastAttemptAt,
+              lastSuccessAt: status.lastSuccessAt,
+            },
           };
         }),
       );
@@ -236,66 +243,13 @@ export function createGamingStore(database: Database, config: Config) {
         }),
       );
     },
+    async catalogStatus() {
+      try {
+        return await database.withConnection((connection) => readCatalogStatus(connection, config.APIMATIC_CURRENCY));
+      } catch (error) { throw catalogFailure(error); }
+    },
     async sync(fetchCatalog: () => Promise<ProviderGame[]>) {
-      return ready(() =>
-        database.withConnection(async (connection) => {
-          const lock =
-            "apimatic_sync_" + hash(config.APIMATIC_CURRENCY).slice(0, 20);
-          const [locks] = await connection.execute<Row[]>(
-            "SELECT GET_LOCK(?, 0) AS acquired",
-            [lock],
-          );
-          assertAdvisoryLockAcquired(locks[0]?.acquired, "A catalogue sync is already running.");
-          try {
-            // Do not disable any games until every upstream page has been successfully validated.
-            const games = await fetchCatalog();
-            const generation = randomUUID();
-            await connection.beginTransaction();
-            try {
-              for (const game of games) {
-                const images = game.images ?? [];
-                const image =
-                  images.find((item) => item.role === "default") ?? images[0];
-                let imageUrl: string | null = null;
-                if (image) {
-                  const url = new URL(image.url);
-                  if (
-                    url.origin === "https://static.api-matic.com" &&
-                    !url.username &&
-                    !url.password
-                  )
-                    imageUrl = url.href;
-                }
-                await connection.execute(
-                  `INSERT INTO apimatic_games (currency,game_uuid,code,name,provider,vendor,image_url,available,sync_generation,synced_at)
-                VALUES (?,?,?,?,?,?,?,TRUE,?,UTC_TIMESTAMP(3)) ON DUPLICATE KEY UPDATE code=VALUES(code),name=VALUES(name),provider=VALUES(provider),vendor=VALUES(vendor),image_url=VALUES(image_url),available=TRUE,sync_generation=VALUES(sync_generation),synced_at=VALUES(synced_at)`,
-                  [
-                    config.APIMATIC_CURRENCY,
-                    game.uuid,
-                    game.code,
-                    game.name,
-                    game.provider,
-                    game.vendor,
-                    imageUrl,
-                    generation,
-                  ],
-                );
-              }
-              await connection.execute(
-                "UPDATE apimatic_games SET available = FALSE WHERE currency = ? AND sync_generation <> ?",
-                [config.APIMATIC_CURRENCY, generation],
-              );
-              await connection.commit();
-              return games.length;
-            } catch (error) {
-              await connection.rollback();
-              throw error;
-            }
-          } finally {
-            await connection.execute("SELECT RELEASE_LOCK(?)", [lock]);
-          }
-        }),
-      );
+      return synchronizeCatalog(database, config.APIMATIC_CURRENCY, fetchCatalog);
     },
     async disableGame(id: string) {
       await ready(() =>

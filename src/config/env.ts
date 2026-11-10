@@ -33,6 +33,8 @@ const schema = z.object({
   SESSION_TTL_HOURS: z.coerce.number().int().min(1).max(168).default(24),
   SESSION_IDLE_MINUTES: z.coerce.number().int().min(5).max(1440).default(60),
   APIMATIC_ENABLED: boolean.default(false),
+  APIMATIC_SYNC_ENABLED: boolean.default(true),
+  APIMATIC_SYNC_INTERVAL_MINUTES: z.coerce.number().int().min(1).max(1440).default(15),
   APIMATIC_API_KEY: z.string().trim().default(''),
   APIMATIC_SECRET_KEY: z.string().default(''),
   APIMATIC_CALLBACK_URL: z.string().default(''),

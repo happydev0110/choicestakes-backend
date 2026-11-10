@@ -50,6 +50,7 @@ export class ApiMaticClient {
     path: string,
     payload?: unknown,
     gameId?: string,
+    signal?: AbortSignal,
   ): Promise<unknown> {
     const raw = payload === undefined ? "" : JSON.stringify(payload);
     const timestamp = Math.floor(Date.now() / 1000).toString();
@@ -59,7 +60,9 @@ export class ApiMaticClient {
       response = await this.fetcher(SANDBOX_BASE_URL + path, {
         method,
         redirect: "error",
-        signal: AbortSignal.timeout(8000),
+        signal: signal
+          ? AbortSignal.any([signal, AbortSignal.timeout(8000)])
+          : AbortSignal.timeout(8000),
         headers: {
           "Content-Type": "application/json",
           "X-API-Key": this.config.APIMATIC_API_KEY,
@@ -78,6 +81,12 @@ export class ApiMaticClient {
         ...(method === "POST" ? { body: raw } : {}),
       });
     } catch {
+      if (signal?.aborted)
+        throw new AuthError(
+          503,
+          "CATALOG_SYNC_CANCELLED",
+          "Catalog sync stopped during shutdown.",
+        );
       throw new AuthError(
         502,
         "PROVIDER_UNREACHABLE",
@@ -96,7 +105,7 @@ export class ApiMaticClient {
     }
     return body;
   }
-  async catalogPage(page = 1, perPage = 100) {
+  async catalogPage(page = 1, perPage = 100, signal?: AbortSignal) {
     if (
       !Number.isInteger(page) ||
       page < 1 ||
@@ -110,6 +119,9 @@ export class ApiMaticClient {
       await this.call(
         "GET",
         `/api/v1/games?currency=${encodeURIComponent(this.config.APIMATIC_CURRENCY)}&per_page=${perPage}&page=${page}`,
+        undefined,
+        undefined,
+        signal,
       ),
     );
     if (!result.success)
@@ -120,18 +132,22 @@ export class ApiMaticClient {
       );
     return result.data;
   }
-  async catalog(): Promise<ProviderGame[]> {
+  async catalog(signal?: AbortSignal): Promise<ProviderGame[]> {
     const games: ProviderGame[] = [];
     let total: number | undefined;
     let lastPage = 1;
     for (let page = 1; page <= lastPage; page++) {
-      const result = await this.catalogPage(page);
+      const result = await this.catalogPage(page, 100, signal);
       if (
         result.meta.page !== page ||
         (total !== undefined &&
           (result.meta.total !== total || result.meta.last_page !== lastPage))
       )
-        throw new Error("Catalogue changed during sync; retry the full sync.");
+        throw new AuthError(
+          502,
+          "CATALOG_CHANGED",
+          "Catalogue changed during sync; retry the full sync.",
+        );
       total = result.meta.total;
       lastPage = result.meta.last_page;
       games.push(...result.data);
@@ -140,7 +156,9 @@ export class ApiMaticClient {
       games.length !== total ||
       new Set(games.map((game) => game.uuid)).size !== games.length
     )
-      throw new Error(
+      throw new AuthError(
+        502,
+        "INCOMPLETE_CATALOG",
         "Incomplete or duplicate provider catalogue; existing catalogue retained.",
       );
     return games;

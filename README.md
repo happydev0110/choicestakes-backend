@@ -66,8 +66,9 @@ Readiness checks connectivity, not the presence of migrated tables. Run migratio
 | `npm run db:auth:test` | Check auth against real development MySQL, then clean up |
 | `npm run db:games:test` | Check sandbox wallet transactions against development MySQL, then clean up |
 | `npm run games:check` | Verify sandbox credentials and currency access with one read-only catalog request |
+| `npm run games:status` | Inspect MySQL catalog state, total, sync timestamps and safe failure code |
 | `npm run games:sync` | Synchronize the enabled sandbox game catalog |
-| `npm run games:sync:watch` | Synchronize immediately and every 15 minutes |
+| `npm run games:sync:watch` | Optional separate worker; uses APIMATIC_SYNC_INTERVAL_MINUTES |
 | `npm run build` | Compile to `dist/` |
 | `npm start` | Run the compiled API |
 
@@ -110,11 +111,11 @@ After configuring the fields, set APIMATIC_ENABLED=true, restart the API, and ru
 ```powershell
 npm run db:migrate
 npm run games:sync
-# Keep scheduled synchronization in a separate terminal/process:
-npm run games:sync:watch
+# Inspect the imported catalog:
+npm run games:status
 ```
 
-The watcher synchronizes immediately and every 15 minutes. Each run reads every catalog page before updating MySQL. Failed/incomplete runs retain existing games. Successful runs disable missing games. A MySQL advisory lock prevents overlapping syncs. Only provider-hosted artwork from https://static.api-matic.com is accepted; missing artwork uses a placeholder.
+After migration `004_catalog_sync_status`, the HTTP backend synchronizes on startup and every 15 minutes by default (`APIMATIC_SYNC_ENABLED=true`, `APIMATIC_SYNC_INTERVAL_MINUTES=15`). This also works while `APIMATIC_ENABLED=false`; catalog imports do not need a callback. Each run reads every catalog page before updating MySQL. Failed/incomplete runs retain existing games. Successful runs disable missing games, including a verified zero-game response. Status and safe error codes are saved per currency. A MySQL advisory lock prevents overlapping syncs. To use a separate worker instead, disable the built-in worker and run `npm run games:sync:watch`. Only provider-hosted artwork from https://static.api-matic.com is accepted; missing artwork uses a placeholder.
 
 The portal uses the synchronized catalog across home, Casino, Search, manual category pages, provider pages, public game details, and browser favorites. Cards use provider UUIDs; retired sample-title URLs return 404. See [provider catalog setup and manual classification](docs/provider-catalog.md) for migration, sync, deployment, and category commands. Authenticated `/play/{uuid}` offers sandbox play with test credits after callback configuration; it does not enable real-money play.
 
