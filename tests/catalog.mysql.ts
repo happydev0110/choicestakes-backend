@@ -7,6 +7,7 @@ import { createGamingStore } from "../src/modules/gaming/store.js";
 import { classifyGames } from "../src/modules/gaming/classify.js";
 import { buildApp } from "../src/app.js";
 import { ApiMaticError } from "../src/modules/gaming/provider-error.js";
+import { exportCategories } from "../src/modules/gaming/export-categories.js";
 
 test("MySQL catalog: complete pagination, literal search, provider counts, favorites, persistent manual categories and atomic imports", async () => {
   const original = loadConfig();
@@ -214,7 +215,84 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
         400,
       );
     }
+    // Lobby rows are selected from the complete category, including games beyond catalog page one.
+    await classifyGames(database, currency, {
+      currency,
+      assignments: games.map((game, index) => ({
+        uuid: game.uuid,
+        categories: [
+          ...(index < 40 ? ["slots"] : index < 60 ? ["live"] : []),
+          ...([0, 40].includes(index) ? ["featured"] : []),
+        ],
+      })),
+    });
+    const lobbyResponse = await app.inject("/api/v1/gaming/lobby");
+    assert.equal(lobbyResponse.statusCode, 200);
+    assert.equal(lobbyResponse.headers["cache-control"], "no-store");
+    const lobby = lobbyResponse.json().data;
+    assert.equal(lobby.total, 65);
+    assert.equal(lobby.games.length, 28);
+    const slots = lobby.sections.find(
+      (section: { category: string }) => section.category === "slots",
+    );
+    assert.equal(slots.total, 40);
+    assert.equal(slots.games.length, 16);
+    assert.equal(
+      lobby.sections.find(
+        (section: { category: string }) => section.category === "live",
+      ).games[0].uuid,
+      games[40]!.uuid,
+    );
+    assert.equal(
+      lobby.sections.find(
+        (section: { category: string }) => section.category === "featured",
+      ).total,
+      2,
+    );
+    const allSlots = await Promise.all(
+      [1, 2].map((page) => store.catalog(page, "", "", { category: "slots" })),
+    );
+    assert.equal(
+      new Set(allSlots.flatMap((page) => page.games.map((game) => game.uuid)))
+        .size,
+      40,
+    );
+    const exported = await exportCategories(database, currency);
+    assert.equal(exported.assignments.length, 65);
+    assert.ok(
+      exported.assignments
+        .find((game) => game.uuid === games[0]!.uuid)
+        ?.categories.includes("featured"),
+    );
+    await assert.rejects(
+      classifyGames(database, "OTHER", exported),
+      /currency/,
+    );
+    exported.assignments[0]!.name =
+      "Reference label cannot rename a provider game";
+    await classifyGames(database, currency, exported);
+    assert.equal((await store.game(games[0]!.uuid))?.name, games[0]!.name);
+    await store.disableGame(games[0]!.uuid);
+    assert.equal(
+      (await store.lobby()).sections.find(
+        (section) => section.category === "slots",
+      )?.total,
+      39,
+    );
+    await store.sync(async () => games);
+    assert.equal(
+      (await store.lobby()).sections.find(
+        (section) => section.category === "slots",
+      )?.total,
+      40,
+    );
+
     await store.sync(async () => []);
+    assert.ok(
+      (await store.lobby()).sections.every(
+        (section) => section.total === 0 && !section.games.length,
+      ),
+    );
     const empty = await store.catalogStatus();
     assert.equal(empty.status, "empty");
     assert.equal(empty.total, 0);

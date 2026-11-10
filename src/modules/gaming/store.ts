@@ -14,7 +14,7 @@ import {
   type WalletTransaction,
 } from "./wallet.js";
 import { formatAmount, parseAmount } from "./money.js";
-import type { CatalogOptions } from "./catalog-filters.js";
+import { gameCategories, type CatalogOptions } from "./catalog-filters.js";
 
 type Row = RowDataPacket & Record<string, any>;
 const hash = (value: string) =>
@@ -231,6 +231,28 @@ export function createGamingStore(database: Database, config: Config) {
           };
         }),
       );
+    },
+    async lobby() {
+      const catalog = await this.catalog(1, "", "");
+      const sections = await ready(() => database.withConnection(async (connection) => {
+        // Rank within each reviewed category before limiting: never classify from a partial catalog page.
+        const [rows] = await connection.execute<Row[]>(
+          `SELECT * FROM (
+            SELECT g.*,c.category,
+              ROW_NUMBER() OVER (PARTITION BY c.category ORDER BY g.name,g.game_uuid) AS position,
+              COUNT(*) OVER (PARTITION BY c.category) AS category_total
+            FROM apimatic_game_categories c JOIN apimatic_games g
+              ON g.currency=c.currency AND g.game_uuid=c.game_uuid
+            WHERE g.currency=? AND g.available=TRUE
+          ) ranked WHERE position<=16 ORDER BY category,position`,
+          [config.APIMATIC_CURRENCY],
+        );
+        return gameCategories.map((category) => {
+          const games = rows.filter((row) => row.category === category);
+          return { category, total: Number(games[0]?.category_total ?? 0), games: games.map(toGame) };
+        });
+      }));
+      return { ...catalog, sections };
     },
     async game(id: string) {
       return ready(() =>

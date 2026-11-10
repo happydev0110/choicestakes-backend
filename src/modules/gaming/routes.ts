@@ -43,6 +43,15 @@ export async function registerGamingRoutes(
       gaming.addHook("onRequest", async (_request, reply) => {
         reply.header("Cache-Control", "no-store");
       });
+      gaming.get("/lobby", async () => {
+        const configured = catalogReady(config);
+        const data = configured ? await store.lobby() : {
+          games: [], total: 0, providers: [], providerCounts: [], sections: [],
+          page: 1, perPage: 28, syncedAt: null,
+          catalog: { status: "not_configured", total: 0, lastAttemptAt: null, lastSuccessAt: null },
+        };
+        return { success: true, data: { ...data, configured, launchEnabled: gamingReady(config), currency: config.APIMATIC_CURRENCY, environment: "sandbox" } };
+      });
       gaming.get("/games", async (request) => {
         const parsed = catalogFilters.safeParse(request.query);
         if (!parsed.success)

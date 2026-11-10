@@ -67,6 +67,7 @@ Readiness checks connectivity, not the presence of migrated tables. Run migratio
 | `npm run db:games:test` | Check sandbox wallet transactions against development MySQL, then clean up |
 | `npm run games:check` | Verify sandbox credentials and currency access with one read-only catalog request |
 | `npm run games:status` | Inspect MySQL catalog state, total, sync timestamps and safe failure code |
+| `npm run games:categories:export -- ./game-categories.json` | Export available games and existing category assignments for manual review |
 | `npm run games:sync` | Synchronize the enabled sandbox game catalog |
 | `npm run games:sync:watch` | Optional separate worker; uses APIMATIC_SYNC_INTERVAL_MINUTES |
 | `npm run build` | Compile to `dist/` |
@@ -122,6 +123,7 @@ The portal uses the synchronized catalog across home, Casino, Search, manual cat
 | Endpoint | Purpose |
 | --- | --- |
 | GET /api/v1/gaming/games | MySQL catalog; page, search, provider, category, sort and UUID filters |
+| GET /api/v1/gaming/lobby | Casino preview rows, reviewed category games and complete category counts |
 | GET /api/v1/gaming/games/:uuid | One available game |
 | POST /api/v1/gaming/games/:uuid/launch | Authenticated/CSRF-checked launch with requestId UUID and mode real/demo |
 | GET /api/v1/gaming/wallet | Authenticated sandbox balance and recent activity |

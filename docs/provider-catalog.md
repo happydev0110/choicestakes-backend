@@ -48,6 +48,14 @@ If `games:check` reports games but the portal remains empty, compare `games:stat
 
 Migration `003_game_categories` creates a separate assignment table. Provider sync preserves these assignments. Uncategorized games still appear in All Games, Search, their provider page, and favorites. Category pages remain empty until you assign games. A game may appear in multiple categories. New Games is an operator-curated category, not a provider release-date ranking.
 
+Export the actual imported games as an editable review file:
+
+```sh
+npm run games:categories:export -- ./game-categories.json
+```
+
+The export includes every available game UUID, name, provider, vendor and existing assignments. It never invents tags and refuses to overwrite an existing file. Edit only each game's `categories` array after reviewing its type, then import using the command below. Use a new filename when exporting again. The exported `currency` must match the import environment. Names/providers/vendors are reference labels and cannot overwrite provider metadata.
+
 Create a JSON file with this shape, replacing the example UUID with an actual `uuid` from `GET /api/v1/gaming/games` (use `search`, `provider`, and `page` to browse):
 
 ```json
@@ -65,11 +73,15 @@ Create a JSON file with this shape, replacing the example UUID with an actual `u
 npm run games:classify -- ./game-categories.json
 ```
 
-Allowed category names: `new-games`, `slots`, `live`, `crash-instant`, `table-cards`, `lotto-scratch`, `roulette`, `poker`.
+Allowed category names: `featured`, `new-games`, `slots`, `live`, `crash-instant`, `table-cards`, `lotto-scratch`, `roulette`, `poker`. Assign `featured` to an operator-selected game to show it in Featured Games; this is not a popularity ranking.
 
 The command replaces assignments **only for the listed games**, for `APIMATIC_CURRENCY`. Use `"categories": []` to clear a game's assignments. Invalid IDs/categories abort the entire import. It does not alter names, artwork, provider fields, or other currencies. There is no public category-editing API or admin UI yet.
 
 ## Browsing behavior
+
+- `/casino` is a dedicated server-rendered lobby with its banner, search, category links and horizontal rows. It never switches to another layout when credentials or data arrive. Loading skeletons and errors stay inside the lobby. `/all-games` is the full paginated collection.
+- `GET /api/v1/gaming/lobby` (portal proxy `/api/gaming/lobby`) returns an All Games preview plus up to 16 available games per reviewed category and each category's full total. Category filtering happens in MySQL before taking the preview. Each View all link opens that category's complete paginated catalog. Empty category rows link to All Games; unassigned games are not duplicated into arbitrary categories.
+- Initial lobby data is read server-side from `BACKEND_URL` with `no-store`. Background catalog synchronization runs separately. Never place API-MATIC secrets in the portal. Deploy/restart the backend **before** building/restarting the portal so the new lobby endpoint exists. Deploy a complete frontend build rather than mixing static HTML and JavaScript from different versions. No migration beyond `004_catalog_sync_status` is required for this lobby update.
 
 - Home, Casino, Search, categories, provider pages, game details, and favorites use the same catalog.
 - The API returns 28 games per page, filtered before pagination. `search`, `provider`, `category`, `sort=provider|name|name-desc`, and `ids` (up to 100 comma-separated UUIDs) can be combined.

@@ -11,7 +11,8 @@ export async function classifyGames(
   currency: string,
   input: unknown,
 ) {
-  const { assignments } = classificationFile.parse(input);
+  const { assignments, currency: fileCurrency } = classificationFile.parse(input);
+  if (fileCurrency && fileCurrency !== currency) throw new Error("The classification file currency does not match APIMATIC_CURRENCY.");
   return database.transaction(async (connection) => {
     for (const assignment of [...assignments].sort((a, b) =>
       a.uuid.localeCompare(b.uuid),
