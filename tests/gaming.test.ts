@@ -282,7 +282,7 @@ test("ambiguous nameless refunds require reconciliation instead of inventing a c
   assert.equal((await tx.wallet("EUR")).units, 10000n);
 });
 test("provider client is sandbox-only, handles absent artwork, and refuses incomplete catalogues", async () => {
-  const config = loadConfig({});
+  const config = loadConfig({ APIMATIC_API_KEY: "opaque-sandbox-test-key", APIMATIC_SECRET_KEY: secret });
   const game = {
     uuid: randomUUID(),
     name: "Test",
@@ -295,6 +295,7 @@ test("provider client is sandbox-only, handles absent artwork, and refuses incom
   const client = new ApiMaticClient(config, async (input, init) => {
     assert.match(String(input), /^https:\/\/sandbox-api\.api-matic\.com\//);
     const headers = init?.headers as Record<string, string>;
+    assert.equal(headers["X-API-Key"], "opaque-sandbox-test-key");
     nonces.add(headers["X-Nonce"]!);
     calls++;
     return Response.json({
@@ -350,7 +351,7 @@ test("disabled integration exposes an empty setup state and rejects callbacks", 
         APIMATIC_ENABLED: "true",
         DB_ENABLED: "true",
         MYSQL_USER: "test",
-        APIMATIC_API_KEY: "ukp_production",
+        APIMATIC_API_KEY: "",
       }),
     /APIMATIC_API_KEY/,
   );
@@ -361,7 +362,7 @@ test("catalog can be previewed with sandbox credentials while launches and callb
     NODE_ENV: "test",
     DB_ENABLED: "true",
     MYSQL_USER: "test",
-    APIMATIC_API_KEY: "uks_test",
+    APIMATIC_API_KEY: "opaque-sandbox-test-key",
     APIMATIC_SECRET_KEY: secret,
   });
   requireSandboxCredentials(config);
@@ -369,11 +370,11 @@ test("catalog can be previewed with sandbox credentials while launches and callb
     () =>
       requireSandboxCredentials(
         loadConfig({
-          APIMATIC_API_KEY: "ukp_test",
+          APIMATIC_API_KEY: "",
           APIMATIC_SECRET_KEY: secret,
         }),
       ),
-    /sandbox key/,
+    /APIMATIC_API_KEY/,
   );
   const game = {
     uuid: randomUUID(),

@@ -7,10 +7,18 @@ import { requireSandboxCredentials } from "./config.js";
 import { providerDiagnostic } from "./provider-error.js";
 
 async function main() {
-  const config = loadConfig();
-  requireSandboxCredentials(config);
-  if (!config.DB_ENABLED)
-    throw new Error("Set DB_ENABLED=true before importing games.");
+  let config;
+  try {
+    config = loadConfig();
+    requireSandboxCredentials(config);
+    if (!config.DB_ENABLED)
+      throw new Error("Set DB_ENABLED=true before importing games.");
+  } catch (error) {
+    // These local validation messages contain field names and rules, never values.
+    console.error(error instanceof Error ? error.message : "Invalid sandbox configuration.");
+    process.exitCode = 1;
+    return;
+  }
   const database = createDatabase(config);
   const store = createGamingStore(database, config);
   const client = new ApiMaticClient(config);

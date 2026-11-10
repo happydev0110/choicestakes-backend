@@ -1,14 +1,15 @@
 import type { Config } from "../../config/env.js";
+import { validApiMaticKey, validApiMaticSecret } from "../../config/apimatic-credentials.js";
 import { AuthError } from "../auth/types.js";
 
 export const SANDBOX_BASE_URL = "https://sandbox-api.api-matic.com";
 
 export function requireSandboxCredentials(config: Config) {
-  if (!config.APIMATIC_API_KEY.startsWith("uks_"))
+  if (!validApiMaticKey(config.APIMATIC_API_KEY))
     throw new Error(
-      "Set APIMATIC_API_KEY to your sandbox key (uks_) in the backend .env.",
+      "Set APIMATIC_API_KEY to the key issued for your sandbox account in the backend .env, without embedded whitespace or control characters. No prefix is required.",
     );
-  if (!/^[a-fA-F0-9]{64}$/.test(config.APIMATIC_SECRET_KEY))
+  if (!validApiMaticSecret(config.APIMATIC_SECRET_KEY))
     throw new Error(
       "Set APIMATIC_SECRET_KEY to the matching 64-character hexadecimal sandbox secret.",
     );
@@ -23,8 +24,8 @@ export function gamingReady(config: Config) {
 export function catalogReady(config: Config) {
   return (
     config.DB_ENABLED &&
-    config.APIMATIC_API_KEY.startsWith("uks_") &&
-    /^[a-fA-F0-9]{64}$/.test(config.APIMATIC_SECRET_KEY)
+    validApiMaticKey(config.APIMATIC_API_KEY) &&
+    validApiMaticSecret(config.APIMATIC_SECRET_KEY)
   );
 }
 export function requireCatalog(config: Config) {

@@ -92,7 +92,7 @@ APIMATIC_CURRENCY_DECIMALS=2
 APIMATIC_TEST_CREDITS=1000
 ```
 
-Use the sandbox key (uks_...) and its 64-character hexadecimal secret from Profile → Security. EUR is an example: choose an enabled currency with its correct precision (2 or 3). Credits are allocated once per player/currency on the first launch attempt. There is no player-accessible refill or withdrawal endpoint.
+Copy the sandbox API key exactly as issued and its matching 64-character hexadecimal secret from Profile → Security. Keys are opaque: no particular key prefix is required, and you must not add one. The sandbox host authenticates the credentials; this application always calls the sandbox host and requires sandbox launch responses. EUR is an example: choose an enabled currency with its correct precision (2 or 3). Credits are allocated once per player/currency on the first launch attempt. There is no player-accessible refill or withdrawal endpoint.
 
 You can test the keys and import games before a callback URL exists, while keeping `APIMATIC_ENABLED=false`:
 
