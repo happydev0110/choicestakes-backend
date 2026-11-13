@@ -133,7 +133,34 @@ Browser traffic goes through the portal's /api/gaming/* proxy. Provider credenti
 
 ## Sandbox wallet processing and limits
 
-Callbacks verify HMAC-SHA256 over raw bytes before parsing, a five-minute timestamp window, and durable nonce uniqueness. Secrets are hex-decoded. Published signing vectors are covered by tests. Only stored sandbox sessions with matching player/game identity are accepted; complete transaction/round/reference identifiers, including vendor prefixes and @sbx suffixes, are retained.
+Callbacks verify HMAC-SHA256 over raw bytes before parsing, a five-minute timestamp window, and durable nonce uniqueness. Secrets are hex-decoded. Published signing vectors are covered by tests. Transactions require stored, confirmed sandbox sessions with matching player/game identity; complete transaction/round/reference identifiers, including vendor prefixes and @sbx suffixes, are retained.
+
+Some vendors request a balance before returning the launch response. A signed `balance`
+callback for an unknown session may read the existing wallet only when exactly one
+unbound pending launch matches the active player, non-empty game UUID and configured
+currency, and was created within the last 30 seconds. MySQL supplies the launch age.
+Expired, failed, ambiguous or mismatched launches cannot use this path. The callback
+does not bind the session, create a wallet, or alter a balance. Only the successful
+provider response binds `vendor_session_id` and marks the launch ready. Bets, wins,
+refunds and rollbacks still require the confirmed session. Launch completion/failure
+and callbacks share the player-row lock, and no database lock spans the provider call.
+
+For deployment of this callback fix, build and restart the backend after copying all
+changed source files, including `src/modules/gaming/callback-session.ts`. No additional
+migration or environment variable is needed for the callback fix itself. Existing
+catalog/visibility migrations must already be applied. Start a new game launch after
+deployment; failed sessions are not reopened automatically.
+
+Diagnostics now include `Sandbox game launch pending`, `Sandbox balance answered during
+pending launch`, and `Sandbox game launch ready`, correlated by `launchId`. Callback
+warnings include game UUID, currency and a hash reference for the session rather than
+its raw token. `SESSION_PLAYER_MISMATCH`, `SESSION_GAME_MISMATCH`,
+`SESSION_CURRENCY_MISMATCH`, `SESSION_NOT_READY`, `PENDING_LAUNCH_EXPIRED` and
+`PENDING_LAUNCH_AMBIGUOUS` distinguish different failures. `SESSION_NOT_FOUND` means no
+known session or eligible pending launch was found; check that launch and callback
+processes use the same database, and correlate the callback with its own game launch.
+Launch records retain the specific safe provider error, such as `VENDOR_ERROR`, while
+player-facing responses may still use the generic `PROVIDER_UNAVAILABLE`.
 
 The handler implements balance, bet, win, refund and rollback. MySQL transactions lock the player to serialize balance changes across currencies. Integer minor units and DECIMAL storage avoid floating-point arithmetic. Responses emit exact decimal JSON numbers as required by the provider. Identity is action plus the full transaction ID; semantic fingerprints allow reordered JSON but reject conflicting retries. Accepted duplicates return the current balance without moving credits again; refused bets remain refused.
 
@@ -153,6 +180,11 @@ npm run db:games:test
 ```
 
 The database check uses unique temporary players and a unique test currency, then removes only its own records. It simulates signed provider traffic locally without contacting API-MATIC. Checks include signature tampering, concurrent retries/bets, insufficient funds, refunds, rollback, out-of-order delivery, atomic failure, cross-instance deduplication, launch ownership, catalog recovery, and movement reconciliation.
+
+The normal test suite includes a vendor that waits for a signed balance callback before
+returning its launch response, as well as invalid signatures, replays, session mismatches,
+expired/ambiguous launches and blocked early transactions. `db:games:test` also exercises
+this sequence against MySQL with temporary fixture accounts and games.
 
 Actual provider launches, iframe compatibility, public callback delivery and vendor acceptance still require your sandbox credentials and callback address. Production gaming and crypto deposit/withdrawal integration are separate future work.
 

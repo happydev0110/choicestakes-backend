@@ -16,7 +16,7 @@ npm run build
 
 Restart the backend after deployment. Set the portal's **server-side** `BACKEND_URL=https://api.choicestakes.com`, then build and restart the portal. The backend's `CORS_ORIGINS` must include `https://choicestakes.com` for authenticated actions. Keep credentials out of `NEXT_PUBLIC_*` variables.
 
-Migration `004_catalog_sync_status` must be applied before restarting the updated backend. The backend now imports immediately after its HTTP listener starts and refreshes every 15 minutes. It runs independently of visitor requests. Configuration:
+Apply migrations through `005_game_visibility` before restarting the updated backend. The backend imports immediately after its HTTP listener starts and refreshes every 15 minutes. It runs independently of visitor requests. Configuration:
 
 ```dotenv
 APIMATIC_SYNC_ENABLED=true
@@ -75,13 +75,26 @@ npm run games:classify -- ./game-categories.json
 
 Allowed category names: `featured`, `new-games`, `slots`, `live`, `crash-instant`, `table-cards`, `lotto-scratch`, `roulette`, `poker`. Assign `featured` to an operator-selected game to show it in Featured Games; this is not a popularity ranking.
 
-The command replaces assignments **only for the listed games**, for `APIMATIC_CURRENCY`. Use `"categories": []` to clear a game's assignments. Invalid IDs/categories abort the entire import. It does not alter names, artwork, provider fields, or other currencies. There is no public category-editing API or admin UI yet.
+The command replaces assignments **only for the listed games**, for `APIMATIC_CURRENCY`. Use `"categories": []` to clear a game's assignments. Invalid IDs/categories abort the entire import. It does not alter names, artwork, provider fields, or other currencies.
+
+The separate `choicestakes-admin` Games management page can also edit these categories
+through its authenticated admin backend. Both backends must use the same database and
+currency. Admin edits are audited; concurrent stale edits return a conflict.
+
+## Portal visibility
+
+Migration `005_game_visibility` adds `apimatic_game_settings`. Games are visible by
+default; the admin can hide an imported game without modifying provider metadata.
+Visibility and categories survive provider sync. The catalog, category rows, provider
+counts, favorites, details and new launches exclude hidden games. Existing sessions
+and settlement callbacks remain valid. Showing a game cannot override the provider's
+unavailable status. Import status totals still describe the full provider import.
 
 ## Browsing behavior
 
 - `/casino` is a dedicated server-rendered lobby with its banner, search, category links and horizontal rows. It never switches to another layout when credentials or data arrive. Loading skeletons and errors stay inside the lobby. `/all-games` is the full paginated collection.
 - `GET /api/v1/gaming/lobby` (portal proxy `/api/gaming/lobby`) returns an All Games preview plus up to 16 available games per reviewed category and each category's full total. Category filtering happens in MySQL before taking the preview. Each View all link opens that category's complete paginated catalog. Empty category rows link to All Games; unassigned games are not duplicated into arbitrary categories.
-- Initial lobby data is read server-side from `BACKEND_URL` with `no-store`. Background catalog synchronization runs separately. Never place API-MATIC secrets in the portal. Deploy/restart the backend **before** building/restarting the portal so the new lobby endpoint exists. Deploy a complete frontend build rather than mixing static HTML and JavaScript from different versions. No migration beyond `004_catalog_sync_status` is required for this lobby update.
+- Initial lobby data is read server-side from `BACKEND_URL` with `no-store`. Background catalog synchronization runs separately. Never place API-MATIC secrets in the portal. Deploy/restart the backend **before** building/restarting the portal so its endpoints and visibility checks exist. Deploy a complete frontend build rather than mixing static HTML and JavaScript from different versions.
 
 - Home, Casino, Search, categories, provider pages, game details, and favorites use the same catalog.
 - The API returns 28 games per page, filtered before pagination. `search`, `provider`, `category`, `sort=provider|name|name-desc`, and `ids` (up to 100 comma-separated UUIDs) can be combined.

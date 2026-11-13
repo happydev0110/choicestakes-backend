@@ -287,6 +287,20 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
       40,
     );
 
+    // An operator-hidden game remains hidden after a provider import.
+    await database.withConnection(connection => connection.execute(
+      "INSERT INTO apimatic_game_settings (currency,game_uuid,visible) VALUES (?,?,FALSE)",
+      [currency,games[0]!.uuid],
+    ));
+    await store.sync(async () => games);
+    assert.equal(await store.game(games[0]!.uuid),null);
+    assert.equal((await store.catalog(1,"","",{ids:[games[0]!.uuid]})).total,0);
+    assert.equal((await store.catalog(1,"","")).total,64);
+    assert.equal((await store.lobby()).sections.find(section=>section.category==="slots")?.total,39);
+    await database.withConnection(connection => connection.execute(
+      "DELETE FROM apimatic_game_settings WHERE currency=? AND game_uuid=?",[currency,games[0]!.uuid],
+    ));
+
     await store.sync(async () => []);
     assert.ok(
       (await store.lobby()).sections.every(

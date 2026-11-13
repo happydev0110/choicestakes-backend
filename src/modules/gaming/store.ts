@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from "node:crypto";
-import type { PoolConnection, RowDataPacket } from "mysql2/promise";
+import type { PoolConnection, RowDataPacket, ResultSetHeader } from "mysql2/promise";
 import type { Config } from "../../config/env.js";
 import type { Database } from "../../database/mysql.js";
 import { catalogFailure, readCatalogStatus, synchronizeCatalog } from "./catalog-sync.js";
@@ -15,6 +15,8 @@ import {
 } from "./wallet.js";
 import { formatAmount, parseAmount } from "./money.js";
 import { gameCategories, type CatalogOptions } from "./catalog-filters.js";
+import { visibleGame } from "./visibility.js";
+import { resolveCallbackSession, type CallbackLaunch } from "./callback-session.js";
 
 type Row = RowDataPacket & Record<string, any>;
 const hash = (value: string) =>
@@ -38,6 +40,24 @@ const toGame = (row: Row): CatalogGame => ({
   vendor: row.vendor,
   imageUrl: row.image_url,
 });
+const toCallbackLaunch = (row: Row): CallbackLaunch => ({
+  id: row.id,
+  playerId: row.player_id,
+  gameId: row.game_uuid,
+  currency: row.currency,
+  status: row.status,
+  vendorSessionId: row.vendor_session_id,
+});
+
+async function lockLaunchOwner(connection: PoolConnection, id: string) {
+  const [launches] = await connection.execute<Row[]>(
+    "SELECT player_id FROM apimatic_launches WHERE id=?",
+    [id],
+  );
+  if (!launches[0]) throw new AuthError(409, "LAUNCH_NOT_FOUND", "Game launch no longer exists.");
+  // Same lock order as claimLaunch/postback. Never hold this lock across a provider call.
+  await connection.execute("SELECT id FROM players WHERE id=? FOR UPDATE", [launches[0].player_id]);
+}
 function toEvent(row: Row): LedgerEvent {
   return {
     action: row.action,
@@ -181,7 +201,7 @@ export function createGamingStore(database: Database, config: Config) {
         database.withConnection(async (connection) => {
           const pattern = "%" + search.replace(/[=%_]/g, "=$&") + "%";
           let where =
-            "g.currency = ? AND g.available = TRUE AND (g.name LIKE ? ESCAPE '=' OR g.provider LIKE ? ESCAPE '=') AND (? = '' OR g.provider = ?)";
+            `g.currency = ? AND g.available = TRUE AND ${visibleGame} AND (g.name LIKE ? ESCAPE '=' OR g.provider LIKE ? ESCAPE '=') AND (? = '' OR g.provider = ?)`;
           const params: (string | number)[] = [
             config.APIMATIC_CURRENCY,
             pattern,
@@ -210,7 +230,7 @@ export function createGamingStore(database: Database, config: Config) {
             [...params, (currentPage - 1) * 28],
           );
           const [providers] = await connection.execute<Row[]>(
-            "SELECT provider, COUNT(*) AS total FROM apimatic_games WHERE currency = ? AND available = TRUE GROUP BY provider ORDER BY provider",
+            `SELECT g.provider, COUNT(*) AS total FROM apimatic_games g WHERE g.currency = ? AND g.available = TRUE AND ${visibleGame} GROUP BY g.provider ORDER BY g.provider`,
             [config.APIMATIC_CURRENCY],
           );
           const status = await readCatalogStatus(connection, config.APIMATIC_CURRENCY);
@@ -243,7 +263,7 @@ export function createGamingStore(database: Database, config: Config) {
               COUNT(*) OVER (PARTITION BY c.category) AS category_total
             FROM apimatic_game_categories c JOIN apimatic_games g
               ON g.currency=c.currency AND g.game_uuid=c.game_uuid
-            WHERE g.currency=? AND g.available=TRUE
+            WHERE g.currency=? AND g.available=TRUE AND ${visibleGame}
           ) ranked WHERE position<=16 ORDER BY category,position`,
           [config.APIMATIC_CURRENCY],
         );
@@ -258,7 +278,7 @@ export function createGamingStore(database: Database, config: Config) {
       return ready(() =>
         database.withConnection(async (connection) => {
           const [rows] = await connection.execute<Row[]>(
-            "SELECT * FROM apimatic_games WHERE currency = ? AND game_uuid = ? AND available = TRUE",
+            `SELECT g.* FROM apimatic_games g WHERE g.currency = ? AND g.game_uuid = ? AND g.available = TRUE AND ${visibleGame}`,
             [config.APIMATIC_CURRENCY, id],
           );
           return rows[0] ? toGame(rows[0]) : null;
@@ -301,6 +321,11 @@ export function createGamingStore(database: Database, config: Config) {
               "PLAYER_BLOCKED",
               "This account cannot launch games.",
             );
+          const [games] = await connection.execute<Row[]>(
+            `SELECT g.game_uuid FROM apimatic_games g WHERE g.currency=? AND g.game_uuid=? AND g.available=TRUE AND ${visibleGame} FOR UPDATE`,
+            [config.APIMATIC_CURRENCY, gameId],
+          );
+          if (!games[0]) throw new AuthError(404, "GAME_NOT_FOUND", "This game is no longer available.");
           const [existing] = await connection.execute<Row[]>(
             "SELECT id FROM apimatic_launches WHERE player_id = ? AND request_id = ?",
             [playerId, requestId],
@@ -346,17 +371,21 @@ export function createGamingStore(database: Database, config: Config) {
     },
     async completeLaunch(id: string, sessionId: string) {
       await ready(() =>
-        database.withConnection(async (connection) => {
-          await connection.execute(
+        database.transaction(async (connection) => {
+          await lockLaunchOwner(connection, id);
+          const [result] = await connection.execute<ResultSetHeader>(
             "UPDATE apimatic_launches SET status='ready',vendor_session_id=?,session_hash=? WHERE id=? AND status='pending'",
             [sessionId, hash(sessionId), id],
           );
+          if (result.affectedRows !== 1)
+            throw new AuthError(409, "LAUNCH_NOT_PENDING", "This game launch is no longer pending.");
         }),
       );
     },
     async failLaunch(id: string, code: string) {
       await ready(() =>
-        database.withConnection(async (connection) => {
+        database.transaction(async (connection) => {
+          await lockLaunchOwner(connection, id);
           await connection.execute(
             "UPDATE apimatic_launches SET status='failed',error_code=? WHERE id=? AND status='pending'",
             [code.slice(0, 80), id],
@@ -416,20 +445,27 @@ export function createGamingStore(database: Database, config: Config) {
             [body.player_id],
           );
           if (!players[0]) throw new WalletError("PLAYER_NOT_FOUND");
-          const [sessions] = await connection.execute<Row[]>(
-            "SELECT * FROM apimatic_launches WHERE session_hash = ? AND status = ?",
-            [hash(body.session_id), "ready"],
-          );
-          const session = sessions[0];
-          if (
-            !session ||
-            session.vendor_session_id !== body.session_id ||
-            session.player_id !== body.player_id ||
-            (body.game_uuid && session.game_uuid !== body.game_uuid) ||
-            (!["refund", "rollback"].includes(body.action) &&
-              session.currency !== body.currency)
-          )
-            throw new WalletError("SESSION_NOT_FOUND");
+          const context = await resolveCallbackSession(body, players[0].status === "active", config.APIMATIC_CURRENCY, {
+            async bySession(sessionId) {
+              const [sessions] = await connection.execute<Row[]>(
+                "SELECT id,player_id,game_uuid,currency,status,vendor_session_id FROM apimatic_launches WHERE session_hash=?",
+                [hash(sessionId)],
+              );
+              return sessions[0] ? toCallbackLaunch(sessions[0]) : null;
+            },
+            async pending(callback) {
+              const [pending] = await connection.execute<Row[]>(
+                `SELECT id,player_id,game_uuid,currency,status,vendor_session_id,
+                  TIMESTAMPDIFF(MICROSECOND,created_at,UTC_TIMESTAMP(3)) AS age_us
+                FROM apimatic_launches
+                WHERE player_id=? AND game_uuid=? AND currency=? AND status='pending'
+                  AND vendor_session_id IS NULL AND session_hash IS NULL
+                ORDER BY created_at DESC,id LIMIT 2`,
+                [callback.player_id, callback.game_uuid, callback.currency],
+              );
+              return pending.map((row) => ({ ...toCallbackLaunch(row), ageMs: Number(row.age_us) / 1000 }));
+            },
+          });
           const identifiers = [
             body.transaction_id,
             body.round_id,
@@ -473,7 +509,7 @@ export function createGamingStore(database: Database, config: Config) {
             "DELETE FROM apimatic_callback_issues WHERE event_key = ?",
             [issueKey(body)],
           );
-          return result;
+          return { ...result, earlyBalanceLaunchId: context.earlyBalance ? context.launchId : undefined };
         }),
       );
     },

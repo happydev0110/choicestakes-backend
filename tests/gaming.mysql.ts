@@ -43,6 +43,43 @@ test("MySQL integration: signed callbacks, concurrent retries, rollback, audit t
     gamingClient: {
       async launch() {
         launches++;
+        // Model a vendor that cannot finish launching until it receives our balance.
+        const openingBalance = {
+          action: "balance", type: "balance", player_id: playerId!, game_uuid: game.uuid,
+          currency, session_id: vendorSession, transaction_id: "",
+          transaction_datetime: "2026-11-13 15:49:38.219223", casino_request_retry_count: 0,
+        };
+        await database.withConnection((connection) => connection.execute(
+          "UPDATE apimatic_launches SET created_at=DATE_SUB(UTC_TIMESTAMP(3),INTERVAL 1 MINUTE) WHERE player_id=? AND status='pending'",
+          [playerId!],
+        ));
+        assert.equal((await app.inject(signed(openingBalance))).json().error_code, "PENDING_LAUNCH_EXPIRED");
+        await database.withConnection((connection) => connection.execute(
+          "UPDATE apimatic_launches SET created_at=UTC_TIMESTAMP(3) WHERE player_id=? AND status='pending'", [playerId!],
+        ));
+        const competing = await store.claimLaunch(playerId!, game.uuid, randomUUID(), "real");
+        assert.equal((await app.inject(signed(openingBalance))).json().error_code, "PENDING_LAUNCH_AMBIGUOUS");
+        await store.failLaunch(competing, "QA_CANCELLED");
+        assert.equal((await app.inject(signed({ ...openingBalance, game_uuid: randomUUID() }))).json().error_code, "SESSION_NOT_FOUND");
+        assert.equal((await app.inject(signed({ ...openingBalance, currency: "OTHER" }))).json().error_code, "SESSION_CURRENCY_MISMATCH");
+        const balanceRequest = signed(openingBalance);
+        const response = await app.inject(balanceRequest);
+        assert.equal(response.statusCode, 200, response.body);
+        assert.deepEqual(response.json(), { balance: 1000 });
+        assert.equal((await app.inject(balanceRequest)).statusCode, 401, "early balance also consumes its nonce");
+        for (const action of ["bet", "win", "refund", "rollback"]) {
+          const refused = await app.inject(signed({ ...openingBalance, action, type: action,
+            transaction_id: randomUUID() + "@sbx", amount: "1.00", bet_transaction_id: "",
+            rollback_transactions: [{ transaction_id: "unknown@sbx", type: "bet", amount: "1.00" }],
+          }));
+          assert.equal(refused.json().error_code, "SESSION_NOT_FOUND", refused.body);
+        }
+        const [beforeResponse] = await database.withConnection((connection) => connection.execute<RowDataPacket[]>(
+          "SELECT vendor_session_id,session_hash FROM apimatic_launches WHERE player_id=? AND status='pending'", [playerId!],
+        ));
+        assert.equal(beforeResponse.length, 1);
+        assert.equal(beforeResponse[0]!.vendor_session_id, null, "balance does not bind the session before the launch response");
+        assert.equal(beforeResponse[0]!.session_hash, null);
         return {
           link: "https://games.example.com/test",
           sessionId: vendorSession,

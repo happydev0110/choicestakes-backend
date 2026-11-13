@@ -1,6 +1,7 @@
 import { gamingMigration } from './gaming-migration.js';
 import { catalogMigration } from './catalog-migration.js';
 import { catalogSyncMigration } from './catalog-sync-migration.js';
+import { gameSettingsMigration } from './game-settings-migration.js';
 export const migrations = [{
   name: '001_player_auth',
   statements: [
@@ -34,4 +35,4 @@ export const migrations = [{
       KEY ix_auth_attempt_bucket (bucket)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4`,
   ],
-}, gamingMigration, catalogMigration, catalogSyncMigration];
+}, gamingMigration, catalogMigration, catalogSyncMigration, gameSettingsMigration];

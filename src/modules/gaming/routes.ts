@@ -1,4 +1,5 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
+import { createHash } from "node:crypto";
 import { z } from "zod";
 import type { Config } from "../../config/env.js";
 import { AuthError, type AuthStore } from "../auth/types.js";
@@ -16,6 +17,7 @@ import { verifyPostback } from "./signing.js";
 import { callbackReply } from "./money.js";
 import { WalletError } from "./wallet.js";
 import { catalogFilters } from "./catalog-filters.js";
+import { ApiMaticError } from "./provider-error.js";
 
 export async function registerGamingRoutes(
   app: FastifyInstance,
@@ -162,6 +164,7 @@ export async function registerGamingRoutes(
             parsed.data.mode,
           );
           try {
+            request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode }, "Sandbox game launch pending");
             // The client is hard-wired to the sandbox host. A "real" vendor mode still uses test credits here.
             const launch = await client.launch(
               user.id,
@@ -169,14 +172,16 @@ export async function registerGamingRoutes(
               parsed.data.mode,
             );
             await store.completeLaunch(launchId, launch.sessionId);
+            request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode }, "Sandbox game launch ready");
             return {
               success: true,
               data: { link: launch.link, launchId, environment: "sandbox" },
             };
           } catch (error) {
-            const code =
-              error instanceof AuthError ? error.code : "LAUNCH_FAILED";
+            const code = error instanceof ApiMaticError ? error.providerCode
+              : error instanceof AuthError ? error.code : "LAUNCH_FAILED";
             await store.failLaunch(launchId, code);
+            request.log.warn({ launchId, gameId: game.uuid, mode: parsed.data.mode, code }, "Sandbox game launch failed");
             if (
               ["GAME_NOT_ALLOWED", "GAME_DISABLED", "GAME_NOT_FOUND"].includes(
                 code,
@@ -230,8 +235,16 @@ export async function registerGamingRoutes(
         const parsed = postbackSchema.safeParse(value);
         if (!parsed.success)
           return reply.code(400).send({ error_code: "INVALID_BODY" });
+        const callbackContext = {
+          action: parsed.data.action,
+          gameId: parsed.data.game_uuid,
+          currency: parsed.data.currency,
+          sessionRef: createHash("sha256").update(parsed.data.session_id).digest("hex").slice(0, 16),
+        };
         try {
           const result = await store.postback(parsed.data, nonceHash);
+          if (result.earlyBalanceLaunchId)
+            request.log.info({ ...callbackContext, launchId: result.earlyBalanceLaunchId }, "Sandbox balance answered during pending launch");
           if (result.errorCode)
             return reply.send({ error_code: result.errorCode });
           return reply
@@ -253,7 +266,7 @@ export async function registerGamingRoutes(
                 request.log.error("Unable to persist callback issue"),
               );
             request.log.warn(
-              { code, action: parsed.data.action },
+              { code, ...callbackContext },
               "Sandbox callback needs review",
             );
           }
