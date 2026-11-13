@@ -23,6 +23,7 @@
     "games:classify": "node --env-file-if-exists=.env --import tsx src/modules/gaming/classify.ts",
     "games:categories:export": "node --env-file-if-exists=.env --import tsx src/modules/gaming/export-categories.ts",
     "db:games:test": "node --env-file-if-exists=.env --import tsx --test tests/gaming.mysql.ts",
+    "db:games:timezone:test": "node --env-file-if-exists=.env --import tsx --test tests/gaming-timezone.mysql.ts",
     "db:catalog:test": "node --env-file-if-exists=.env --import tsx --test tests/catalog.mysql.ts"
   },
   "dependencies": {

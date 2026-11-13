@@ -16,7 +16,7 @@ import {
 import { formatAmount, parseAmount } from "./money.js";
 import { gameCategories, type CatalogOptions } from "./catalog-filters.js";
 import { visibleGame } from "./visibility.js";
-import { resolveCallbackSession, type CallbackLaunch } from "./callback-session.js";
+import { pendingBalanceWindowMs, resolveCallbackSession, type CallbackLaunch } from "./callback-session.js";
 
 type Row = RowDataPacket & Record<string, any>;
 const hash = (value: string) =>
@@ -362,7 +362,7 @@ export function createGamingStore(database: Database, config: Config) {
             );
           const id = randomUUID();
           await connection.execute(
-            "INSERT INTO apimatic_launches (id,player_id,request_id,game_uuid,currency,mode) VALUES (?,?,?,?,?,?)",
+            "INSERT INTO apimatic_launches (id,player_id,request_id,game_uuid,currency,mode,created_at) VALUES (?,?,?,?,?,?,UTC_TIMESTAMP(3))",
             [id, playerId, requestId, gameId, config.APIMATIC_CURRENCY, mode],
           );
           return id;
@@ -460,9 +460,21 @@ export function createGamingStore(database: Database, config: Config) {
                 FROM apimatic_launches
                 WHERE player_id=? AND game_uuid=? AND currency=? AND status='pending'
                   AND vendor_session_id IS NULL AND session_hash IS NULL
+                  AND created_at BETWEEN DATE_SUB(UTC_TIMESTAMP(3),INTERVAL ? MICROSECOND) AND UTC_TIMESTAMP(3)
                 ORDER BY created_at DESC,id LIMIT 2`,
-                [callback.player_id, callback.game_uuid, callback.currency],
+                [callback.player_id, callback.game_uuid, callback.currency, pendingBalanceWindowMs * 1000],
               );
+              if (!pending.length) {
+                // Distinguish stale/future pending rows without allowing them to crowd
+                // a valid UTC launch out of the bounded candidate query above.
+                const [stale] = await connection.execute<Row[]>(
+                  `SELECT id FROM apimatic_launches
+                  WHERE player_id=? AND game_uuid=? AND currency=? AND status='pending'
+                    AND vendor_session_id IS NULL AND session_hash IS NULL LIMIT 1`,
+                  [callback.player_id, callback.game_uuid, callback.currency],
+                );
+                if (stale.length) throw new WalletError("PENDING_LAUNCH_EXPIRED");
+              }
               return pending.map((row) => ({ ...toCallbackLaunch(row), ageMs: Number(row.age_us) / 1000 }));
             },
           });

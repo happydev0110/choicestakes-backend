@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { runTransaction } from '../src/database/mysql.js';
+import { prepareUtcConnection, runTransaction } from '../src/database/mysql.js';
 import { assertAdvisoryLockAcquired } from '../src/database/locks.js';
 
 test('advisory locks accept numeric and BIGINT-string success results', () => {
@@ -50,4 +50,37 @@ test('a failed rollback destroys the connection instead of returning it to the p
   const conn = connection(true);
   await assert.rejects(runTransaction(conn, async () => { throw new Error('original failure'); }), /original failure/);
   assert.deepEqual(conn.events, ['begin', 'rollback', 'destroy']);
+});
+
+test('UTC session initialization finishes before the connection is handed to application code', async () => {
+  const events: string[] = [];
+  let finish: () => void = () => assert.fail('initialization did not start');
+  const conn = {
+    async query(options: { sql: string; timeout: number }) {
+      assert.equal(options.sql, "SET SESSION time_zone = '+00:00'");
+      assert.equal(options.timeout, 2000);
+      events.push('initializing');
+      await new Promise<void>((resolve) => { finish = resolve; });
+      events.push('initialized');
+    },
+    destroy() { events.push('destroyed'); },
+  };
+  const initialized = prepareUtcConnection(conn).then((result) => {
+    events.push('application query');
+    return result;
+  });
+  assert.deepEqual(events, ['initializing']);
+  finish();
+  assert.equal(await initialized, conn);
+  assert.deepEqual(events, ['initializing', 'initialized', 'application query']);
+});
+
+test('a connection whose UTC initialization fails is destroyed and never handed out', async () => {
+  let destroyed = false;
+  const original = new Error('session setup failed');
+  await assert.rejects(prepareUtcConnection({
+    query: async () => { throw original; },
+    destroy() { destroyed = true; },
+  }), (error) => error === original);
+  assert.equal(destroyed, true);
 });

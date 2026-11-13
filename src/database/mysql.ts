@@ -40,7 +40,7 @@ export function createDatabase(config: Config) {
   async function getConnection(): Promise<PoolConnection> {
     if (!pool) throw new Error('MySQL is disabled. Configure .env and set DB_ENABLED=true.');
     // Bound the pool queue wait as well as the TCP connection wait.
-    return new Promise((resolve, reject) => {
+    const connection = await new Promise<PoolConnection>((resolve, reject) => {
       let expired = false;
       const timer = setTimeout(() => {
         expired = true;
@@ -55,6 +55,7 @@ export function createDatabase(config: Config) {
         reject(error);
       });
     });
+    return prepareUtcConnection(connection);
   }
 
   return {
@@ -83,6 +84,25 @@ export function createDatabase(config: Config) {
       await pool?.end();
     },
   };
+}
+
+interface SessionConnection {
+  query(options: { sql: string; timeout: number }): Promise<unknown>;
+  destroy(): void;
+}
+
+export async function prepareUtcConnection<C extends SessionConnection>(connection: C): Promise<C> {
+  try {
+    // mysql2's timezone option only controls JS/date conversion. SQL defaults such as
+    // CURRENT_TIMESTAMP use the server session's time zone. Reset every checkout,
+    // including reused connections, before any application query or transaction.
+    await connection.query({ sql: "SET SESSION time_zone = '+00:00'", timeout: 2000 });
+    return connection;
+  } catch (error) {
+    // Do not return a connection with uncertain session state to callers or the pool.
+    connection.destroy();
+    throw error;
+  }
 }
 
 type TransactionConnection = Pick<PoolConnection, 'beginTransaction' | 'commit' | 'rollback' | 'release' | 'destroy'>;

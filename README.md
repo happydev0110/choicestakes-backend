@@ -145,6 +145,14 @@ provider response binds `vendor_session_id` and marks the launch ready. Bets, wi
 refunds and rollbacks still require the confirmed session. Launch completion/failure
 and callbacks share the player-row lock, and no database lock spans the provider call.
 
+Launch creation explicitly writes `UTC_TIMESTAMP(3)`, and every pooled connection sets
+its SQL session timezone to `+00:00` before application queries. The driver's
+`timezone: 'Z'` setting alone does not control MySQL's `CURRENT_TIMESTAMP` defaults.
+This prevents fresh launches from incorrectly returning `PENDING_LAUNCH_EXPIRED`
+on servers using a different timezone. Pending candidates are filtered by their UTC
+age before limiting the results, so old future-dated records cannot hide a valid new
+launch. Historical timestamps are not rewritten; the 30-second limit remains in place.
+
 For deployment of this callback fix, build and restart the backend after copying all
 changed source files, including `src/modules/gaming/callback-session.ts`. No additional
 migration or environment variable is needed for the callback fix itself. Existing
@@ -185,6 +193,14 @@ The normal test suite includes a vendor that waits for a signed balance callback
 returning its launch response, as well as invalid signatures, replays, session mismatches,
 expired/ambiguous launches and blocked early transactions. `db:games:test` also exercises
 this sequence against MySQL with temporary fixture accounts and games.
+
+For the database timezone regression, create a **disposable database with a name ending
+in `_test`**, set `MYSQL_TEST_DATABASE` to that name, and configure `MYSQL_HOST`,
+`MYSQL_PORT`, `MYSQL_USER` and `MYSQL_PASSWORD` for the test server. Run
+`npm run db:games:timezone:test` outside production. It creates the test schema, checks
+fresh launches under `+05:30`, `-07:00` and `+12:00`, verifies UTC initialization on
+reused pooled connections, and checks expired/ambiguous launches and legacy future
+timestamps. It removes its fixture records but retains the disposable schema.
 
 Actual provider launches, iframe compatibility, public callback delivery and vendor acceptance still require your sandbox credentials and callback address. Production gaming and crypto deposit/withdrawal integration are separate future work.
 
