@@ -18,6 +18,8 @@ import { callbackReply } from "./money.js";
 import { WalletError } from "./wallet.js";
 import { catalogFilters } from "./catalog-filters.js";
 import { ApiMaticError } from "./provider-error.js";
+import { registerWalletStream } from "./wallet-stream.js";
+import type { WalletEvents } from "./wallet-events.js";
 
 export async function registerGamingRoutes(
   app: FastifyInstance,
@@ -25,6 +27,7 @@ export async function registerGamingRoutes(
   auth: AuthStore,
   store: GamingStore,
   client: Pick<ApiMaticClient, "launch">,
+  walletEvents: WalletEvents,
 ) {
   async function player(request: FastifyRequest) {
     const token = request.cookies[sessionCookieName(config)];
@@ -45,6 +48,7 @@ export async function registerGamingRoutes(
       gaming.addHook("onRequest", async (_request, reply) => {
         reply.header("Cache-Control", "no-store");
       });
+      registerWalletStream(gaming, config, auth, walletEvents);
       gaming.get("/lobby", async () => {
         const configured = catalogReady(config);
         const data = configured ? await store.lobby() : {
@@ -163,6 +167,8 @@ export async function registerGamingRoutes(
             parsed.data.requestId,
             parsed.data.mode,
           );
+          // The first launch can initialize the player's wallet.
+          walletEvents.publish(user.id);
           try {
             request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode }, "Sandbox game launch pending");
             // The client is hard-wired to the sandbox host. A "real" vendor mode still uses test credits here.
@@ -243,6 +249,8 @@ export async function registerGamingRoutes(
         };
         try {
           const result = await store.postback(parsed.data, nonceHash);
+          // postback resolves only after the wallet transaction commits.
+          if (result.balanceChanged) walletEvents.publish(parsed.data.player_id);
           if (result.earlyBalanceLaunchId)
             request.log.info({ ...callbackContext, launchId: result.earlyBalanceLaunchId }, "Sandbox balance answered during pending launch");
           if (result.errorCode)

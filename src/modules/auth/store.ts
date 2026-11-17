@@ -55,7 +55,7 @@ export function createAuthStore(database: Database): AuthStore {
     createSession: (session, previous) => ready(() => database.transaction(async (connection) => {
       await insertSession(connection, session, previous);
     })),
-    findSession: (hash, now, idleMinutes) => ready(() => database.withConnection(async (connection): Promise<Player | null> => {
+    findSession: (hash, now, idleMinutes, touch = true) => ready(() => database.withConnection(async (connection): Promise<Player | null> => {
       const [rows] = await connection.execute<PlayerRow[]>(
         `SELECT p.* FROM player_sessions s JOIN players p ON p.id = s.player_id
          WHERE s.token_hash = ? AND s.expires_at > ? AND s.last_seen_at > ? AND p.status = 'active' LIMIT 1`,
@@ -63,7 +63,7 @@ export function createAuthStore(database: Database): AuthStore {
       );
       const row = rows[0];
       if (!row) return null;
-      await connection.execute('UPDATE player_sessions SET last_seen_at = ? WHERE token_hash = ?', [now, hash]);
+      if (touch) await connection.execute('UPDATE player_sessions SET last_seen_at = ? WHERE token_hash = ?', [now, hash]);
       return { id: row.id, email: row.email, displayName: row.display_name, emailVerified: row.email_verified_at !== null };
     })),
     deleteSession: (hash) => ready(() => database.withConnection(async (connection) => {

@@ -131,6 +131,8 @@ The portal uses the synchronized catalog across home, Casino, Search, manual cat
 
 Browser traffic goes through the portal's /api/gaming/* proxy. Provider credentials stay server-side; launch requests derive player_id from authentication. The returned vendor session ID is stored before returning the play URL. Play URLs are held only in browser memory. Launch request IDs prevent duplicate requests. Launches are never automatically retried after timeouts, because a provider session may already exist. Provider errors indicating removed/revoked games disable those catalog entries until the next sync.
 
+Wallet balance changes now notify authenticated browsers through `GET /api/v1/gaming/wallet/events` after the MySQL commit. The portal uses a dedicated streaming proxy at `/api/gaming/wallet/events`; there is no 30-second wallet poll. See [live wallet deployment](docs/live-wallet.md) for Nginx streaming, Redis for multiple workers, and validation commands.
+
 ## Sandbox wallet processing and limits
 
 Callbacks verify HMAC-SHA256 over raw bytes before parsing, a five-minute timestamp window, and durable nonce uniqueness. Secrets are hex-decoded. Published signing vectors are covered by tests. Transactions require stored, confirmed sandbox sessions with matching player/game identity; complete transaction/round/reference identifiers, including vendor prefixes and @sbx suffixes, are retained.

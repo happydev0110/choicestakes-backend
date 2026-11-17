@@ -78,6 +78,7 @@ function walletTransaction(
   connection: PoolConnection,
   playerId: string,
   operationKey?: string,
+  onBalanceChanged?: () => void,
 ): WalletTransaction {
   return {
     async wallet(currency) {
@@ -99,6 +100,7 @@ function walletTransaction(
       );
       if (!rows[0]) throw new WalletError("WALLET_NOT_FOUND");
       const delta = wallet.units - BigInt(rows[0].balance_units);
+      if (delta !== 0n) onBalanceChanged?.();
       if (delta !== 0n && operationKey) {
         await connection.execute(
           `INSERT INTO apimatic_sandbox_movements (movement_key,event_key,player_id,currency,delta_units) VALUES (?,?,?,?,?)
@@ -440,6 +442,7 @@ export function createGamingStore(database: Database, config: Config) {
     async postback(body: Postback, nonceHash: string) {
       return ready(() =>
         database.transaction(async (connection) => {
+          let balanceChanged = false;
           const [players] = await connection.execute<Row[]>(
             "SELECT status FROM players WHERE id = ? FOR UPDATE",
             [body.player_id],
@@ -513,6 +516,7 @@ export function createGamingStore(database: Database, config: Config) {
               connection,
               body.player_id,
               eventKey(body.action, body.transaction_id),
+              () => { balanceChanged = true; },
             ),
             body,
             players[0].status === "active",
@@ -521,7 +525,7 @@ export function createGamingStore(database: Database, config: Config) {
             "DELETE FROM apimatic_callback_issues WHERE event_key = ?",
             [issueKey(body)],
           );
-          return { ...result, earlyBalanceLaunchId: context.earlyBalance ? context.launchId : undefined };
+          return { ...result, balanceChanged, earlyBalanceLaunchId: context.earlyBalance ? context.launchId : undefined };
         }),
       );
     },

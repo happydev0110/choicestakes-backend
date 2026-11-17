@@ -12,7 +12,7 @@ export interface AuthStore {
   findPlayerByEmail(email: string): Promise<StoredPlayer | null>;
   createPlayer(player: StoredPlayer, session: SessionRecord, previousTokenHash?: string): Promise<void>;
   createSession(session: SessionRecord, previousTokenHash?: string): Promise<void>;
-  findSession(tokenHash: string, now: Date, idleMinutes: number): Promise<Player | null>;
+  findSession(tokenHash: string, now: Date, idleMinutes: number, touch?: boolean): Promise<Player | null>;
   deleteSession(tokenHash: string): Promise<void>;
   consumeLoginAttempt(email: string): Promise<boolean>;
 }

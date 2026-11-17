@@ -32,6 +32,12 @@ const schema = z.object({
   MYSQL_SSL_CA: z.string().trim().default(''),
   SESSION_TTL_HOURS: z.coerce.number().int().min(1).max(168).default(24),
   SESSION_IDLE_MINUTES: z.coerce.number().int().min(5).max(1440).default(60),
+  // Empty uses one backend process; all workers must share Redis when clustered.
+  WALLET_EVENTS_REDIS_URL: z.string().trim().default('').refine((value) => {
+    if (!value) return true;
+    try { return ['redis:', 'rediss:'].includes(new URL(value).protocol); } catch { return false; }
+  }, 'Use a redis:// or rediss:// connection URL'),
+  WALLET_EVENTS_REDIS_CHANNEL: z.string().regex(/^[A-Za-z0-9:_-]{1,128}$/).default('choicestakes:sandbox:wallet'),
   APIMATIC_ENABLED: boolean.default(false),
   APIMATIC_SYNC_ENABLED: boolean.default(true),
   APIMATIC_SYNC_INTERVAL_MINUTES: z.coerce.number().int().min(1).max(1440).default(15),
