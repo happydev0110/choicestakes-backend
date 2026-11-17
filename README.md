@@ -82,6 +82,33 @@ Crypto payments and production gambling are not enabled. The sandbox game integr
 
 ## API-MATIC sandbox setup
 
+### Betby appearance
+
+Betby launches use the `blue-dark` theme and `tile` layout. The backend applies
+the presentation URL parameters described in section 6 of the supplied
+`BetbyLaunchParameters (1).md` after API-MATIC returns a validated play URL.
+The default Betby UUID is `044708be-61d4-5516-91dc-b3829c296294`; if you change
+`SPORTSBOOK_GAME_ID`, set the same value in the backend and portal environments.
+Both `/sports` and direct game-card launches use these settings.
+
+Supported provider entry paths are `/sports`, `/sports/embed`, and `/home`, using
+`defaultLayout=tile&color=blue-dark`. Already-resolved `/sportsbook/<layout>` paths
+switch to `/sportsbook/tile`, preserving any section suffix, other query values,
+and fragment. New launches override previous presentation values. Reopen Sports
+after deployment to create a fresh launch; an existing open iframe is not reloaded.
+
+Unknown provider/wrapper routes remain unchanged and log
+`BETBY_PRESENTATION_NOT_APPLIED` without logging tokens or launch URLs. If this
+warning appears, obtain API-MATIC's supported Betby parameter forwarding format.
+The supplied guide's `customData`/`GetLaunchUrl` example is for ForeverApi; this
+implementation does not add those undocumented fields to API-MATIC's signed
+request. Live theme rendering must be verified against the deployed provider.
+
+Deploy with `npm run build` and restart the backend. No database migration or
+portal rebuild is required for this presentation change.
+
+### Credentials and catalog
+
 The integration always calls https://sandbox-api.api-matic.com. There is no production-host switch. Leave APIMATIC_ENABLED=false until the following backend .env fields are ready:
 
 ```dotenv

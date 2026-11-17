@@ -7,6 +7,7 @@ import { gameSchema, type ProviderGame } from "./contracts.js";
 import { SANDBOX_BASE_URL } from "./config.js";
 import { signRequest } from "./signing.js";
 import { ApiMaticError } from "./provider-error.js";
+import { applyBetbyPresentation } from "./betby-presentation.js";
 
 export function safePlayLink(value: string) {
   const url = new URL(value);
@@ -177,9 +178,13 @@ export class ApiMaticClient {
         gameId,
       ),
     );
+    const link = safePlayLink(result.data.link);
+    const presentation = gameId.toLowerCase() === this.config.SPORTSBOOK_GAME_ID.toLowerCase()
+      ? applyBetbyPresentation(link) : undefined;
     return {
       sessionId: result.data.vendor_session_id,
-      link: safePlayLink(result.data.link),
+      link: presentation?.link ?? link,
+      ...(presentation ? { sportsbookPresentationApplied: presentation.applied } : {}),
     };
   }
 }

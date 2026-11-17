@@ -178,6 +178,12 @@ export async function registerGamingRoutes(
               parsed.data.mode,
             );
             await store.completeLaunch(launchId, launch.sessionId);
+            if (launch.sportsbookPresentationApplied === false) {
+              request.log.warn(
+                { launchId, gameId: game.uuid, code: "BETBY_PRESENTATION_NOT_APPLIED" },
+                "Betby returned an unrecognized launch route; kept its URL unchanged. Confirm presentation forwarding with the provider.",
+              );
+            }
             request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode }, "Sandbox game launch ready");
             return {
               success: true,

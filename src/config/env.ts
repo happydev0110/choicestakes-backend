@@ -47,6 +47,7 @@ const schema = z.object({
   APIMATIC_CURRENCY: z.string().regex(/^[A-Za-z0-9_-]{1,16}$/).default('EUR'),
   APIMATIC_CURRENCY_DECIMALS: z.coerce.number().int().min(2).max(3).default(2),
   APIMATIC_TEST_CREDITS: z.string().regex(/^\d{1,9}(?:\.\d{1,3})?$/).default('1000'),
+  SPORTSBOOK_GAME_ID: z.string().uuid().default('044708be-61d4-5516-91dc-b3829c296294'),
 }).superRefine((env, ctx) => {
   if (env.APIMATIC_ENABLED) {
     if (!env.DB_ENABLED) ctx.addIssue({ code: 'custom', path: ['APIMATIC_ENABLED'], message: 'Requires DB_ENABLED=true' });
