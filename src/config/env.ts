@@ -48,6 +48,12 @@ const schema = z.object({
   APIMATIC_CURRENCY_DECIMALS: z.coerce.number().int().min(2).max(3).default(2),
   APIMATIC_TEST_CREDITS: z.string().regex(/^\d{1,9}(?:\.\d{1,3})?$/).default('1000'),
   SPORTSBOOK_GAME_ID: z.string().uuid().default('044708be-61d4-5516-91dc-b3829c296294'),
+  // Provider presets only; custom hex colors are not supported by the launch API.
+  SPORTSBOOK_THEME: z.enum([
+    'black-green', 'blue-dark', 'blue-yellow', 'green-dark', 'green-orange',
+    'grey-purple', 'lightgreen-dark', 'purple-white', 'purple-yellow',
+    'red-purple', 'red-white', 'turquoise-dark', 'white-blue', 'yellow-dark',
+  ]).default('blue-dark'),
 }).superRefine((env, ctx) => {
   if (env.APIMATIC_ENABLED) {
     if (!env.DB_ENABLED) ctx.addIssue({ code: 'custom', path: ['APIMATIC_ENABLED'], message: 'Requires DB_ENABLED=true' });

@@ -1,7 +1,9 @@
+import type { Config } from "../../config/env.js";
+
 /** Presentation routes and query names from BetbyLaunchParameters, section 6.
  * Apply only to the configured Betby game, after validating the provider URL.
  */
-export function applyBetbyPresentation(link: string) {
+export function applyBetbyPresentation(link: string, theme: Config["SPORTSBOOK_THEME"]) {
   const url = new URL(link);
   const entry = /^\/(?:sports(?:\/embed)?|home)\/?$/.test(url.pathname);
   const layout = /^\/sportsbook\/(?:tile|sidebar|classic)(\/.*)?$/.exec(url.pathname);
@@ -18,7 +20,7 @@ export function applyBetbyPresentation(link: string) {
     return name !== "color" && name !== "defaultLayout";
   });
   if (entry) query.push("defaultLayout=tile");
-  query.push("color=blue-dark");
+  query.push(`color=${encodeURIComponent(theme)}`);
   url.search = query.join("&");
   return { link: url.href, applied: true };
 }

@@ -62,6 +62,17 @@ test("unknown Betby wrapper URLs are preserved and report unapplied settings", a
   }
 });
 
+test("an environment theme override replaces the provider preset without altering session data", async () => {
+  const configured = loadConfig({
+    APIMATIC_API_KEY: config.APIMATIC_API_KEY,
+    APIMATIC_SECRET_KEY: config.APIMATIC_SECRET_KEY,
+    APIMATIC_CURRENCY: "USD", SPORTSBOOK_THEME: "blue-yellow",
+  });
+  const { client } = fixture("https://sports.example.com/sports?token=a%2Fb%2B&color=green-dark", configured);
+  const result = await client.launch("fixture-player", configured.SPORTSBOOK_GAME_ID, "real");
+  assert.equal(result.link, "https://sports.example.com/sports?token=a%2Fb%2B&defaultLayout=tile&color=blue-yellow");
+});
+
 test("other games retain their URLs even when their route resembles Betby", async () => {
   const link = "https://other.example.com/sports?token=test&color=green-dark&defaultLayout=classic";
   const { client } = fixture(link);

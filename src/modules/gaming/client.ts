@@ -180,7 +180,7 @@ export class ApiMaticClient {
     );
     const link = safePlayLink(result.data.link);
     const presentation = gameId.toLowerCase() === this.config.SPORTSBOOK_GAME_ID.toLowerCase()
-      ? applyBetbyPresentation(link) : undefined;
+      ? applyBetbyPresentation(link, this.config.SPORTSBOOK_THEME) : undefined;
     return {
       sessionId: result.data.vendor_session_id,
       link: presentation?.link ?? link,

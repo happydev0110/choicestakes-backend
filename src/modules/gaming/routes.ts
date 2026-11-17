@@ -184,7 +184,12 @@ export async function registerGamingRoutes(
                 "Betby returned an unrecognized launch route; kept its URL unchanged. Confirm presentation forwarding with the provider.",
               );
             }
-            request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode }, "Sandbox game launch ready");
+            request.log.info({
+              launchId, gameId: game.uuid, mode: parsed.data.mode,
+              ...(launch.sportsbookPresentationApplied === true
+                ? { sportsbookTheme: config.SPORTSBOOK_THEME, sportsbookLayout: "tile" }
+                : {}),
+            }, "Sandbox game launch ready");
             return {
               success: true,
               data: { link: launch.link, launchId, environment: "sandbox" },

@@ -84,7 +84,22 @@ Crypto payments and production gambling are not enabled. The sandbox game integr
 
 ### Betby appearance
 
-Betby launches use the `blue-dark` theme and `tile` layout. The backend applies
+Betby launches use the `blue-dark` theme and `tile` layout by default, keeping
+the cyan-blue betslip header. The current preset's gray/teal background remains
+until the provider supplies a custom navy-blue theme with the same blue header.
+Set `SPORTSBOOK_THEME=blue-dark` in the deployed backend environment if it was
+previously changed to `blue-yellow`; an explicit environment value overrides
+the code default. Theme changes affect the entire sportsbook.
+
+The provider's public tile theme definitions were checked on 2026-11-17:
+[`blue-yellow`](https://bt-app-static-themes.sptpub.com/master/betby-demo-blue-yellow-tile/theme.json)
+uses `#131a37` for widgets/betslip content and `#eab700` for the betslip header;
+[`blue-dark`](https://bt-app-static-themes.sptpub.com/master/betby-demo-blue-dark-tile/theme.json)
+uses `#1e303a` and `#21a8f7` respectively. A navy-blue background with the previous
+cyan header requires a custom theme from the provider; the launch guide does not
+support independent background/header hex colors. Provider palettes can change.
+
+The backend applies
 the presentation URL parameters described in section 6 of the supplied
 `BetbyLaunchParameters (1).md` after API-MATIC returns a validated play URL.
 The default Betby UUID is `044708be-61d4-5516-91dc-b3829c296294`; if you change
@@ -92,7 +107,7 @@ The default Betby UUID is `044708be-61d4-5516-91dc-b3829c296294`; if you change
 Both `/sports` and direct game-card launches use these settings.
 
 Supported provider entry paths are `/sports`, `/sports/embed`, and `/home`, using
-`defaultLayout=tile&color=blue-dark`. Already-resolved `/sportsbook/<layout>` paths
+`defaultLayout=tile&color=<SPORTSBOOK_THEME>`. Already-resolved `/sportsbook/<layout>` paths
 switch to `/sportsbook/tile`, preserving any section suffix, other query values,
 and fragment. New launches override previous presentation values. Reopen Sports
 after deployment to create a fresh launch; an existing open iframe is not reloaded.
@@ -100,6 +115,8 @@ after deployment to create a fresh launch; an existing open iframe is not reload
 Unknown provider/wrapper routes remain unchanged and log
 `BETBY_PRESENTATION_NOT_APPLIED` without logging tokens or launch URLs. If this
 warning appears, obtain API-MATIC's supported Betby parameter forwarding format.
+Successful URL customization adds `sportsbookTheme` and `sportsbookLayout` to the
+`Sandbox game launch ready` log; these confirm the URL settings, not rendering.
 The supplied guide's `customData`/`GetLaunchUrl` example is for ForeverApi; this
 implementation does not add those undocumented fields to API-MATIC's signed
 request. Live theme rendering must be verified against the deployed provider.

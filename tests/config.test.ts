@@ -8,6 +8,8 @@ test('configuration rejects malformed flags, ports, origins and incomplete datab
     { APIMATIC_SYNC_ENABLED: 'yes' },
     { APIMATIC_SYNC_INTERVAL_MINUTES: '0' },
     { APIMATIC_SYNC_INTERVAL_MINUTES: '1441' },
+    { SPORTSBOOK_THEME: '#071B33' },
+    { SPORTSBOOK_THEME: 'blue-dark&token=invalid' },
     { PORT: '0' },
     { PORT: '4000oops' },
     { DB_ENABLED: 'true', MYSQL_USER: '' },
