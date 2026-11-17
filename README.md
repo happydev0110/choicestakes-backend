@@ -99,6 +99,11 @@ uses `#1e303a` and `#21a8f7` respectively. A navy-blue background with the previ
 cyan header requires a custom theme from the provider; the launch guide does not
 support independent background/header hex colors. Provider palettes can change.
 
+The screenshot-matched custom theme handoff is in
+[`docs/betby-theme/README.txt`](docs/betby-theme/README.txt), including the full
+candidate theme, overrides, provider-shell CSS, reference screenshot and offline
+preview. It is prepared for provider review and is not registered or active.
+
 The backend applies
 the presentation URL parameters described in section 6 of the supplied
 `BetbyLaunchParameters (1).md` after API-MATIC returns a validated play URL.

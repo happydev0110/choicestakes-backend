@@ -1,0 +1,3294 @@
+{
+  "activeAppliedBonusStepLabel": {
+    "background": "#41BC2C",
+    "color": "#ffffff"
+  },
+  "activeBannerOutcomePlate": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeBannerOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeBannerTimeLine": {
+    "background": "#21A8F7"
+  },
+  "activeBetSlipHeaderButton": {
+    "background": "#11102A"
+  },
+  "activeBetSlipHeaderTab": {
+    "background": "#21A8F7"
+  },
+  "activeBetslipAcceptOddsButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "activeBetslipHeader": {
+    "color": "#ffffff"
+  },
+  "activeBetslipRequestVIPStakeButton": {
+    "background": "#BC4EFF"
+  },
+  "activeBetslipStakeButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeBetslipTabs": {
+    "borderColor": "#21A8F7",
+    "color": "rgba(255,255,255,1)"
+  },
+  "activeBettingTipsOutcome": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeBettingTipsOutcomeName": {
+    "color": "#ffffff"
+  },
+  "activeBreadCrumbsItem": {
+    "color": "#ffffff"
+  },
+  "activeDashboardPopularNowCrumbs": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "activeDatePickerButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeDatePickerContent": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeESportEventCardOutcome": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeESportStreamWidgetEvent": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeESportTabCount": {
+    "background": "#131C3A",
+    "color": "#fff"
+  },
+  "activeEventMarketTab": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "activeEventMarketTabPin": {
+    "background": "rgba(255,255,255,0.15)",
+    "color": "#ffffff"
+  },
+  "activeExpandedNavbarIcon": {
+    "color": "#fff"
+  },
+  "activeExpandedNavbarItem": {
+    "color": "#959fa6"
+  },
+  "activeExpandedNavbarSportCount": {
+    "background": "#131C3A",
+    "color": "#ffffff"
+  },
+  "activeExpandedNavbarSportLabel": {
+    "color": "#fff"
+  },
+  "activeExpandedNavbarTab": {
+    "background": "#1D2A58",
+    "color": "#959fa6"
+  },
+  "activeHeaderNavigationButton": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeHomeAndLineSwitcherButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeHorizontalNavigationDropDownButton": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeHorizontalNavigationEvent": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeHorizontalNavigationEventCrumbs": {
+    "color": "#21a8f7"
+  },
+  "activeHoverBannerOutcomePlate": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverBannerOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeHoverBettingTipsOutcome": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverBettingTipsOutcomeName": {
+    "color": "#ffffff"
+  },
+  "activeHoverESportEventCardOutcome": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverLargeMarketOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeHoverLiveStreamOutcomeName": {
+    "background": "transparent",
+    "color": "#ffffff"
+  },
+  "activeHoverLiveStreamOutcomePlate": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverMatchStatisticsPillPin": {
+    "background": "rgba(255,255,255,0.3)",
+    "color": "#ffffff"
+  },
+  "activeHoverMobileNavbarIcon": {
+    "color": "#fff"
+  },
+  "activeHoverNavbarIcon": {
+    "color": "#fff"
+  },
+  "activeHoverOutcomePlate": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeHoverPillButtonPin": {
+    "background": "rgba(255,255,255,0.3)",
+    "color": "#ffffff"
+  },
+  "activeHoverPromoSportsListIcon": {
+    "color": "#21A8F7"
+  },
+  "activeHoverSidebarOutcomeName": {
+    "background": "transparent",
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarOutcomePlate": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarTopMatchOutcome": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarTopOutrightOutcome": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarWidgetButton": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarWidgetSportTab": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverSidebarWidgetStakeButton": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverTableOutcomePlate": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverTableOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeHoverTopMatchOutcome": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "activeHoverTopOutrightOutcome": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "borderColor": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "activeHoverWidgetButton": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverWidgetSportTab": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeHoverWidgetStakeButton": {
+    "background": "rgba(33, 168, 247, 0.7)",
+    "color": "#ffffff"
+  },
+  "activeLargeMarketOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeLiveStreamEvent": {
+    "background": "#1D2A58",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeLiveStreamEventStatusLabel": {
+    "color": "#21a8f7"
+  },
+  "activeLiveStreamOutcomeName": {
+    "background": "transparent",
+    "color": "#ffffff"
+  },
+  "activeLiveStreamOutcomePlate": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeLiveStreamTabs": {
+    "background": "#1D2A58",
+    "borderRadius": "18px",
+    "color": "#959fa6",
+    "fontWeight": 600,
+    "opacity": 0.5
+  },
+  "activeMarketTitlePin": {
+    "color": "#FF4E4E"
+  },
+  "activeMatchStatisticsPillPin": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeMatchStatisticsPills": {
+    "background": "#21A8F7",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "activeMatchTrackerTab": {
+    "background": "#1D2A58",
+    "color": "rgba(255,255,255,1)"
+  },
+  "activeMobileNavbarIcon": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "activeNavbarAllSportButton": {
+    "color": "#ffffff"
+  },
+  "activeNavbarIcon": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "activeOutcomePlate": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeOutrightPlate": {
+    "background": "#11102A",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activePeriodCancelButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activePeriodShowResultButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activePillButton": {
+    "background": "#21A8F7",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "activePillButtonHotIcon": {
+    "color": "#f5a623"
+  },
+  "activePillButtonIcon": {
+    "color": "#ffffff"
+  },
+  "activePillButtonPin": {
+    "background": "rgba(255,255,255,0.3)",
+    "color": "#ffffff"
+  },
+  "activePillButtonScheduleIcon": {
+    "color": "#BC4EFF"
+  },
+  "activePillButtonTopBetsIcon": {
+    "color": "#f5a623"
+  },
+  "activePromoSportsListIcon": {
+    "background": "#1D2A58",
+    "color": "#21A8F7"
+  },
+  "activeQuickBetIcon": {
+    "background": "#ffffff"
+  },
+  "activeQuickBetIconBetSlip": {
+    "color": "#21A8F7"
+  },
+  "activeQuickBetStakeButton": {
+    "background": "#BC4EFF",
+    "color": "#ffffff"
+  },
+  "activeQuickBetSwitcher": {
+    "background": "#fff",
+    "borderColor": "rgba(0, 0, 0, 0)"
+  },
+  "activeQuickBetSwitcherBar": {
+    "background": "#BC4EFF"
+  },
+  "activeQuickBetSwitcherButton": {
+    "background": "#bc4eff",
+    "color": "#ffffff"
+  },
+  "activeQuickBetSwitcherIcon": {
+    "color": "#ffffff"
+  },
+  "activeQuickBetSwitcherLabel": {
+    "color": "#ffffff"
+  },
+  "activeScrollBar": {
+    "opacity": 0.5
+  },
+  "activeSearchTournamentButton": {
+    "background": "#21A8F7",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "activeSidebarCategoryHeader": {
+    "color": "#959fa6"
+  },
+  "activeSidebarEventsLengthCount": {
+    "background": "#131C3A",
+    "color": "#ffffff"
+  },
+  "activeSidebarLiveStreamEvent": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeSidebarLiveStreamEventStatusLabel": {
+    "color": "#21a8f7"
+  },
+  "activeSidebarLiveStreamTabs": {
+    "background": "#11102A",
+    "borderRadius": "18px",
+    "color": "#959fa6",
+    "fontWeight": 600,
+    "opacity": 0.5
+  },
+  "activeSidebarMobilePillButtons": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarOutcomeName": {
+    "background": "transparent",
+    "color": "#ffffff"
+  },
+  "activeSidebarOutcomePlate": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarPillButtons": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarPopularNowCrumbs": {
+    "color": "#959fa6"
+  },
+  "activeSidebarPopularNowItem": {
+    "color": "#959fa6"
+  },
+  "activeSidebarSportsItem": {
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "activeSidebarTopMatchOutcome": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "activeSidebarTopOutrightOutcome": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "activeSidebarTopOutrightSports": {
+    "color": "#21A8F7"
+  },
+  "activeSidebarTournament": {
+    "color": "#959fa6"
+  },
+  "activeSidebarTournamentPillButton": {
+    "color": "#959fa6"
+  },
+  "activeSidebarWidgetButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarWidgetSportTab": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSidebarWidgetStakeButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSportPageTab": {
+    "background": "#21A8F7",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "activeStreamWidgetEvent": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "activeSubHeaderPillButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeSubTab": {
+    "background": "#1D2A58",
+    "color": "rgba(255,255,255,1)"
+  },
+  "activeSwitcher": {
+    "background": "#21A8F7"
+  },
+  "activeSwitcherButton": {
+    "background": "#fff"
+  },
+  "activeTabLabel": {
+    "opacity": 1
+  },
+  "activeTableOutcomePlate": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeTableOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "activeTabs": {
+    "borderColor": "#21A8F7"
+  },
+  "activeTopMatchOutcome": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "activeTopOutrightOutcome": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "activeTopOutrightSports": {
+    "color": "#21A8F7"
+  },
+  "activeVerticalNavbarCategoryItem": {
+    "color": "#21A8F7"
+  },
+  "activeVerticalNavbarEventPlate": {
+    "background": "#1D2A58",
+    "borderColor": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeVerticalNavbarEventPlateStatus": {
+    "color": "#21a8f7"
+  },
+  "activeVerticalNavbarSportCount": {
+    "background": "#131C3A",
+    "color": "#ffffff"
+  },
+  "activeVerticalNavbarSportItem": {
+    "color": "#ffffff"
+  },
+  "activeVerticalNavbarSportItemIcon": {
+    "color": "#fff"
+  },
+  "activeVerticalNavbarSportItemLabel": {
+    "color": "#fff"
+  },
+  "activeVerticalNavbarToggleButton": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "activeWidgetButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeWidgetSportTab": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "activeWidgetStakeButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "appliedBonusPlate": {
+    "background": "#1D2A58",
+    "borderColor": "#41BC2C",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "appliedBonusPlateLabel": {
+    "background": "#21A8F7",
+    "borderRadius": "0 6px 0 6px",
+    "color": "#ffffff"
+  },
+  "appliedBonusStepLabel": {
+    "color": "rgba(255,255,255,0.6)"
+  },
+  "applyBonusButton": {
+    "background": "#41BC2C",
+    "borderRadius": 24,
+    "color": "#ffffff"
+  },
+  "applyBonusButtonReverted": {
+    "background": "#fff",
+    "color": "#41BC2C"
+  },
+  "arrowSwitcher": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(0,0,0,0)",
+    "borderRadius": "6px 6px 0px 0px",
+    "color": "#fff"
+  },
+  "banner": {
+    "background": "linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8))",
+    "borderRadius": 12,
+    "color": "#ffffff"
+  },
+  "bannerButton": {
+    "background": "#21A8F7",
+    "borderRadius": 24,
+    "boxShadow": "0 2px 10px 0 rgba(0, 127, 202, 0.64)",
+    "color": "#fff",
+    "fontWeight": 600
+  },
+  "bannerCategory": {
+    "color": "#ffffff",
+    "opacity": 0.7
+  },
+  "bannerFallbackCompetitorIcon": {
+    "background": "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "bannerOutcomePlate": {
+    "background": "rgba(255,255,255,0.3)",
+    "borderColor": "transparent",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "bannerOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "bannerTimeLine": {
+    "background": "#fff"
+  },
+  "bet": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "6px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "betBuilderLabel": {
+    "color": "#21A8F7"
+  },
+  "betButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderRadius": "24px",
+    "color": "#ffffff"
+  },
+  "betCardLogo": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjY2MCIgaGVpZ2h0PSIyOTQiIHZpZXdCb3g9IjAgMCAyNjYwIDI5NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzFfMjUpIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDcuMzg0NjJDMCAzLjMwNjIgMy4zMDQ2NiAtMy41Njg0NmUtMDYgNy4zODEyIDBMMzk4LjQ1NCAwLjAwMDM0MjMzMkM0NTYuMjYxIDAuMDAwMzQyMzMyIDQ5OS42MTUgMjYuODc0IDQ5OS42MTUgNzYuNDg3MUM0OTkuNjE1IDEwNS40NTYgNDc5Ljc3OCAxMzEuMjY1IDQ1Mi45NjQgMTM4LjUzNUM0NTEuMjgyIDEzOC45OTEgNDUwLjA2MyAxNDAuNDg3IDQ1MC4wNjMgMTQyLjIzQzQ1MC4wNjMgMTQ0LjEwOCA0NTEuNDc4IDE0NS42ODEgNDUzLjMzNCAxNDUuOTZDNDk0LjMzMyAxNTIuMTEgNTExLjk5NyAxODAuMTA0IDUxMS45OTcgMjEyLjkyM0M1MTEuOTk3IDI2Ni42NyA0NzguOTY2IDI5My41NDQgMzkwLjE5MiAyOTMuNTQ0TDcuMzgxMiAyOTMuNTQ0QzMuMzA0NjggMjkzLjU0NCAwIDI5MC4yMzggMCAyODYuMTU5VjcuMzg0NjJaTTI3Ni42NDggNzguNTU0M0gyMDEuNDQ5QzE5Ny4zNzIgNzguNTU0MyAxOTQuMDY3IDgxLjg2MDMgMTk0LjA2NyA4NS45Mzg5VjEwNC4yNDVDMTk0LjA2NyAxMDguMzIzIDE5Ny4zNzIgMTExLjYzIDIwMS40NDkgMTExLjYzSDI3Ni42NDhDMjg1Ljc3IDExMS42MyAyOTMuMTY1IDEwNC4yMjUgMjkzLjE2NSA5NS4wOTE3QzI5My4xNjUgODUuOTU4MyAyODUuNzcgNzguNTU0MyAyNzYuNjQ4IDc4LjU1NDNaTTI4NC45MDIgMTc3Ljc4MUgyMDEuNDQ0QzE5Ny4zNjggMTc3Ljc4MSAxOTQuMDYzIDE4MS4wODcgMTk0LjA2MyAxODUuMTY2VjIwMy40NzJDMTk0LjA2MyAyMDcuNTUgMTk3LjM2OCAyMTAuODU2IDIwMS40NDQgMjEwLjg1NkgyODQuOTAyQzI5NC4wMjQgMjEwLjg1NiAzMDEuNDE4IDIwMy40NTIgMzAxLjQxOCAxOTQuMzE4QzMwMS40MTggMTg1LjE4NSAyOTQuMDI0IDE3Ny43ODEgMjg0LjkwMiAxNzcuNzgxWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE1NTIuNTIgNy4zODUwMUMxNTUyLjUyIDMuMzA2NTggMTU0OS4yMiAwLjAwMDM2NjIxMSAxNTQ1LjE0IDAuMDAwMzY2MjExSDEwNjguNTVDMTA2NC40NyAwLjAwMDM2NjIxMSAxMDYxLjE3IDMuMzA2NTcgMTA2MS4xNyA3LjM4NDk2VjEyOS4wNTJDMTA2MS4xNyAxMzMuMTMgMTA2NC40NyAxMzYuNDM2IDEwNjguNTUgMTM2LjQzNkgxMjAyLjQzQzEyMDYuNTEgMTM2LjQzNiAxMjA5LjgxIDEzOS43NDIgMTIwOS44MSAxNDMuODIxVjI4Ni4xNTlDMTIwOS44MSAyOTAuMjM4IDEyMTMuMTEgMjkzLjU0NCAxMjE3LjE5IDI5My41NDRIMTM5Ni41QzE0MDAuNTcgMjkzLjU0NCAxNDAzLjg4IDI5MC4yMzggMTQwMy44OCAyODYuMTU5VjE0My44MjFDMTQwMy44OCAxMzkuNzQyIDE0MDcuMTggMTM2LjQzNiAxNDExLjI2IDEzNi40MzZIMTU0NS4xNEMxNTQ5LjIyIDEzNi40MzYgMTU1Mi41MiAxMzMuMTMgMTU1Mi41MiAxMjkuMDUyVjcuMzg1MDFaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjY1OC4yNSAxMS44ODAxQzI2NjEuOTggNy4wMjI0NyAyNjU4LjUxIDAuMDAwMzY2MjExIDI2NTIuNCAwLjAwMDM2NjIxMUgyNDM5Ljc3QzI0MzcuMTQgMC4wMDAzNjYyMTEgMjQzNC43MiAxLjM5MzEzIDI0MzMuMzkgMy42NTg4NkwyMzk5LjE1IDYyLjI3MTdDMjM5Ni4zMSA2Ny4xNDk3IDIzODkuMjYgNjcuMTQ5NyAyMzg2LjQxIDYyLjI3MTdMMjM1Mi4xNyAzLjY1ODg2QzIzNTAuODUgMS4zOTMxMyAyMzQ4LjQyIDAuMDAwMzY2MjExIDIzNDUuOCAwLjAwMDM2NjIxMUgyMTMzLjE3QzIxMjcuMDUgMC4wMDAzNjYyMTEgMjEyMy41OSA3LjAyMjQ3IDIxMjcuMzEgMTEuODhMMjI5NC4yMiAyMjkuNTM5QzIyOTUuMjEgMjMwLjgyOSAyMjk1Ljc1IDIzMi40MDkgMjI5NS43NSAyMzQuMDM0VjI4Ni4xNTlDMjI5NS43NSAyOTAuMjM4IDIyOTkuMDUgMjkzLjU0NCAyMzAzLjEzIDI5My41NDRIMjQ4Mi40M0MyNDg2LjUxIDI5My41NDQgMjQ4OS44MSAyOTAuMjM4IDI0ODkuODEgMjg2LjE1OVYyMzQuMDM0QzI0ODkuODEgMjMyLjQwOSAyNDkwLjM1IDIzMC44MjkgMjQ5MS4zNCAyMjkuNTM5TDI2NTguMjUgMTEuODgwMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NTUuNjE4IDIwMy40NzFDNzU1LjYxOCAyMDcuNTQ5IDc1OC45MjEgMjEwLjg1NiA3NjIuOTk5IDIxMC44NTZIMTAwNC4yNEMxMDA4LjMxIDIxMC44NTYgMTAxMS42MiAyMTQuMTYyIDEwMTEuNjIgMjE4LjI0VjI4Ni4xNTlDMTAxMS42MiAyOTAuMjM4IDEwMDguMzEgMjkzLjU0NCAxMDA0LjI0IDI5My41NDRINTY4LjkzNEM1NjQuODU2IDI5My41NDQgNTYxLjU1MiAyOTAuMjM4IDU2MS41NTIgMjg2LjE1OVY3LjM4NDk3QzU2MS41NTIgMy4zMDY1NyA1NjQuODU2IDAuMDAwMzY2MjExIDU2OC45MzQgMC4wMDAzNjYyMTFIMTAwNC4yNEMxMDA4LjMxIDAuMDAwMzY2MjExIDEwMTEuNjIgMy4zMDY1NyAxMDExLjYyIDcuMzg0OTdWNzEuMTY5N0MxMDExLjYyIDc1LjI0NzkgMTAwOC4zMSA3OC41NTQzIDEwMDQuMjQgNzguNTU0M0g3NjIuOTk5Qzc1OC45MjEgNzguNTU0MyA3NTUuNjE4IDgxLjg2MDMgNzU1LjYxOCA4NS45MzlWMTA0LjI0NUM3NTUuNjE4IDEwOC4zMjQgNzU4LjkyMSAxMTEuNjMgNzYyLjk5OSAxMTEuNjNIMTAwNC4yNEMxMDA4LjMxIDExMS42MyAxMDExLjYyIDExNC45MzYgMTAxMS42MiAxMTkuMDE0VjE3MC4zOTZDMTAxMS42MiAxNzQuNDc0IDEwMDguMzEgMTc3Ljc4MSAxMDA0LjI0IDE3Ny43ODFINzYyLjk5OUM3NTguOTIxIDE3Ny43ODEgNzU1LjYxOCAxODEuMDg3IDc1NS42MTggMTg1LjE2NVYyMDMuNDcxWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMDAwLjUyIDAuMDAwMzY2MjExQzIwNTguMzMgMC4wMDAzNjYyMTEgMjEwMS42OCAyNi44NzQxIDIxMDEuNjggNzYuNDg3MUMyMTAxLjY4IDEwNS40NTcgMjA4MS44NCAxMzEuMjY2IDIwNTUuMDMgMTM4LjUzNkMyMDUzLjM1IDEzOC45OTIgMjA1Mi4xMyAxNDAuNDg3IDIwNTIuMTMgMTQyLjIzQzIwNTIuMTMgMTQ0LjEwOCAyMDUzLjU0IDE0NS42ODEgMjA1NS40IDE0NS45NkMyMDk2LjQgMTUyLjExIDIxMTQuMDYgMTgwLjEwNCAyMTE0LjA2IDIxMi45MjNDMjExNC4wNiAyNjYuNjcxIDIwODEuMDMgMjkzLjU0NCAxOTkyLjI2IDI5My41NDRMMTYwOS40NSAyOTMuNTQ2QzE2MDUuMzcgMjkzLjU0NiAxNjAyLjA3IDI5MC4yMzkgMTYwMi4wNyAyODYuMTYxVjcuMzg2NjdDMTYwMi4wNyAzLjMwODI2IDE2MDUuMzcgMC4wMDIwNjI3NyAxNjA5LjQ1IDAuMDAyMDQ1MjdMMjAwMC41MiAwLjAwMDM2NjIxMVpNMTg0Ni43MiA1MS4yNzMzQzE4NDcuODMgNDkuNzQzNyAxODQ5Ljg3IDQ5LjE4ODkgMTg1MS42MSA0OS45NTc5QzE4NTMuMzQgNTAuNzI2MyAxODU0LjMxIDUyLjU5NjkgMTg1My44OSA1NC40MzUzTDE4NDMuMTcgMTEyLjE4NEMxODQyLjMzIDExNi43MjQgMTg0NS44MiAxMjAuOTE2IDE4NTAuNDMgMTIwLjkxNkwxODk5LjQ4IDEyMC45MTVDMTkwMC45OCAxMjAuOTE1IDE5MDIuMzYgMTIxLjczOSAxOTAzLjA1IDEyMy4wNzFDMTkwMy43MyAxMjQuMzk0IDE5MDMuNjIgMTI1Ljk4NyAxOTAyLjc0IDEyNy4xODNMMTgyNC4wMiAyMzguMTMyQzE4MjIuOTMgMjM5LjY1NCAxODIwLjg2IDI0MC4yMzIgMTgxOS4xMyAyMzkuNDQ4QzE4MTcuMzkgMjM4LjY3OSAxODE2LjQzIDIzNi44MDEgMTgxNi44NSAyMzQuOTYyTDE4MjcuMTggMTc3LjQ3NkMxODI3Ljk5IDE3Mi45NjcgMTgyNC41NSAxNjguODE2IDE4MTkuOTYgMTY4Ljc4NUwxNzcxLjI0IDE2OC40NjRDMTc2OS43MyAxNjguNDY0IDE3NjguMzYgMTY3LjYyNCAxNzY3LjY3IDE2Ni4zMTdDMTc2Ni45OSAxNjQuOTg1IDE3NjcuMTEgMTYzLjQgMTc2Ny45OCAxNjIuMTk2TDE4NDYuNzIgNTEuMjczM1oiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMV8yNSI+CjxyZWN0IHdpZHRoPSIyNjYwIiBoZWlnaHQ9IjI5NCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K",
+  "betEventId": {
+    "color": "#ffffff",
+    "opacity": 0.5
+  },
+  "betSelection": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "betSelectionCategory": {
+    "color": "#8f989d",
+    "fontWeight": "500"
+  },
+  "betSlipBet": {
+    "background": "#11102A",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "borderRadius": 0,
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "betSlipBetButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderRadius": "24px",
+    "color": "#ffffff"
+  },
+  "betSlipBetEventId": {
+    "color": "#ffffff",
+    "opacity": 0.5
+  },
+  "betSlipBetSelection": {
+    "background": "rgb(42,59,68)",
+    "borderColor": "rgba(255,255,255,0)",
+    "borderRadius": 0,
+    "color": "#ffffff"
+  },
+  "betSlipBetSelectionCategory": {
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": 500
+  },
+  "betSlipBonusPlateFreeBetTypeLabel": {
+    "background": "#11102A"
+  },
+  "betSlipCashOutButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "betSlipFab": {
+    "bottom": "16px",
+    "left": "50%"
+  },
+  "betSlipHeaderButton": {
+    "background": "rgba(17,16,42,0.5)"
+  },
+  "betSlipHeaderTab": {
+    "color": "#ffffff"
+  },
+  "betSlipLoginButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "betSlipOpenedBet": {
+    "background": "#11102A",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "borderRadius": 0,
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "betSlipOpenedBetSelection": {
+    "background": "rgb(42,59,68)",
+    "borderColor": "rgba(255,255,255,0)",
+    "borderRadius": 0,
+    "color": "#ffffff"
+  },
+  "betSlipOpenedBetSelectionCategory": {
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": 500
+  },
+  "betSlipTableHeaderText": {
+    "color": "#ffffff"
+  },
+  "betSlipTableQuickBetHeaderText": {
+    "color": "#ffffff"
+  },
+  "betStatusLabel": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "betTotal": {
+    "fontWeight": "400"
+  },
+  "betsCanceledStatus": {
+    "color": "#ffffff"
+  },
+  "betsCashedOutStatus": {
+    "color": "#f5a623"
+  },
+  "betsHistory": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "betsHistoryIcon": {
+    "color": "#f5a623"
+  },
+  "betsLostStatus": {
+    "color": "#FF4E4E"
+  },
+  "betsOpenStatus": {
+    "color": "#21a8f7"
+  },
+  "betsVIPStakeRequestedStatus": {
+    "color": "#BC4EFF"
+  },
+  "betsWonStatus": {
+    "color": "#7ed321"
+  },
+  "betslipAcceptOddsButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "betslipAcceptOddsLabel": {
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": "400"
+  },
+  "betslipBetStatusLabel": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "betslipBetsOpenStatus": {
+    "color": "#21a8f7"
+  },
+  "betslipBetsTotalPin": {
+    "background": "#fff",
+    "boxShadow": "0 2px 10px 0 rgba(0, 0, 0, 0.2)",
+    "color": "#21A8F7"
+  },
+  "betslipBetsTotalPinWarningSign": {
+    "color": "#FF4E4E"
+  },
+  "betslipBonusSliderArrowButton": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "betslipContent": {
+    "background": "#11102A",
+    "boxShadow": "0 0 100px rgba(0,0,0,0.65)",
+    "color": "#ffffff",
+    "fontWeight": "400",
+    "width": "320px"
+  },
+  "betslipHeader": {
+    "background": "#21A8F7",
+    "borderRadius": "6px 6px 0px 0px",
+    "color": "#ffffff"
+  },
+  "betslipHeaderTabs": {
+    "background": "#11102A"
+  },
+  "betslipLogo": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjY2MCIgaGVpZ2h0PSIyOTQiIHZpZXdCb3g9IjAgMCAyNjYwIDI5NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzFfMjUpIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDcuMzg0NjJDMCAzLjMwNjIgMy4zMDQ2NiAtMy41Njg0NmUtMDYgNy4zODEyIDBMMzk4LjQ1NCAwLjAwMDM0MjMzMkM0NTYuMjYxIDAuMDAwMzQyMzMyIDQ5OS42MTUgMjYuODc0IDQ5OS42MTUgNzYuNDg3MUM0OTkuNjE1IDEwNS40NTYgNDc5Ljc3OCAxMzEuMjY1IDQ1Mi45NjQgMTM4LjUzNUM0NTEuMjgyIDEzOC45OTEgNDUwLjA2MyAxNDAuNDg3IDQ1MC4wNjMgMTQyLjIzQzQ1MC4wNjMgMTQ0LjEwOCA0NTEuNDc4IDE0NS42ODEgNDUzLjMzNCAxNDUuOTZDNDk0LjMzMyAxNTIuMTEgNTExLjk5NyAxODAuMTA0IDUxMS45OTcgMjEyLjkyM0M1MTEuOTk3IDI2Ni42NyA0NzguOTY2IDI5My41NDQgMzkwLjE5MiAyOTMuNTQ0TDcuMzgxMiAyOTMuNTQ0QzMuMzA0NjggMjkzLjU0NCAwIDI5MC4yMzggMCAyODYuMTU5VjcuMzg0NjJaTTI3Ni42NDggNzguNTU0M0gyMDEuNDQ5QzE5Ny4zNzIgNzguNTU0MyAxOTQuMDY3IDgxLjg2MDMgMTk0LjA2NyA4NS45Mzg5VjEwNC4yNDVDMTk0LjA2NyAxMDguMzIzIDE5Ny4zNzIgMTExLjYzIDIwMS40NDkgMTExLjYzSDI3Ni42NDhDMjg1Ljc3IDExMS42MyAyOTMuMTY1IDEwNC4yMjUgMjkzLjE2NSA5NS4wOTE3QzI5My4xNjUgODUuOTU4MyAyODUuNzcgNzguNTU0MyAyNzYuNjQ4IDc4LjU1NDNaTTI4NC45MDIgMTc3Ljc4MUgyMDEuNDQ0QzE5Ny4zNjggMTc3Ljc4MSAxOTQuMDYzIDE4MS4wODcgMTk0LjA2MyAxODUuMTY2VjIwMy40NzJDMTk0LjA2MyAyMDcuNTUgMTk3LjM2OCAyMTAuODU2IDIwMS40NDQgMjEwLjg1NkgyODQuOTAyQzI5NC4wMjQgMjEwLjg1NiAzMDEuNDE4IDIwMy40NTIgMzAxLjQxOCAxOTQuMzE4QzMwMS40MTggMTg1LjE4NSAyOTQuMDI0IDE3Ny43ODEgMjg0LjkwMiAxNzcuNzgxWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE1NTIuNTIgNy4zODUwMUMxNTUyLjUyIDMuMzA2NTggMTU0OS4yMiAwLjAwMDM2NjIxMSAxNTQ1LjE0IDAuMDAwMzY2MjExSDEwNjguNTVDMTA2NC40NyAwLjAwMDM2NjIxMSAxMDYxLjE3IDMuMzA2NTcgMTA2MS4xNyA3LjM4NDk2VjEyOS4wNTJDMTA2MS4xNyAxMzMuMTMgMTA2NC40NyAxMzYuNDM2IDEwNjguNTUgMTM2LjQzNkgxMjAyLjQzQzEyMDYuNTEgMTM2LjQzNiAxMjA5LjgxIDEzOS43NDIgMTIwOS44MSAxNDMuODIxVjI4Ni4xNTlDMTIwOS44MSAyOTAuMjM4IDEyMTMuMTEgMjkzLjU0NCAxMjE3LjE5IDI5My41NDRIMTM5Ni41QzE0MDAuNTcgMjkzLjU0NCAxNDAzLjg4IDI5MC4yMzggMTQwMy44OCAyODYuMTU5VjE0My44MjFDMTQwMy44OCAxMzkuNzQyIDE0MDcuMTggMTM2LjQzNiAxNDExLjI2IDEzNi40MzZIMTU0NS4xNEMxNTQ5LjIyIDEzNi40MzYgMTU1Mi41MiAxMzMuMTMgMTU1Mi41MiAxMjkuMDUyVjcuMzg1MDFaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjY1OC4yNSAxMS44ODAxQzI2NjEuOTggNy4wMjI0NyAyNjU4LjUxIDAuMDAwMzY2MjExIDI2NTIuNCAwLjAwMDM2NjIxMUgyNDM5Ljc3QzI0MzcuMTQgMC4wMDAzNjYyMTEgMjQzNC43MiAxLjM5MzEzIDI0MzMuMzkgMy42NTg4NkwyMzk5LjE1IDYyLjI3MTdDMjM5Ni4zMSA2Ny4xNDk3IDIzODkuMjYgNjcuMTQ5NyAyMzg2LjQxIDYyLjI3MTdMMjM1Mi4xNyAzLjY1ODg2QzIzNTAuODUgMS4zOTMxMyAyMzQ4LjQyIDAuMDAwMzY2MjExIDIzNDUuOCAwLjAwMDM2NjIxMUgyMTMzLjE3QzIxMjcuMDUgMC4wMDAzNjYyMTEgMjEyMy41OSA3LjAyMjQ3IDIxMjcuMzEgMTEuODhMMjI5NC4yMiAyMjkuNTM5QzIyOTUuMjEgMjMwLjgyOSAyMjk1Ljc1IDIzMi40MDkgMjI5NS43NSAyMzQuMDM0VjI4Ni4xNTlDMjI5NS43NSAyOTAuMjM4IDIyOTkuMDUgMjkzLjU0NCAyMzAzLjEzIDI5My41NDRIMjQ4Mi40M0MyNDg2LjUxIDI5My41NDQgMjQ4OS44MSAyOTAuMjM4IDI0ODkuODEgMjg2LjE1OVYyMzQuMDM0QzI0ODkuODEgMjMyLjQwOSAyNDkwLjM1IDIzMC44MjkgMjQ5MS4zNCAyMjkuNTM5TDI2NTguMjUgMTEuODgwMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NTUuNjE4IDIwMy40NzFDNzU1LjYxOCAyMDcuNTQ5IDc1OC45MjEgMjEwLjg1NiA3NjIuOTk5IDIxMC44NTZIMTAwNC4yNEMxMDA4LjMxIDIxMC44NTYgMTAxMS42MiAyMTQuMTYyIDEwMTEuNjIgMjE4LjI0VjI4Ni4xNTlDMTAxMS42MiAyOTAuMjM4IDEwMDguMzEgMjkzLjU0NCAxMDA0LjI0IDI5My41NDRINTY4LjkzNEM1NjQuODU2IDI5My41NDQgNTYxLjU1MiAyOTAuMjM4IDU2MS41NTIgMjg2LjE1OVY3LjM4NDk3QzU2MS41NTIgMy4zMDY1NyA1NjQuODU2IDAuMDAwMzY2MjExIDU2OC45MzQgMC4wMDAzNjYyMTFIMTAwNC4yNEMxMDA4LjMxIDAuMDAwMzY2MjExIDEwMTEuNjIgMy4zMDY1NyAxMDExLjYyIDcuMzg0OTdWNzEuMTY5N0MxMDExLjYyIDc1LjI0NzkgMTAwOC4zMSA3OC41NTQzIDEwMDQuMjQgNzguNTU0M0g3NjIuOTk5Qzc1OC45MjEgNzguNTU0MyA3NTUuNjE4IDgxLjg2MDMgNzU1LjYxOCA4NS45MzlWMTA0LjI0NUM3NTUuNjE4IDEwOC4zMjQgNzU4LjkyMSAxMTEuNjMgNzYyLjk5OSAxMTEuNjNIMTAwNC4yNEMxMDA4LjMxIDExMS42MyAxMDExLjYyIDExNC45MzYgMTAxMS42MiAxMTkuMDE0VjE3MC4zOTZDMTAxMS42MiAxNzQuNDc0IDEwMDguMzEgMTc3Ljc4MSAxMDA0LjI0IDE3Ny43ODFINzYyLjk5OUM3NTguOTIxIDE3Ny43ODEgNzU1LjYxOCAxODEuMDg3IDc1NS42MTggMTg1LjE2NVYyMDMuNDcxWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMDAwLjUyIDAuMDAwMzY2MjExQzIwNTguMzMgMC4wMDAzNjYyMTEgMjEwMS42OCAyNi44NzQxIDIxMDEuNjggNzYuNDg3MUMyMTAxLjY4IDEwNS40NTcgMjA4MS44NCAxMzEuMjY2IDIwNTUuMDMgMTM4LjUzNkMyMDUzLjM1IDEzOC45OTIgMjA1Mi4xMyAxNDAuNDg3IDIwNTIuMTMgMTQyLjIzQzIwNTIuMTMgMTQ0LjEwOCAyMDUzLjU0IDE0NS42ODEgMjA1NS40IDE0NS45NkMyMDk2LjQgMTUyLjExIDIxMTQuMDYgMTgwLjEwNCAyMTE0LjA2IDIxMi45MjNDMjExNC4wNiAyNjYuNjcxIDIwODEuMDMgMjkzLjU0NCAxOTkyLjI2IDI5My41NDRMMTYwOS40NSAyOTMuNTQ2QzE2MDUuMzcgMjkzLjU0NiAxNjAyLjA3IDI5MC4yMzkgMTYwMi4wNyAyODYuMTYxVjcuMzg2NjdDMTYwMi4wNyAzLjMwODI2IDE2MDUuMzcgMC4wMDIwNjI3NyAxNjA5LjQ1IDAuMDAyMDQ1MjdMMjAwMC41MiAwLjAwMDM2NjIxMVpNMTg0Ni43MiA1MS4yNzMzQzE4NDcuODMgNDkuNzQzNyAxODQ5Ljg3IDQ5LjE4ODkgMTg1MS42MSA0OS45NTc5QzE4NTMuMzQgNTAuNzI2MyAxODU0LjMxIDUyLjU5NjkgMTg1My44OSA1NC40MzUzTDE4NDMuMTcgMTEyLjE4NEMxODQyLjMzIDExNi43MjQgMTg0NS44MiAxMjAuOTE2IDE4NTAuNDMgMTIwLjkxNkwxODk5LjQ4IDEyMC45MTVDMTkwMC45OCAxMjAuOTE1IDE5MDIuMzYgMTIxLjczOSAxOTAzLjA1IDEyMy4wNzFDMTkwMy43MyAxMjQuMzk0IDE5MDMuNjIgMTI1Ljk4NyAxOTAyLjc0IDEyNy4xODNMMTgyNC4wMiAyMzguMTMyQzE4MjIuOTMgMjM5LjY1NCAxODIwLjg2IDI0MC4yMzIgMTgxOS4xMyAyMzkuNDQ4QzE4MTcuMzkgMjM4LjY3OSAxODE2LjQzIDIzNi44MDEgMTgxNi44NSAyMzQuOTYyTDE4MjcuMTggMTc3LjQ3NkMxODI3Ljk5IDE3Mi45NjcgMTgyNC41NSAxNjguODE2IDE4MTkuOTYgMTY4Ljc4NUwxNzcxLjI0IDE2OC40NjRDMTc2OS43MyAxNjguNDY0IDE3NjguMzYgMTY3LjYyNCAxNzY3LjY3IDE2Ni4zMTdDMTc2Ni45OSAxNjQuOTg1IDE3NjcuMTEgMTYzLjQgMTc2Ny45OCAxNjIuMTk2TDE4NDYuNzIgNTEuMjczM1oiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMV8yNSI+CjxyZWN0IHdpZHRoPSIyNjYwIiBoZWlnaHQ9IjI5NCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K",
+  "betslipMobileButtonGradient": {
+    "background": "linear-gradient(270deg, #45C7FA 0%, #2196F3 100%)",
+    "color": "#ffffff"
+  },
+  "betslipMyBetsLowBalanceIcon": {
+    "color": "#21A8F7"
+  },
+  "betslipNotification": {
+    "background": "#1D2A58",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "betslipOddsChangePopup": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "betslipPlaceBetButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "betslipPotentialWin": {
+    "color": "rgba(255, 255, 255, 0.6)"
+  },
+  "betslipPotentialWinInput": {
+    "background": "#fff",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#4d4d4d"
+  },
+  "betslipQuickBetHeader": {
+    "background": "linear-gradient(270deg, #B14EFF 0%, #4EBFFF 100%)",
+    "color": "#ffffff"
+  },
+  "betslipQuickBetLabel": {
+    "background": "#BC4EFF",
+    "color": "#ffffff"
+  },
+  "betslipQuickBetTotalPin": {
+    "background": "#fff",
+    "boxShadow": "0 2px 10px 0 rgba(0, 0, 0, 0.2)",
+    "color": "#BC4EFF"
+  },
+  "betslipRadioButton": {
+    "background": "#21A8F7"
+  },
+  "betslipRequestVIPStakeButton": {
+    "background": "#BC4EFF",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "betslipSelection": {
+    "background": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "betslipSelectionAcceptButton": {
+    "background": "#21A8F7",
+    "borderRadius": "20px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "betslipSelectionHint": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderColor": "transparent",
+    "color": "#ffffff"
+  },
+  "betslipSelectionIcon": {
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "betslipSelectionInactive": {
+    "background": "#1D2A58",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "betslipSelectionLoading": {
+    "background": "#11102A"
+  },
+  "betslipSelectionOdd": {
+    "color": "#ffffff"
+  },
+  "betslipSelectionRemoveButton": {
+    "background": "#3f525e",
+    "borderRadius": "6px 0 0 6px",
+    "color": "#ffffff"
+  },
+  "betslipSettingsHint": {
+    "background": "rgba(255, 255, 255, 0.1)",
+    "borderColor": "rgba(0, 0, 0, 0)",
+    "color": "#ffffff"
+  },
+  "betslipShareButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "betslipShareIcon": {
+    "color": "#21A8F7"
+  },
+  "betslipShareLoader": {
+    "borderColor": "#21A8F7"
+  },
+  "betslipStakeButton": {
+    "background": "#3f525e",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "betslipStakeInput": {
+    "background": "#fff",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#4d4d4d"
+  },
+  "betslipTabs": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(0,0,0,0)",
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": "400"
+  },
+  "bettingTip": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "bettingTipsLabel": {
+    "color": "#BC4EFF"
+  },
+  "bettingTipsOutcome": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderColor": "transparent",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": 600
+  },
+  "bettingTipsOutcomeName": {
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": 600
+  },
+  "blockTitle": {
+    "color": "#fff",
+    "fontWeight": 600
+  },
+  "bonusButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "none"
+  },
+  "bonusPlate": {
+    "background": "#11102A",
+    "border": "2px solid transparent",
+    "borderColor": "#11102A",
+    "borderRadius": "6px",
+    "boxShadow": "0 0 20px 0 rgba(0,0,0,0.3)",
+    "color": "#ffffff"
+  },
+  "bonusPlateActiveLabel": {
+    "background": "#21A8F7",
+    "color": "#fff"
+  },
+  "bonusPlateButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "bonusPlateFreeBetTypeLabel": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "bonusPlateFreebetLabel": {
+    "background": "#35454e",
+    "color": "#ffffff"
+  },
+  "bonusPlateHeader": {
+    "background": "#41BC2C",
+    "color": "#ffffff"
+  },
+  "bonusPlateLabel": {
+    "background": "#41BC2C",
+    "color": "#ffffff"
+  },
+  "bonusPlateRestriction": {
+    "background": "#35454e",
+    "borderRadius": "8px",
+    "color": "#ffffff"
+  },
+  "bonusPlateUseButton": {
+    "background": "#41BC2C",
+    "color": "#ffffff",
+    "fontWeight": 600
+  },
+  "bonusPopup": {
+    "background": "#131C3A",
+    "boxShadow": "0 14px 20px 0 rgba(0,0,0,0.6)",
+    "color": "#ffffff"
+  },
+  "bonusPopupCloseIcon": {
+    "color": "#ffffff"
+  },
+  "bonusSliderArrow": {
+    "color": "#ffffff"
+  },
+  "bonusTabIcon": {
+    "color": ""
+  },
+  "bonusTypeLabel": {
+    "background": "#41BC2C",
+    "color": "#fff"
+  },
+  "bookingCodeInput": {
+    "background": "#fff",
+    "color": "#4d4d4d"
+  },
+  "brandButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "breadCrumbsItem": {
+    "color": "#ffffff",
+    "fontWeight": 600
+  },
+  "buttonArrow": {
+    "background": "#11102A",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "cashOutButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "clockIcon": {
+    "color": "#21A8F7"
+  },
+  "collapseAllMarketsButton": {},
+  "collapseMarketButton": {},
+  "colorStrategy": "dark",
+  "comboOfTheDayItem": {
+    "background": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "common": {
+    "backgroundColor": "#131C3A",
+    "bonusColor": "#41BC2C",
+    "borderRadius": 6,
+    "brandColor": "#21A8F7",
+    "buttonBorderRadius": 24,
+    "contentColor": "#365c7b",
+    "dangerColor": "#FF4E4E",
+    "extraColor": "#d3dbe0",
+    "fontWeight": "400",
+    "infoColor": "#21a8f7",
+    "largesBorderRadius": 16,
+    "letterSpacing": 0,
+    "lightTextColor": "#fff",
+    "mediumBorderRadius": 4,
+    "mediumShadow": "0 0 60px rgba(0,0,0,0.65)",
+    "previewThemeFontFamilyName": "",
+    "previewThemeFontFamilyUrl": "",
+    "primaryColor": "#1D2A58",
+    "quickBetColor": "#BC4EFF",
+    "secondaryColor": "#11102A",
+    "smallBorderRadius": 2,
+    "smallShadow": "0px 5px 16px rgba(0, 0, 0, 0.16)",
+    "specialMobileIconColor": false,
+    "successColor": "#7ed321",
+    "textColor": "#fff",
+    "unitSize": 8,
+    "warningColor": "#f5a623"
+  },
+  "componentLoader": {
+    "borderColor": "#21A8F7"
+  },
+  "correctScoreButton": {
+    "background": "#11102A",
+    "borderRadius": 4,
+    "color": "#fff"
+  },
+  "correctScorePicker": {
+    "background": "#11102A",
+    "boxShadow": "none",
+    "color": "#fff"
+  },
+  "dashboardPopularNowCrumbs": {
+    "color": "rgba(149,159,166, 0.35)"
+  },
+  "dashboardPopularNowItem": {
+    "background": "#11102A",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "borderRadius": "8px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "dashboardPopularNowLabel": {
+    "color": "rgba(255,255,255,0.7)",
+    "fontSize": "22px",
+    "fontWeight": 600,
+    "letterSpacing": "normal",
+    "textTransform": "none"
+  },
+  "datePicker": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": 15,
+    "boxShadow": "none",
+    "color": "#fff"
+  },
+  "datePickerButton": {
+    "background": "#1D2A58",
+    "borderRadius": "18px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "datePickerContent": {
+    "background": "#11102A",
+    "borderRadius": 4,
+    "boxShadow": "0px 20px 80px rgba(0, 0, 0, 0.6), 0px 5px 16px rgba(0, 0, 0, 0.16)",
+    "color": "#fff"
+  },
+  "datePickerDaysRange": {
+    "borderRadius": "20px"
+  },
+  "datePickerSelect": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "16px",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "disabledBannerOutcomePlate": {
+    "background": "rgba(255,255,255,0.3)",
+    "borderColor": "transparent",
+    "color": "#ffffff"
+  },
+  "disabledBannerOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "disabledBetSlipCashOutButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)",
+    "color": "rgba(255,255,255,1)"
+  },
+  "disabledBetSlipHeaderTab": {
+    "color": "rgba(255,255,255,0.3)"
+  },
+  "disabledBetSlipLoginButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledBetslipPlaceBetButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)",
+    "color": "rgba(255,255,255,1)"
+  },
+  "disabledBetslipShareButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "disabledBetslipTabs": {
+    "color": "rgba(255, 255, 255, 0.25)"
+  },
+  "disabledBettingTipsOutcome": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderColor": "transparent",
+    "color": "#ffffff"
+  },
+  "disabledBettingTipsOutcomeName": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "disabledBonusButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledBonusPlateButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledBrandButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledCashOutButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)",
+    "color": "rgba(255,255,255,1)"
+  },
+  "disabledESportEventCardOutcome": {
+    "background": "#182344",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledEmptyBetsButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledFinishedEventButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledHomePageButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledLargeMarketOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "disabledLiveStreamOutcomePlate": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "disabledLoginButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledNotificationActionButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)",
+    "color": "rgba(255,255,255,1)"
+  },
+  "disabledOutcomePlate": {
+    "background": "#182344",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "disabledSidebarEventsListPaginationButton": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "disabledSidebarOutcomeName": {
+    "color": "#959fa6"
+  },
+  "disabledSidebarOutcomePlate": {
+    "background": "transparent",
+    "color": "#959fa6"
+  },
+  "disabledSidebarTopMatchOutcome": {
+    "background": "#182344",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledSidebarTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "disabledSidebarTopOutrightOutcome": {
+    "background": "#182344",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledSidebarTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "disabledSidebarWidgetButton": {
+    "background": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledSidebarWidgetSportTab": {
+    "background": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledSidebarWidgetStakeButton": {
+    "background": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledSportMoreButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledStakeSelectionButton": {
+    "background": "#11102A",
+    "color": "rgba(255,255,255,0.3)"
+  },
+  "disabledSuccessNotificationButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "disabledTableOutcomePlate": {
+    "background": "rgba(255, 255, 255, 0.1)",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledTableOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "disabledTopMatchOutcome": {
+    "background": "#182344",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "disabledTopOutrightOutcome": {
+    "background": "#182344",
+    "borderColor": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "disabledWidgetButton": {
+    "background": "#182344",
+    "color": "#ffffff"
+  },
+  "disabledWidgetNotificationButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7"
+  },
+  "disabledWidgetPlaceBetButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)",
+    "color": "rgba(255,255,255,1)"
+  },
+  "disabledWidgetSportTab": {
+    "background": "#182344"
+  },
+  "disabledWidgetStakeButton": {
+    "background": "#182344",
+    "color": "#ffffff"
+  },
+  "dividedNavbar": {
+    "background": "#11102A"
+  },
+  "dividedNavbarPin": {
+    "background": "#1D2A58",
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "eSportEventCard": {
+    "background": "#11102A",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "eSportEventCardCategory": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "eSportEventCardOutcome": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "eSportEventCardOutcomeName": {
+    "color": "#ffffff",
+    "opacity": 0.5
+  },
+  "eSportEventCardScore": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "eSportEventPlateScore": {
+    "background": "rgba(255,255,255,0.05)",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "eSportEventsListTimeSlot": {
+    "background": "#11102A",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "eSportStreamWidget": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "eSportStreamWidgetCategory": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "eSportStreamWidgetEvent": {
+    "background": "rgba(29,42,88,0.5)",
+    "borderRadius": "8px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "eSportTabCount": {
+    "background": "#131C3A",
+    "color": "#fff"
+  },
+  "earlyPayoutLabel": {
+    "background": "#21A8F7",
+    "borderRadius": "4px",
+    "color": "#ffffff"
+  },
+  "emptyBetSlipIcon": {
+    "color": "#21A8F7"
+  },
+  "emptyBetsBlock": {
+    "color": "#fff"
+  },
+  "emptyBetsButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "emptyBetsIcon": {
+    "background": "#2a414c",
+    "color": "#33BCFC"
+  },
+  "emptyFavouritesIcon": {
+    "background": "#11102A",
+    "color": "#1D2A58"
+  },
+  "emptyPageBlock": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "emptyPageMsg": {
+    "color": "#fff"
+  },
+  "eventCard": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "eventCardCategory": {
+    "color": "#8f989d",
+    "fontWeight": "500"
+  },
+  "eventCardContent": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "eventCardExtended": {
+    "boxShadow": "0 0 100px rgba(0,0,0,0.65)"
+  },
+  "eventCardPaginator": {
+    "background": "#11102A",
+    "color": "#ffffff",
+    "fontWeight": 500,
+    "opacity": 0.5
+  },
+  "eventCardPaginatorArrow": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "eventCardStatusLabel": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "eventListPaginatorArrow": {
+    "background": "#1D2A58",
+    "boxShadow": "0px 2px 15px rgba(0, 0, 0, 0.15)"
+  },
+  "eventMarketTab": {
+    "background": "transparent",
+    "borderRadius": "32px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "eventMarketTabPin": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "eventPlateScore": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "borderRadius": "8px"
+  },
+  "eventsListMainTitle": {
+    "color": "#ffffff"
+  },
+  "expandedNavbar": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "boxShadow": "none",
+    "color": "#959fa6",
+    "fontWeight": "400"
+  },
+  "expandedNavbarIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "expandedNavbarItem": {
+    "color": "#959fa6"
+  },
+  "expandedNavbarPin": {
+    "background": "#1D2A58",
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "expandedNavbarSportCount": {
+    "background": "#131C3A",
+    "color": "#ffffff"
+  },
+  "expandedNavbarSportLabel": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "expandedNavbarStatButton": {
+    "background": "#11102A",
+    "color": "#f5a623"
+  },
+  "expandedNavbarTab": {
+    "borderRadius": "8px",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "expandedNavbarTabs": {
+    "background": "#11102A",
+    "borderRadius": "12px",
+    "color": "#fff"
+  },
+  "externalWidget": {
+    "background": "initial"
+  },
+  "fallbackCompetitorIcon": {
+    "background": "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)",
+    "borderColor": "rgba(255,255,255,0.05)",
+    "color": "rgba(255,255,255,0.3)"
+  },
+  "favouritesTitleIcon": {
+    "color": "#ffbe03"
+  },
+  "featurePin": {
+    "background": "#21A8F7"
+  },
+  "finishedEventBlock": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": 12,
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "finishedEventButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "h2hMarket": {
+    "background": "#11102A",
+    "border": "none",
+    "borderRadius": "8px",
+    "boxShadow": "none"
+  },
+  "headerNavigationButton": {
+    "background": "rgba(29,42,88,0.7)",
+    "borderRadius": "18px",
+    "color": "rgba(255,255,255,0.7)"
+  },
+  "headerPromoBannerArrow": {
+    "background": "rgba(255, 255, 255, 0.8)",
+    "border": "1px solid #dfe1e5",
+    "color": "#757575"
+  },
+  "heroBanner": {
+    "background": "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%)",
+    "borderRadius": 12,
+    "color": "#ffffff"
+  },
+  "heroBannerArrow": {
+    "background": "rgba(255, 255, 255, 0.8)",
+    "border": "1px solid #dfe1e5",
+    "color": "#757575"
+  },
+  "homeAndLineSwitcherButton": {
+    "background": "#11102A",
+    "color": "#fff"
+  },
+  "homePageButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "horizontalNavigation": {
+    "background": "#11102A"
+  },
+  "horizontalNavigationCategoryTotal": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "rgba(255,255,255,0.7)"
+  },
+  "horizontalNavigationDropDownButton": {
+    "background": "rgba(29,42,88,0.5)",
+    "borderRadius": "8px",
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "horizontalNavigationEvent": {
+    "background": "rgba(29,42,88,0.5)",
+    "borderRadius": "8px",
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "horizontalNavigationEventCrumbs": {
+    "color": "#21a8f7"
+  },
+  "horizontalNavigationSubItemTotal": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "rgba(255,255,255,0.7)"
+  },
+  "hotIcon": {
+    "color": "#FF4E4E"
+  },
+  "hoverBannerCategory": {
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "hoverBannerOutcomePlate": {
+    "background": "rgba(255,255,255,0.4)",
+    "borderColor": "transparent",
+    "color": "#ffffff"
+  },
+  "hoverBannerOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "hoverBet": {
+    "color": "#fff"
+  },
+  "hoverBetButton": {
+    "background": "rgba(255,255,255,0.2)"
+  },
+  "hoverBetEventId": {
+    "opacity": 1
+  },
+  "hoverBetSelection": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "hoverBetSelectionCategory": {
+    "color": "#ffffff"
+  },
+  "hoverBetSlipBetButton": {
+    "background": "rgba(255,255,255,0.2)"
+  },
+  "hoverBetSlipBetEventId": {
+    "opacity": 1
+  },
+  "hoverBetSlipBetSelection": {
+    "background": "rgb(53,69,78)",
+    "borderColor": "rgba(255,255,255,0)"
+  },
+  "hoverBetSlipBetSelectionCategory": {
+    "color": "#ffffff"
+  },
+  "hoverBetSlipCashOutButton": {
+    "background": "rgba(33,168,247,0.75)",
+    "borderColor": "rgba(33,168,247,0.75)",
+    "color": "#ffffff"
+  },
+  "hoverBetSlipLoginButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverBetSlipOpenedBetSelection": {
+    "background": "rgb(53,69,78)",
+    "borderColor": "rgba(255,255,255,0)"
+  },
+  "hoverBetSlipOpenedBetSelectionCategory": {
+    "color": "#ffffff"
+  },
+  "hoverBetslipAcceptOddsButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "hoverBetslipPlaceBetButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverBetslipRequestVIPStakeButton": {
+    "background": "#BC4EFF"
+  },
+  "hoverBetslipSelectionAcceptButton": {
+    "background": "#21A8F7"
+  },
+  "hoverBetslipShareButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)"
+  },
+  "hoverBetslipStakeButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "hoverBetslipTabs": {
+    "borderColor": "rgba(0,0,0,0)",
+    "color": "#ffffff"
+  },
+  "hoverBettingTipsOutcome": {
+    "background": "rgba(255,255,255, 0.07500000000000001)",
+    "borderColor": "transparent",
+    "color": "#ffffff"
+  },
+  "hoverBettingTipsOutcomeName": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "hoverBonusButton": {
+    "background": "rgba(33,168,247,0.75)",
+    "borderColor": "rgba(33,168,247,0.75)"
+  },
+  "hoverBonusPlateButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverBonusPlateUseButton": {
+    "background": "#41BC2C",
+    "color": "#ffffff"
+  },
+  "hoverBrandButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverBreadCrumbsItem": {
+    "color": "#ffffff"
+  },
+  "hoverCashOutButton": {
+    "background": "rgba(33,168,247,0.75)",
+    "borderColor": "rgba(33,168,247,0.75)",
+    "color": "#ffffff"
+  },
+  "hoverDashboardPopularNowCrumbs": {
+    "color": "#fff"
+  },
+  "hoverDashboardPopularNowItem": {
+    "color": "#fff"
+  },
+  "hoverDatePickerButton": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "hoverESportEventCardCategory": {
+    "color": "#ffffff"
+  },
+  "hoverESportEventCardOutcome": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverESportStreamWidget": {
+    "color": "#fff"
+  },
+  "hoverESportStreamWidgetCategory": {
+    "color": "#ffffff"
+  },
+  "hoverESportStreamWidgetEvent": {
+    "background": "rgba(29,42,88,0.75)",
+    "color": "rgba(255,255,255,0.75)"
+  },
+  "hoverEmptyBetsButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverEventCard": {
+    "color": "#fff"
+  },
+  "hoverEventCardCategory": {
+    "color": "#ffffff"
+  },
+  "hoverEventCardContent": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverEventMarketTab": {
+    "color": "#ffffff"
+  },
+  "hoverExpandedNavbarIcon": {
+    "color": "#ffffff"
+  },
+  "hoverExpandedNavbarSportLabel": {
+    "color": "#ffffff"
+  },
+  "hoverExpandedNavbarTab": {
+    "color": "#959fa6"
+  },
+  "hoverFinishedEventButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverHeaderNavigationButton": {
+    "background": "#1D2A58"
+  },
+  "hoverHomePageButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverHorizontalNavigationDropDownButton": {
+    "background": "rgba(29,42,88,0.75)",
+    "color": "#ffffff"
+  },
+  "hoverHorizontalNavigationEvent": {
+    "background": "rgba(29,42,88,0.75)",
+    "color": "#ffffff"
+  },
+  "hoverLargeMarketOutcomePlateName": {
+    "color": "#ffffff"
+  },
+  "hoverLiveStreamActiveEvent": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverLiveStreamActiveEventCard": {
+    "color": "#fff"
+  },
+  "hoverLiveStreamEvent": {
+    "background": "rgba(29,42,88,0.75)",
+    "color": "#ffffff"
+  },
+  "hoverLiveStreamOutcomeName": {
+    "background": "transparent",
+    "color": "#ffffff"
+  },
+  "hoverLiveStreamOutcomePlate": {
+    "background": "#25376F",
+    "borderColor": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "hoverLiveStreamTabs": {
+    "opacity": 0.5
+  },
+  "hoverLoginButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverMatchStatisticsPillPin": {
+    "background": "rgba(255, 255, 255, 0.3)",
+    "color": "#ffffff"
+  },
+  "hoverMatchStatisticsPills": {
+    "background": "#2d4754",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "hoverMaxBetButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "hoverMobileNavbarIcon": {
+    "color": "#ffffff"
+  },
+  "hoverMyBetsTabs": {
+    "background": "#2d4754",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "hoverNavbarIcon": {
+    "color": "#ffffff"
+  },
+  "hoverNotificationActionButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverOddsChangedModalSecondaryButton": {
+    "background": "rgba(255,255,255,0.05)"
+  },
+  "hoverOfferOddsChangeSettingPopupButton": {
+    "background": "rgba(34, 169, 247, 0.75)"
+  },
+  "hoverOfferOddsChangeSettingPopupSecondaryButton": {
+    "background": "rgba(255,255,255,0.05)"
+  },
+  "hoverOpenedBetSelection": {
+    "background": "rgba(255,255,255,0.1)"
+  },
+  "hoverOpenedBetSelectionCategory": {
+    "color": "#ffffff"
+  },
+  "hoverOutcomeAllButton": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverOutcomePlate": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverOutcomePlateName": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "hoverOutrightPlate": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "color": "#ffffff"
+  },
+  "hoverPeriodCancelButton": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "hoverPeriodShowResultButton": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "hoverPillButton": {
+    "background": "#21A8F7",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "hoverPillButtonIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "hoverPillButtonPin": {
+    "background": "rgba(255, 255, 255, 0.3)",
+    "color": "#ffffff"
+  },
+  "hoverPromoSportsListIcon": {
+    "color": "#ffffff"
+  },
+  "hoverQuickBetStakeButton": {
+    "background": "#BC4EFF",
+    "color": "#ffffff"
+  },
+  "hoverQuickSearchEventCardContent": {
+    "background": "rgb(36,54,64)"
+  },
+  "hoverQuickSearchEventHeaderRow": {
+    "color": "#959fa6"
+  },
+  "hoverQuickSearchLink": {
+    "color": "#959fa6"
+  },
+  "hoverRaceEventCardButton": {
+    "background": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverScoreBoardCategory": {
+    "color": "#ffffff"
+  },
+  "hoverSearchTournamentButton": {
+    "background": "#2d4754",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "hoverSecondaryButton": {
+    "background": "rgba(29,42,88,0.75)",
+    "borderColor": "rgba(29,42,88,0.75)"
+  },
+  "hoverSidebarBackButton": {
+    "background": "rgba(149,159,166, 0.07500000000000001)"
+  },
+  "hoverSidebarEventCard": {
+    "color": "#959fa6"
+  },
+  "hoverSidebarEventCardContent": {
+    "background": "rgba(149,159,166,0.1)"
+  },
+  "hoverSidebarEventsListCrumbs": {
+    "color": "rgba(149,159,166,1)"
+  },
+  "hoverSidebarEventsListTable": {
+    "background": "#1D2A58"
+  },
+  "hoverSidebarLiveStreamEvent": {
+    "background": "rgba(29,42,88, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverSidebarLiveStreamTabs": {
+    "opacity": 1
+  },
+  "hoverSidebarMobilePillButtons": {
+    "background": "rgba(29,42,88,0.75)",
+    "boxShadow": "none"
+  },
+  "hoverSidebarOutcomeName": {
+    "background": "transparent",
+    "color": "#959fa6"
+  },
+  "hoverSidebarOutcomePlate": {
+    "background": "rgba(149,159,166,0.1)",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "hoverSidebarPillButtons": {
+    "background": "rgba(29,42,88,0.75)",
+    "boxShadow": "none"
+  },
+  "hoverSidebarPopularNowCrumbs": {
+    "color": "#959fa6"
+  },
+  "hoverSidebarPopularNowItem": {
+    "color": "#959fa6"
+  },
+  "hoverSidebarSportsDropdown": {
+    "background": "#365c7b"
+  },
+  "hoverSidebarSportsItem": {
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "hoverSidebarTopMatchCategory": {
+    "color": "#ffffff"
+  },
+  "hoverSidebarTopMatchOutcome": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverSidebarTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "hoverSidebarTopOutrightOutcome": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverSidebarTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "hoverSidebarTournament": {
+    "color": "#959fa6"
+  },
+  "hoverSidebarTournamentPillButton": {
+    "color": "#959fa6"
+  },
+  "hoverSidebarWidget": {
+    "color": "#fff"
+  },
+  "hoverSidebarWidgetButton": {
+    "background": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverSidebarWidgetSportTab": {
+    "background": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverSidebarWidgetStakeButton": {
+    "background": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverSportMoreBlock": {
+    "color": "#fff"
+  },
+  "hoverSportMoreButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverSportPageTab": {
+    "background": "#21A8F7",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "hoverStreamWidget": {
+    "color": "#fff"
+  },
+  "hoverStreamWidgetCategory": {
+    "color": "#ffffff"
+  },
+  "hoverStreamWidgetEvent": {
+    "background": "rgba(29,42,88,0.75)",
+    "color": "rgba(255,255,255,0.75)"
+  },
+  "hoverSubHeaderPillButton": {
+    "background": "rgba(255,255,255,0.25)",
+    "color": "#ffffff"
+  },
+  "hoverSuccessNotificationButton": {
+    "background": "rgba(255,255,255,0.2)",
+    "borderColor": "rgba(255,255,255,0.2)"
+  },
+  "hoverTabLabel": {
+    "opacity": 1
+  },
+  "hoverTableOutcomePlate": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverTableOutcomePlateName": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "hoverTopMatchCategory": {
+    "color": "#ffffff"
+  },
+  "hoverTopMatchOutcome": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "hoverTopOutrightOutcome": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "hoverVerticalNavbarCategoryItem": {
+    "color": "#ffffff"
+  },
+  "hoverVerticalNavbarEventCardCategory": {
+    "color": "#ffffff"
+  },
+  "hoverVerticalNavbarEventPlate": {
+    "background": "#25376F",
+    "borderColor": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverVerticalNavbarSportItem": {
+    "color": "#ffffff"
+  },
+  "hoverVerticalNavbarSportItemIcon": {
+    "color": "#ffffff"
+  },
+  "hoverVerticalNavbarSportItemLabel": {
+    "color": "#ffffff"
+  },
+  "hoverWidget": {
+    "color": "#fff"
+  },
+  "hoverWidgetButton": {
+    "background": "#25376F",
+    "color": "#ffffff"
+  },
+  "hoverWidgetNotificationButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverWidgetNotificationSecondaryButton": {
+    "background": "rgba(255,255,255,0.2)"
+  },
+  "hoverWidgetPlaceBetButton": {
+    "background": "rgba(34, 169, 247, 0.75)",
+    "borderColor": "rgba(34, 169, 247, 0.75)",
+    "color": "#ffffff"
+  },
+  "hoverWidgetSportTab": {
+    "background": "#25376F"
+  },
+  "hoverWidgetStakeButton": {
+    "background": "#25376F",
+    "color": "#ffffff"
+  },
+  "largeMarketOutcomePlateName": {
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "layoutType": "tile",
+  "leftSidebarBanner": {
+    "background": "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
+    "borderRadius": 12
+  },
+  "liveIcon": {
+    "color": "#FF4E4E"
+  },
+  "liveLabel": {
+    "background": "#ff4e4e",
+    "color": "#fff"
+  },
+  "liveStream": {
+    "color": "#ffffff"
+  },
+  "liveStreamActiveEvent": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "liveStreamActiveEventCard": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "liveStreamButtonIcon": {
+    "color": "#FF4E4E"
+  },
+  "liveStreamEvent": {
+    "background": "rgba(29,42,88,0.5)",
+    "borderRadius": 6,
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "liveStreamEventStatusLabel": {
+    "color": "#21a8f7"
+  },
+  "liveStreamOutcomeName": {
+    "background": "transparent",
+    "color": "#ffffff"
+  },
+  "liveStreamOutcomePlate": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "liveStreamTabs": {
+    "borderRadius": "18px",
+    "color": "#959fa6",
+    "fontWeight": 600,
+    "opacity": 0.5
+  },
+  "loaderSpinner": {
+    "borderColor": "#21A8F7"
+  },
+  "loginButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "lowBalanceIcon": {
+    "color": "#21A8F7"
+  },
+  "marketNotAvailableIcon": {
+    "color": "#21A8F7"
+  },
+  "marketNoticeMessage": {
+    "color": "rgba(255,255,255,1)"
+  },
+  "marketTitlePin": {
+    "color": "rgba(255,255,255,0.3)"
+  },
+  "matchStatistics": {
+    "background": "#131C3A",
+    "boxShadow": "0 14px 20px 0 rgba(0,0,0,0.6)",
+    "color": "#ffffff"
+  },
+  "matchStatisticsPillPin": {
+    "background": "#1D2A58",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "matchStatisticsPills": {
+    "background": "#11102A",
+    "borderRadius": "18px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": "700"
+  },
+  "matchTracker": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "color": "#ffffff"
+  },
+  "matchTrackerButtonIcon": {
+    "color": "#F2C94C"
+  },
+  "matchTrackerPin": {},
+  "matchTrackerTab": {
+    "background": "#11102A",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "matchTrackerTabs": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "6px",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "matchTrackerWidget": {
+    "awayTeamBackground": "#01BDFF",
+    "brandColor": "#0072b1",
+    "dialogBackground": "#000000",
+    "dialogFont": "#ffffff",
+    "headerFont": "#ffffff",
+    "highlightBackground": "#ffb400",
+    "highlightFont": "#000000",
+    "homeAwayTeamFont": "#000000",
+    "homeTeamBackground": "#ffb400",
+    "oddDecreasingIndicator": "#cf0000",
+    "oddIncreasingIndicator": "#009100",
+    "pageBackground": "#000",
+    "primaryBackground": "#ffffff",
+    "primaryFont": "#ffffff"
+  },
+  "matchTrackerWidgetV3": {
+    "awayTeamColor": "#01BDFF",
+    "background": "#11102A",
+    "brandColor": "#21A8F7",
+    "color": "#fff",
+    "homeTeamColor": "#ffb400",
+    "secondaryColor": "#1D2A58"
+  },
+  "maxBetButton": {
+    "background": "#3f525e",
+    "color": "#ffffff"
+  },
+  "mobileBetslipBetsTotalPin": {
+    "background": "#fff",
+    "boxShadow": "0 2px 10px 0 rgba(0, 0, 0, 0.2)",
+    "color": "#21A8F7"
+  },
+  "mobileBetslipQuickBetTotalPin": {
+    "background": "#fff",
+    "boxShadow": "0 2px 10px 0 rgba(0, 0, 0, 0.2)",
+    "color": "#BC4EFF"
+  },
+  "mobileNavbarIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "mobileNavbarToggleButton": {
+    "background": "rgba(149,159,166,0.1)",
+    "borderRadius": "6px",
+    "color": "#959fa6"
+  },
+  "modalBackdrop": {
+    "background": "rgba(0, 0, 0, 0.9)"
+  },
+  "modalPopupTitle": {
+    "color": "#fff",
+    "fontWeight": 600
+  },
+  "myBetsDatePicker": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": 15,
+    "boxShadow": "none",
+    "color": "#fff"
+  },
+  "myBetsIcon": {
+    "color": "#41BC2C"
+  },
+  "myBetsLink": {
+    "color": "rgba(255,255,255,0.7)"
+  },
+  "myBetsLowBalanceIcon": {
+    "color": "#21A8F7"
+  },
+  "myBetsShareIcon": {
+    "color": "#21A8F7"
+  },
+  "myBetsShareLoader": {
+    "borderColor": "#21A8F7"
+  },
+  "name": "choicestakes-navy-blue-tile",
+  "navbar": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "boxShadow": "none",
+    "color": "#959fa6"
+  },
+  "navbarAllSportButton": {
+    "background": "#1D2A58",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "navbarExpandButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderRadius": "6px",
+    "color": "#959fa6"
+  },
+  "navbarHeader": {
+    "background": "#1D2A58"
+  },
+  "navbarIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "navbarItem": {},
+  "navbarPin": {
+    "background": "#fff",
+    "boxShadow": "0px 2px 6px rgba(0, 0, 0, 0.1)",
+    "color": "#FF4E4E"
+  },
+  "navbarTitle": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "navbarToggleButton": {
+    "background": "rgba(149,159,166,0.1)",
+    "borderRadius": "6px",
+    "color": "#959fa6"
+  },
+  "notificationActionButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "oddsChangeIcon": {
+    "color": "#21A8F7"
+  },
+  "oddsChangedModal": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "oddsChangedModalIcon": {
+    "background": "#11102A",
+    "color": "#1D2A58"
+  },
+  "oddsChangedModalSecondaryButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#fff"
+  },
+  "oddsFormatSelect": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "16px",
+    "color": "#ffffff"
+  },
+  "oddsFormatSelectLabel": {
+    "color": "#fff"
+  },
+  "oddsFormatSelectOptions": {
+    "background": "#11102A",
+    "borderRadius": "10px",
+    "color": "#ffffff"
+  },
+  "offerOddsChangeSettingPopup": {
+    "background": "#1D2A58",
+    "color": "#fff"
+  },
+  "offerOddsChangeSettingPopupButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "offerOddsChangeSettingPopupIcon": {
+    "color": "#9EEA4A"
+  },
+  "offerOddsChangeSettingPopupSecondaryButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#fff"
+  },
+  "openedBet": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "openedBetSelection": {
+    "background": "rgba(255,255,255,0.05)",
+    "borderColor": "rgba(255,255,255,0)",
+    "borderRadius": 0,
+    "color": "#ffffff"
+  },
+  "openedBetSelectionCategory": {
+    "color": "#8f989d",
+    "fontWeight": "500"
+  },
+  "openedBetSlipBet": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "openedBetSlipOpenedBet": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "openedOddsFormatSelect": {
+    "boxShadow": "0px 5px 16px rgba(0, 0, 0, 0.16)"
+  },
+  "openedVerticalNavbarSportItem": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "outcome": {
+    "padding": 4
+  },
+  "outcomeAllButton": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "outcomePlate": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "outcomePlateName": {
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": "600"
+  },
+  "outrightPlate": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "6px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "outrightsIcon": {
+    "color": "#BC4EFF"
+  },
+  "pagination": {
+    "color": "#fff"
+  },
+  "periodCancelButton": {
+    "background": "#1D2A58",
+    "borderRadius": "18px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "periodShowResultButton": {
+    "background": "#1D2A58",
+    "borderRadius": "20px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "pillButton": {
+    "background": "#11102A",
+    "borderRadius": "18px",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "pillButtonHotIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "pillButtonIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "pillButtonPin": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "pillButtonScheduleIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "pillButtonTopBetsIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "pinMarketButton": {},
+  "playerPropsLabel": {
+    "color": "#21A8F7"
+  },
+  "prematchStartedAt": {
+    "color": "#ffffff"
+  },
+  "promoPopup": {
+    "background": "#1D2A58",
+    "borderRadius": "6px",
+    "boxShadow": "0px 8px 16px rgba(0, 0, 0, 0.25)",
+    "color": "#ffffff",
+    "fontWeight": 500
+  },
+  "promoPopupItem": {
+    "borderRadius": "6px"
+  },
+  "promoPopupTitle": {
+    "color": "#ffffff",
+    "fontWeight": "700"
+  },
+  "promoSportsList": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "promoSportsListIcon": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "promoTournamentStatusIcons": {
+    "color": "#7ed321"
+  },
+  "promoTournamentWidget": {
+    "background": "#11102A",
+    "borderRadius": 6,
+    "color": "#fff"
+  },
+  "promoTournamentWidgetScoreboard": {
+    "color": "#ffffff"
+  },
+  "promoTournamentWidgetTableLine": {
+    "background": "#1D2A58",
+    "borderRadius": 6,
+    "color": "#fff"
+  },
+  "quickBetDescription": {
+    "color": "rgba(255,255,255,0.7)"
+  },
+  "quickBetIcon": {
+    "background": "#BC4EFF"
+  },
+  "quickBetIconBetSlip": {
+    "color": "#21A8F7"
+  },
+  "quickBetMobileButtonGradient": {
+    "background": "#BC4EFF",
+    "color": "#ffffff"
+  },
+  "quickBetNavbarToggleButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "quickBetStakeButton": {
+    "background": "#1D2A58",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "quickBetStakeStatus": {
+    "color": "#7ed321"
+  },
+  "quickBetSwitcher": {
+    "background": "rgba(0, 0, 0, 0)",
+    "borderColor": "#ffffff"
+  },
+  "quickBetSwitcherBar": {
+    "background": "#1D2A58"
+  },
+  "quickBetSwitcherButton": {
+    "background": "#ffffff",
+    "color": "#21A8F7"
+  },
+  "quickBetSwitcherCounter": {
+    "background": "#FF4E4E",
+    "color": "#ffffff"
+  },
+  "quickBetSwitcherIcon": {
+    "color": "#21A8F7"
+  },
+  "quickBetSwitcherLabel": {
+    "color": "#ffffff",
+    "fontWeight": "700"
+  },
+  "quickSearch": {
+    "background": "#11102A"
+  },
+  "quickSearchEventCardContent": {
+    "background": "#11102A",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "quickSearchEventHeaderRow": {
+    "background": "rgba(149,159,166,0.05)",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "quickSearchField": {
+    "background": "#35454e",
+    "borderRadius": "6px",
+    "color": "#959fa6"
+  },
+  "quickSearchLink": {
+    "background": "#1D2A58",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "raceEventCardButton": {
+    "background": "#1D2A58",
+    "border": "none",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "raceTournamentName": {
+    "color": "#fff"
+  },
+  "racesListItem": {
+    "color": "#fff"
+  },
+  "rightSidebar": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "boxShadow": "none",
+    "color": "#959fa6"
+  },
+  "scoreBoardCard": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": "400"
+  },
+  "scoreBoardCategory": {
+    "color": "#8f989d",
+    "fontWeight": "500"
+  },
+  "scoreBoardContent": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "scoreBoardScore": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "scoreBoardStatusLabel": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "scrollBar": {
+    "background": "#000000",
+    "opacity": 0
+  },
+  "searchInput": {
+    "background": "#35454e",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "searchNoResult": {
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "searchNoResultIcon": {
+    "background": "#ffffff",
+    "color": "#21A8F7"
+  },
+  "searchResultHighlightItem": {
+    "color": "#21A8F7"
+  },
+  "searchResultItem": {
+    "color": "#ffffff"
+  },
+  "searchTournamentButton": {
+    "background": "#11102A",
+    "borderRadius": "18px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": "700"
+  },
+  "secondaryButton": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "24px",
+    "color": "#fff"
+  },
+  "showPreloaderTag": false,
+  "sidebarBackButton": {
+    "background": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "sidebarCategoryHeader": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarComboOfTheDayItem": {
+    "background": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff"
+  },
+  "sidebarEventCard": {
+    "background": "rgba(149,159,166,0.05)",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarEventCardContent": {
+    "background": "transparent",
+    "color": "#959fa6"
+  },
+  "sidebarEventCardStatusLabel": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "sidebarEventSearchResultHighlightItem": {
+    "color": "#21A8F7"
+  },
+  "sidebarEventsLengthCount": {
+    "background": "#131C3A",
+    "color": "#ffffff"
+  },
+  "sidebarEventsListCrumbs": {
+    "background": "rgba(149,159,166,0.05)",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarEventsListPaginationButton": {
+    "background": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "sidebarEventsListPaginationText": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarEventsListTable": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "sidebarLiveStream": {
+    "background": "#1D2A58",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "sidebarLiveStreamEvent": {
+    "background": "rgba(29,42,88, 0.5)",
+    "borderRadius": 6,
+    "color": "rgba(255, 255, 255, 0.5)"
+  },
+  "sidebarLiveStreamEventStatusLabel": {
+    "color": "#21a8f7"
+  },
+  "sidebarLiveStreamTabs": {
+    "borderRadius": "18px",
+    "color": "#959fa6",
+    "fontWeight": 600,
+    "opacity": 0.5
+  },
+  "sidebarMobilePillButtons": {
+    "background": "#1D2A58",
+    "boxShadow": "none",
+    "color": "#fff",
+    "fontWeight": "700"
+  },
+  "sidebarOutcomeName": {
+    "background": "transparent",
+    "color": "#959fa6"
+  },
+  "sidebarOutcomePlate": {
+    "background": "transparent",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "color": "#959fa6"
+  },
+  "sidebarPillButtons": {
+    "background": "#1D2A58",
+    "boxShadow": "none",
+    "color": "#fff",
+    "fontWeight": "700"
+  },
+  "sidebarPopularNowCrumbs": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarPopularNowItem": {
+    "background": "#11102A",
+    "borderColor": "rgba(149,159,166,0.1)",
+    "borderRadius": "8px",
+    "color": "rgba(149,159,166,0.7)"
+  },
+  "sidebarPopularNowLabel": {
+    "color": "rgba(149,159,166,0.70)",
+    "fontSize": "11px",
+    "fontWeight": 700,
+    "letterSpacing": "2px",
+    "textTransform": "uppercase"
+  },
+  "sidebarSearchResultHighlightItem": {
+    "color": "#21A8F7"
+  },
+  "sidebarSportMenu": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarSportMenuTitle": {
+    "color": "#959fa6"
+  },
+  "sidebarSports": {
+    "background": "#11102A",
+    "border": "none",
+    "borderColor": "#11102A",
+    "borderRadius": 6
+  },
+  "sidebarSportsDropdown": {
+    "background": "#365c7b",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "sidebarSportsItem": {
+    "color": "#ffffff",
+    "fontWeight": "400",
+    "opacity": 0.5
+  },
+  "sidebarSportsList": {
+    "background": "#11102A"
+  },
+  "sidebarSwitcher": {
+    "background": "#11102A",
+    "borderRadius": "4px 4px 4px 4px",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarSwitcherButton": {
+    "background": "#1D2A58",
+    "borderRadius": "2px 2px 2px 2px",
+    "color": "#959fa6"
+  },
+  "sidebarTabsUnderline": {
+    "background": "#21A8F7"
+  },
+  "sidebarTopMatchCategory": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "sidebarTopMatchOutcome": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "sidebarTopMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "sidebarTopOutrightOutcome": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "sidebarTopOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "sidebarTopOutrightSports": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "sidebarTournament": {
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarTournamentPillButton": {
+    "background": "#11102A",
+    "color": "rgba(149,159,166,0.5)"
+  },
+  "sidebarWidget": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "sidebarWidgetButton": {
+    "background": "#1D2A58",
+    "borderColor": "transparent",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "sidebarWidgetPaginatorArrow": {
+    "background": "#1D2A58"
+  },
+  "sidebarWidgetSportTab": {
+    "background": "#1D2A58",
+    "borderColor": "transparent",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "sidebarWidgetStakeButton": {
+    "background": "#1D2A58",
+    "borderColor": "transparent",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "sidebarWidgetStakeInput": {
+    "background": "#131C3A",
+    "color": "#fff"
+  },
+  "signUpHint": {
+    "color": "#ffffff"
+  },
+  "signUpHintLink": {
+    "color": "#ffffff"
+  },
+  "simpleMarketTitle": {
+    "background": "transparent",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "sportMoreBlock": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#fff",
+    "opacity": 1
+  },
+  "sportMoreButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "fontWeight": "600",
+    "textTransform": "uppercase"
+  },
+  "sportMoreLabel": {
+    "fontWeight": "300"
+  },
+  "sportPageTab": {
+    "background": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff"
+  },
+  "stakeSelectionButton": {
+    "background": "#21A8F7",
+    "color": "#ffffff"
+  },
+  "stakeSelectionButtonQuickbet": {
+    "background": "#BC4EFF",
+    "color": "#ffffff"
+  },
+  "statisticsEventCardContent": {
+    "color": "#ffffff"
+  },
+  "streamWidget": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "streamWidgetCategory": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "streamWidgetEvent": {
+    "background": "rgba(29,42,88,0.5)",
+    "borderRadius": "8px",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "subHeaderDropDown": {
+    "background": "#11102A",
+    "borderRadius": "12px",
+    "boxShadow": "0px 20px 80px rgba(0, 0, 0, 0.6), 0px 5px 16px rgba(0, 0, 0, 0.16)",
+    "color": "#ffffff"
+  },
+  "subHeaderPillButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "subTab": {
+    "background": "#11102A",
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "subTabs": {
+    "background": "#11102A",
+    "borderRadius": "32px",
+    "color": "#ffffff"
+  },
+  "successNotificationButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "suspendedIcon": {
+    "color": "#f5a623"
+  },
+  "switcher": {
+    "background": "#414e55",
+    "borderColor": "rgba(0, 0, 0, 0)",
+    "boxShadow": "none"
+  },
+  "switcherButton": {
+    "background": "#fff",
+    "boxShadow": "none"
+  },
+  "tabLabel": {
+    "color": "#ffffff",
+    "opacity": 0.5
+  },
+  "tabLabelTotal": {
+    "color": "#fff"
+  },
+  "tableMarket": {
+    "padding": "0px"
+  },
+  "tableMarketWrapper": {
+    "background": "#11102A",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "tableOutcome": {
+    "margin": -4,
+    "padding": 4
+  },
+  "tableOutcomePlate": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "tableOutcomePlateName": {
+    "color": "rgba(255,255,255,0.5)",
+    "fontWeight": "600"
+  },
+  "tabs": {
+    "borderColor": "rgba(0,0,0,0)",
+    "color": "#ffffff",
+    "fontSize": "14px",
+    "fontWeight": 400
+  },
+  "tabsUnderline": {
+    "background": "#21A8F7"
+  },
+  "tooltip": {
+    "background": "#131C3A",
+    "borderColor": "#131C3A",
+    "boxShadow": "0px 0px 16px 0px rgba(0, 0, 0, 0.25)",
+    "color": "#fff"
+  },
+  "topBetsEmpty": {
+    "color": "#fff"
+  },
+  "topBetsItem": {
+    "borderRadius": "8px"
+  },
+  "topEventsWidgetIcon": {
+    "color": "#7ed321"
+  },
+  "topIcon": {
+    "color": "#f5a623"
+  },
+  "topMatchCategory": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "topMatchOutcome": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "topMatchOutcomeOdd": {
+    "color": "#ffffff"
+  },
+  "topMatchStatusLabel": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "topOutrightOutcome": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "8px",
+    "color": "#ffffff",
+    "fontWeight": "600"
+  },
+  "topOutrightOutcomeName": {
+    "color": "#ffffff"
+  },
+  "topOutrightSports": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "topTournamentIcon": {
+    "color": "#F2C94C"
+  },
+  "topTournaments": {
+    "color": "#f5a623"
+  },
+  "upcomingIcon": {
+    "color": "#21a8f7"
+  },
+  "userBlockedIcon": {
+    "color": "#21A8F7"
+  },
+  "verticalNavbar": {
+    "background": "#11102A",
+    "boxShadow": "none"
+  },
+  "verticalNavbarCategoryItem": {
+    "color": "#ffffff"
+  },
+  "verticalNavbarEmptyFavorites": {
+    "background": "#11102A",
+    "borderRadius": 6,
+    "color": "#8f989d"
+  },
+  "verticalNavbarEventCardCategory": {
+    "color": "#8f989d",
+    "fontWeight": "500"
+  },
+  "verticalNavbarEventPlate": {
+    "background": "#1D2A58",
+    "borderColor": "#1D2A58",
+    "borderRadius": "6px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "fontWeight": 500
+  },
+  "verticalNavbarEventPlateBottom": {
+    "color": "#ffffff"
+  },
+  "verticalNavbarEventPlateStatus": {
+    "color": "#21a8f7",
+    "fontWeight": 600
+  },
+  "verticalNavbarEventPlateTop": {
+    "color": "#ffffff"
+  },
+  "verticalNavbarSportCount": {
+    "background": "#131C3A",
+    "color": "#ffffff"
+  },
+  "verticalNavbarSportItem": {
+    "borderRadius": 6,
+    "color": "rgba(149,159,166,0.7)",
+    "fontWeight": 600
+  },
+  "verticalNavbarSportItemIcon": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "verticalNavbarSportItemLabel": {
+    "color": "rgba(255,255,255,0.5)"
+  },
+  "verticalNavbarToggleButton": {
+    "background": "#11102A",
+    "color": "#ffffff"
+  },
+  "virtualRaceOutcome": {
+    "background": "#1D2A58",
+    "color": "#ffffff"
+  },
+  "virtualSportTab": {
+    "borderColor": "transparent"
+  },
+  "virtualSportTabs": {
+    "background": "#11102A"
+  },
+  "widget": {
+    "background": "#11102A",
+    "borderColor": "#11102A",
+    "borderRadius": "8px",
+    "boxShadow": "none",
+    "color": "#ffffff",
+    "opacity": 1
+  },
+  "widgetBonusTitle": {
+    "color": "#fff",
+    "fontWeight": 600
+  },
+  "widgetButton": {
+    "background": "#1D2A58",
+    "borderColor": "transparent",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "widgetMaxBet": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#fff"
+  },
+  "widgetNotification": {
+    "background": "#11102A"
+  },
+  "widgetNotificationButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "widgetNotificationCard": {
+    "background": "#1D2A58",
+    "color": "#11102A"
+  },
+  "widgetNotificationSecondaryButton": {
+    "background": "rgba(255,255,255,0.1)",
+    "color": "#ffffff"
+  },
+  "widgetPaginatorArrow": {
+    "background": "#1D2A58"
+  },
+  "widgetPlaceBetButton": {
+    "background": "#21A8F7",
+    "borderColor": "#21A8F7",
+    "borderRadius": "24px",
+    "color": "#ffffff",
+    "textTransform": "uppercase"
+  },
+  "widgetScore": {
+    "background": "rgba(255,255,255,0.05)",
+    "borderColor": "rgba(255,255,255,0.1)",
+    "borderRadius": "8px",
+    "color": "#ffffff"
+  },
+  "widgetSportTab": {
+    "background": "#1D2A58",
+    "borderColor": "transparent",
+    "borderRadius": "18px",
+    "color": "#ffffff"
+  },
+  "widgetStakeButton": {
+    "background": "#1D2A58",
+    "borderColor": "transparent",
+    "borderRadius": 6,
+    "color": "#ffffff"
+  },
+  "widgetStakeInput": {
+    "background": "#131C3A",
+    "color": "#fff"
+  },
+  "widgetTitle": {
+    "color": "#fff",
+    "fontWeight": 600
+  }
+}

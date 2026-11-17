@@ -1,0 +1,11 @@
+/* Apply on the PROVIDER-HOSTED sportsbook page, not the Choicestakes portal.
+ * Add class="choicestakes-sportsbook" to that page's <html> element.
+ * Pair with the custom theme.json; this only sets the surrounding page surface.
+ */
+html.choicestakes-sportsbook,
+html.choicestakes-sportsbook body,
+html.choicestakes-sportsbook #app,
+html.choicestakes-sportsbook #app .main,
+html.choicestakes-sportsbook #app .page {
+  background-color: #131C3A;
+}

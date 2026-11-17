@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choicestakes — custom sportsbook theme preview</title>
+  <style>
+    :root { color-scheme: dark; --page: #131C3A; --card: #11102A; --odds: #1D2A58; --accent: #21A8F7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 32px; background: var(--page); color: #fff; font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 1100px; margin: auto; }
+    h1 { margin: 8px 0; font-size: clamp(26px, 4vw, 38px); }
+    h2 { margin: 0 0 16px; font-size: 21px; }
+    p { margin: 0 0 24px; color: #b5bdd4; }
+    .eyebrow { color: #77cfff; text-transform: uppercase; font-size: 12px; letter-spacing: .12em; }
+    .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 28px 0 36px; }
+    .swatch { border: 1px solid #3a4261; border-radius: 10px; overflow: hidden; background: var(--card); }
+    .color { height: 80px; border-bottom: 1px solid #3a4261; background: var(--color); }
+    .label { padding: 12px; font-size: 14px; }
+    code { display: block; color: #b5bdd4; margin-top: 4px; }
+    .example { display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start; }
+    .navigation { background: var(--card); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; color: #b5bdd4; }
+    .card { background: var(--card); border: 1px solid #34334d; border-radius: 9px; padding: 24px; }
+    .status { color: #43e4ff; font-size: 13px; margin-bottom: 18px; }
+    .row { display: flex; justify-content: space-between; margin-bottom: 16px; font-weight: 600; }
+    .row span:last-child { color: #b5bdd4; }
+    .odds { display: flex; gap: 10px; margin-top: 24px; }
+    .odd { flex: 1; padding: 12px 8px; text-align: center; border-radius: 7px; background: var(--odds); border: 1px solid #3a4670; font-size: 13px; }
+    .betslip { background: var(--card); border-radius: 8px; overflow: hidden; }
+    .betslip-header { background: var(--accent); padding: 15px 20px; font-size: 18px; font-weight: 700; }
+    .betslip-body { padding: 28px 20px; }
+    .betslip-body p { font-size: 13px; margin: 10px 0 24px; }
+    .settings { background: var(--odds); padding: 10px; text-align: center; border-radius: 8px; color: #b5bdd4; font-size: 13px; }
+    footer { color: #b5bdd4; font-size: 13px; margin-top: 32px; }
+    @media (max-width: 780px) { body { padding: 20px; } .palette { grid-template-columns: 1fr 1fr; } .example { grid-template-columns: 1fr; } .betslip { max-width: 420px; width: 100%; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Choicestakes · Provider theme handoff</div>
+    <h1>Navy background. Blue betslip.</h1>
+    <p>Exact base colors from the supplied screenshot, prepared for the tile layout.</p>
+    <div class="palette">
+      <div class="swatch"><div class="color" style="--color:#131C3A"></div><div class="label">Page background<code>#131C3A</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#11102A"></div><div class="label">Cards / navigation<code>#11102A</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#1D2A58"></div><div class="label">Odds buttons<code>#1D2A58</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#21A8F7"></div><div class="label">Betslip header<code>#21A8F7</code></div></div>
+    </div>
+    <div class="navigation">Home &nbsp; / &nbsp; Live &nbsp; / &nbsp; Sports</div>
+    <div class="example">
+      <section class="card" aria-label="Sample card colors">
+        <h2>Match card appearance</h2>
+        <div class="status">Live status</div>
+        <div class="row"><span>Home team</span><span>—</span></div>
+        <div class="row"><span>Away team</span><span>—</span></div>
+        <div class="odds"><div class="odd">Home</div><div class="odd">Draw</div><div class="odd">Away</div></div>
+      </section>
+      <aside class="betslip" aria-label="Betslip color preview">
+        <div class="betslip-header">Betslip</div>
+        <div class="betslip-body"><strong>Place your bets</strong><p>Your selections will appear in this area.</p><div class="settings">Odds Settings</div></div>
+      </aside>
+    </div>
+    <footer>Static color preview only. The provider must register and activate the custom theme. No game session or betting functionality is connected.</footer>
+  </main>
+</body>
+</html>

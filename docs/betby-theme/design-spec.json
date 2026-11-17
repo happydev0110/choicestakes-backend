@@ -1,0 +1,24 @@
+{
+  "proposedThemeName": "choicestakes-navy-blue-tile",
+  "status": "Prepared for provider review; not registered or active",
+  "layout": "tile",
+  "screenshotColors": {
+    "pageBackground": "#131C3A",
+    "cardsAndNavigation": "#11102A",
+    "oddsButtons": "#1D2A58",
+    "betslipHeader": "#21A8F7"
+  },
+  "derivedInteractionColors": {
+    "hover": "#25376F",
+    "disabled": "#182344"
+  },
+  "baseTheme": {
+    "name": "betby-demo-blue-dark-tile",
+    "url": "https://bt-app-static-themes.sptpub.com/master/betby-demo-blue-dark-tile/theme.json",
+    "retrievedOn": "2026-11-17",
+    "sha256": "09ba72db330f99b5700aca075cfb13a75d8aa6eb26f0d2507ca9f98ead11adb3"
+  },
+  "changedThemeTokens": 234,
+  "providerAction": "Create a separate custom tile theme, apply provider-shell.css to its host page, and provide the supported API-MATIC launch mapping.",
+  "activationNote": "The proposed name is not a valid SPORTSBOOK_THEME setting until the provider registers it and the launch mapping is implemented."
+}
