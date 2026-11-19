@@ -8,6 +8,7 @@ import { SANDBOX_BASE_URL } from "./config.js";
 import { signRequest } from "./signing.js";
 import { ApiMaticError } from "./provider-error.js";
 import { applyBetbyPresentation } from "./betby-presentation.js";
+import type { GameLanguage } from "./launch-request.js";
 
 export function safePlayLink(value: string) {
   const url = new URL(value);
@@ -164,7 +165,7 @@ export class ApiMaticClient {
       );
     return games;
   }
-  async launch(playerId: string, gameId: string, mode: "demo" | "real") {
+  async launch(playerId: string, gameId: string, mode: "demo" | "real", lang: GameLanguage = "en") {
     const result = launchSchema.parse(
       await this.call(
         "POST",
@@ -172,7 +173,7 @@ export class ApiMaticClient {
         {
           player_id: playerId,
           currency: this.config.APIMATIC_CURRENCY,
-          lang: "en",
+          lang,
           gametype: mode,
         },
         gameId,

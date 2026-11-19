@@ -20,6 +20,7 @@ import { catalogFilters } from "./catalog-filters.js";
 import { ApiMaticError } from "./provider-error.js";
 import { registerWalletStream } from "./wallet-stream.js";
 import type { WalletEvents } from "./wallet-events.js";
+import { launchRequestSchema } from "./launch-request.js";
 
 export async function registerGamingRoutes(
   app: FastifyInstance,
@@ -138,13 +139,7 @@ export async function registerGamingRoutes(
             );
           const user = await player(request);
           requireGaming(config);
-          const parsed = z
-            .object({
-              requestId: z.string().uuid(),
-              mode: z.enum(["demo", "real"]).default("real"),
-            })
-            .strict()
-            .safeParse(request.body);
+          const parsed = launchRequestSchema.safeParse(request.body);
           if (
             !parsed.success ||
             !z.string().uuid().safeParse(request.params.id).success
@@ -170,12 +165,13 @@ export async function registerGamingRoutes(
           // The first launch can initialize the player's wallet.
           walletEvents.publish(user.id);
           try {
-            request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode }, "Sandbox game launch pending");
+            request.log.info({ launchId, gameId: game.uuid, mode: parsed.data.mode, lang: parsed.data.lang }, "Sandbox game launch pending");
             // The client is hard-wired to the sandbox host. A "real" vendor mode still uses test credits here.
             const launch = await client.launch(
               user.id,
               game.uuid,
               parsed.data.mode,
+              parsed.data.lang,
             );
             await store.completeLaunch(launchId, launch.sessionId);
             if (launch.sportsbookPresentationApplied === false) {
@@ -185,7 +181,7 @@ export async function registerGamingRoutes(
               );
             }
             request.log.info({
-              launchId, gameId: game.uuid, mode: parsed.data.mode,
+              launchId, gameId: game.uuid, mode: parsed.data.mode, lang: parsed.data.lang,
               ...(launch.sportsbookPresentationApplied === true
                 ? { sportsbookTheme: config.SPORTSBOOK_THEME, sportsbookLayout: "tile" }
                 : {}),
@@ -198,7 +194,7 @@ export async function registerGamingRoutes(
             const code = error instanceof ApiMaticError ? error.providerCode
               : error instanceof AuthError ? error.code : "LAUNCH_FAILED";
             await store.failLaunch(launchId, code);
-            request.log.warn({ launchId, gameId: game.uuid, mode: parsed.data.mode, code }, "Sandbox game launch failed");
+            request.log.warn({ launchId, gameId: game.uuid, mode: parsed.data.mode, lang: parsed.data.lang, code }, "Sandbox game launch failed");
             if (
               ["GAME_NOT_ALLOWED", "GAME_DISABLED", "GAME_NOT_FOUND"].includes(
                 code,
