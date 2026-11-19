@@ -46,12 +46,13 @@ test("launch API validates and signs each selected language, defaulting older cl
     const response = await launch(lang ? {lang} : {});
     assert.equal(response.statusCode, 200, response.body);
   }
-  assert.equal(calls, 9);
+  const expectedLaunches = gameLanguages.length + 1;
+  assert.equal(calls, expectedLaunches);
   for (const lang of ["ar", "unknown", "en-US", "../en", "", null, 123, ["en"]]) {
     const response = await launch({lang});
     assert.equal(response.statusCode, 400);
     assert.equal(response.json().error.code, "INVALID_LAUNCH");
   }
-  assert.equal(calls, 9, "invalid languages never call the provider");
-  assert.equal(claims, 9, "invalid languages never create pending sessions");
+  assert.equal(calls, expectedLaunches, "invalid languages never call the provider");
+  assert.equal(claims, expectedLaunches, "invalid languages never create pending sessions");
 });
