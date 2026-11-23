@@ -10,6 +10,9 @@ export const gameCategories = [
   "lotto-scratch",
   "roulette",
   "poker",
+  "blackjack",
+  "baccarat",
+  "bingo",
 ] as const;
 
 export const catalogFilters = z.object({

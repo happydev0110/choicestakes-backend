@@ -11,10 +11,13 @@ test("catalog filters distinguish an empty favorites list from no filter and rej
   assert.deepEqual(catalogFilters.parse({ ids: "" }).ids, []);
   const ids = [randomUUID(), randomUUID()];
   assert.deepEqual(catalogFilters.parse({ ids: ids.join(",") }).ids, ids);
+  for (const category of ["roulette", "poker", "blackjack", "baccarat", "bingo"])
+    assert.equal(catalogFilters.parse({ category }).category, category);
   for (const query of [
     { ids: "not-a-game" },
     { ids: Array.from({ length: 101 }, randomUUID).join(",") },
     { category: "popular" },
+    { category: "game-shows" },
     { sort: "name; DELETE" },
     { page: -1 },
     { page: "NaN" },
@@ -27,7 +30,7 @@ test("manual categories allow multiple assignments and clearing, but reject dupl
   const uuid = randomUUID();
   assert.ok(
     classificationFile.safeParse({
-      assignments: [{ uuid, categories: ["slots", "new-games"] }],
+      assignments: [{ uuid, categories: ["live", "table-cards", "blackjack", "baccarat", "bingo", "new-games"] }],
     }).success,
   );
   assert.ok(
@@ -36,6 +39,7 @@ test("manual categories allow multiple assignments and clearing, but reject dupl
   );
   for (const assignments of [
     [{ uuid, categories: ["unknown"] }],
+    [{ uuid, categories: ["game-shows"] }],
     [{ uuid, categories: ["slots", "slots"] }],
     [
       { uuid, categories: [] },

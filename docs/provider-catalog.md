@@ -73,7 +73,15 @@ Create a JSON file with this shape, replacing the example UUID with an actual `u
 npm run games:classify -- ./game-categories.json
 ```
 
-Allowed category names: `featured`, `new-games`, `slots`, `live`, `crash-instant`, `table-cards`, `lotto-scratch`, `roulette`, `poker`. Assign `featured` to an operator-selected game to show it in Featured Games; this is not a popularity ranking.
+Allowed category names: `featured`, `new-games`, `slots`, `live`, `crash-instant`, `table-cards`, `lotto-scratch`, `roulette`, `poker`, `blackjack`, `baccarat`, `bingo`. Assign `featured` to an operator-selected game to show it in Featured Games; this is not a popularity ranking.
+
+The portal category strip includes Roulette, Poker, Blackjack, Baccarat and Bingo alongside the original five categories. Assign reviewed games in **Admin → Games management → Manage → Categories**. For example, a live blackjack game can be assigned to `live`, `table-cards` and `blackjack`. Categories are independent tags: assigning `blackjack` does not automatically assign its broader categories.
+
+Retired category tags are ignored by catalog sections, category counts, category exports and the admin editor. Their games remain in All Games and any other assigned categories. Saving a game in the admin replaces its old tags with the supported selection and records the previous tags in the audit log. No database migration is needed to retire a category.
+
+Catalog and lobby responses include `categoryCounts`, calculated across the whole available, visible catalog for the configured currency. Search, provider filters and pagination do not narrow these navigation counts. The portal hides empty category links and lobby rows; direct category URLs still show an honest empty state. Assignments survive provider sync.
+
+For this expansion, deploy/restart **both backends first**, then rebuild/restart the portal and admin frontend. No new database migration or provider reimport is required if the existing category and visibility migrations are already applied. Older backends reject the new category names. Assignments must be made in the same database and currency used by the portal backend.
 
 The command replaces assignments **only for the listed games**, for `APIMATIC_CURRENCY`. Use `"categories": []` to clear a game's assignments. Invalid IDs/categories abort the entire import. It does not alter names, artwork, provider fields, or other currencies.
 

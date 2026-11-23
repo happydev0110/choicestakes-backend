@@ -17,8 +17,9 @@ import { registerGamingRoutes } from './modules/gaming/routes.js';
 import { catalogReady } from './modules/gaming/config.js';
 import { createCatalogWorker } from './modules/gaming/catalog-worker.js';
 import { createWalletEvents, type WalletEvents } from './modules/gaming/wallet-events.js';
+import { createPublicOfferStore, registerPublicOfferRoutes, type PublicOfferStore } from './modules/partners/routes.js';
 
-export async function buildApp(config: Config, dependencies: { database?: DatabaseHealth; authStore?: AuthStore; gamingStore?: GamingStore; gamingClient?: Pick<ApiMaticClient,'launch'>; catalogClient?: Pick<ApiMaticClient,'catalog'>; walletEvents?: WalletEvents } = {}) {
+export async function buildApp(config: Config, dependencies: { database?: DatabaseHealth; authStore?: AuthStore; gamingStore?: GamingStore; gamingClient?: Pick<ApiMaticClient,'launch'>; catalogClient?: Pick<ApiMaticClient,'catalog'>; walletEvents?: WalletEvents; partnerStore?: PublicOfferStore } = {}) {
   const app = Fastify({
     bodyLimit: 1024 * 1024,
     requestTimeout: 10000,
@@ -78,6 +79,7 @@ export async function buildApp(config: Config, dependencies: { database?: Databa
     }));
 
     await registerHealthRoutes(app, database);
+    await registerPublicOfferRoutes(app, dependencies.partnerStore ?? createPublicOfferStore(database as Database));
     const authStore = dependencies.authStore ?? createAuthStore(database as Database);
     await registerAuthRoutes(app, config, authStore);
     const walletEvents = dependencies.walletEvents ?? await createWalletEvents(config, app.log);

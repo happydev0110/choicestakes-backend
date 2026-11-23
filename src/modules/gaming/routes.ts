@@ -53,7 +53,7 @@ export async function registerGamingRoutes(
       gaming.get("/lobby", async () => {
         const configured = catalogReady(config);
         const data = configured ? await store.lobby() : {
-          games: [], total: 0, providers: [], providerCounts: [], sections: [],
+          games: [], total: 0, providers: [], providerCounts: [], categoryCounts: [], sections: [],
           page: 1, perPage: 28, syncedAt: null,
           catalog: { status: "not_configured", total: 0, lastAttemptAt: null, lastSuccessAt: null },
         };
@@ -76,6 +76,7 @@ export async function registerGamingRoutes(
               total: 0,
               providers: [],
               providerCounts: [],
+              categoryCounts: [],
               page: 1,
               perPage: 28,
               syncedAt: null,

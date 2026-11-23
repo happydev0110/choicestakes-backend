@@ -145,7 +145,7 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
     );
     await classifyGames(database, currency, {
       assignments: [
-        { uuid: games[0]!.uuid, categories: ["slots", "new-games"] },
+        { uuid: games[0]!.uuid, categories: ["slots", "new-games", "blackjack", "baccarat", "bingo"] },
       ],
     });
     assert.equal(
@@ -165,6 +165,12 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
       (await store.catalog(1, "", "", { category: "slots" })).games[0]?.uuid,
       games[0]!.uuid,
     );
+    for (const category of ["blackjack", "baccarat", "bingo"] as const) {
+      assert.equal((await store.catalog(1, "", "", { category })).games[0]?.uuid, games[0]!.uuid);
+    }
+    // Navigation stays populated even when the current search/provider has no results.
+    const categoryCounts = (await store.catalog(1, "no matching game", "Studio B")).categoryCounts;
+    assert.deepEqual(categoryCounts, ["baccarat", "bingo", "blackjack", "new-games", "slots"].map(category => ({ category, total: 1 })));
     // The second assignment fails after the first changed; the whole import must roll back.
     await assert.rejects(
       classifyGames(database, currency, {
@@ -182,6 +188,7 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
       1,
     );
     await store.disableGame(games[0]!.uuid);
+    assert.deepEqual((await store.catalog(1, "", "")).categoryCounts, []);
     assert.equal(
       (await store.catalog(1, "", "", { category: "slots" })).total,
       0,
@@ -296,6 +303,7 @@ test("MySQL catalog: complete pagination, literal search, provider counts, favor
     assert.equal(await store.game(games[0]!.uuid),null);
     assert.equal((await store.catalog(1,"","",{ids:[games[0]!.uuid]})).total,0);
     assert.equal((await store.catalog(1,"","")).total,64);
+    assert.equal((await store.catalog(1,"","")).categoryCounts.find(item => item.category === "slots")?.total, 39);
     assert.equal((await store.lobby()).sections.find(section=>section.category==="slots")?.total,39);
     await database.withConnection(connection => connection.execute(
       "DELETE FROM apimatic_game_settings WHERE currency=? AND game_uuid=?",[currency,games[0]!.uuid],

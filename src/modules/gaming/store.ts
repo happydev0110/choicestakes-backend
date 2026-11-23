@@ -235,6 +235,15 @@ export function createGamingStore(database: Database, config: Config) {
             `SELECT g.provider, COUNT(*) AS total FROM apimatic_games g WHERE g.currency = ? AND g.available = TRUE AND ${visibleGame} GROUP BY g.provider ORDER BY g.provider`,
             [config.APIMATIC_CURRENCY],
           );
+          // Navigation counts use the entire visible catalog, independent of search,
+          // provider and pagination. Empty/unavailable categories stay unpublished.
+          const [categoryCounts] = await connection.execute<Row[]>(
+            `SELECT c.category, COUNT(*) AS total FROM apimatic_game_categories c
+             JOIN apimatic_games g ON g.currency=c.currency AND g.game_uuid=c.game_uuid
+             WHERE g.currency=? AND g.available=TRUE AND ${visibleGame}
+             GROUP BY c.category ORDER BY c.category`,
+            [config.APIMATIC_CURRENCY],
+          );
           const status = await readCatalogStatus(connection, config.APIMATIC_CURRENCY);
           return {
             games: rows.map(toGame),
@@ -243,6 +252,7 @@ export function createGamingStore(database: Database, config: Config) {
             perPage: 28,
             providers: providers.map((row) => String(row.provider)),
             providerCounts: providers.map((row) => ({ provider: String(row.provider), total: Number(row.total) })),
+            categoryCounts: categoryCounts.filter((row) => gameCategories.includes(row.category)).map((row) => ({ category: String(row.category), total: Number(row.total) })),
             syncedAt: status.lastSuccessAt,
             catalog: {
               status: status.status,
