@@ -18,8 +18,9 @@ import { catalogReady } from './modules/gaming/config.js';
 import { createCatalogWorker } from './modules/gaming/catalog-worker.js';
 import { createWalletEvents, type WalletEvents } from './modules/gaming/wallet-events.js';
 import { createPublicOfferStore, registerPublicOfferRoutes, type PublicOfferStore } from './modules/partners/routes.js';
+import { createLoyaltyStore, registerLoyaltyRoutes, type LoyaltyStore } from './modules/loyalty/routes.js';
 
-export async function buildApp(config: Config, dependencies: { database?: DatabaseHealth; authStore?: AuthStore; gamingStore?: GamingStore; gamingClient?: Pick<ApiMaticClient,'launch'>; catalogClient?: Pick<ApiMaticClient,'catalog'>; walletEvents?: WalletEvents; partnerStore?: PublicOfferStore } = {}) {
+export async function buildApp(config: Config, dependencies: { database?: DatabaseHealth; authStore?: AuthStore; gamingStore?: GamingStore; gamingClient?: Pick<ApiMaticClient,'launch'>; catalogClient?: Pick<ApiMaticClient,'catalog'>; walletEvents?: WalletEvents; partnerStore?: PublicOfferStore; loyaltyStore?: LoyaltyStore } = {}) {
   const app = Fastify({
     bodyLimit: 1024 * 1024,
     requestTimeout: 10000,
@@ -82,6 +83,7 @@ export async function buildApp(config: Config, dependencies: { database?: Databa
     await registerPublicOfferRoutes(app, dependencies.partnerStore ?? createPublicOfferStore(database as Database));
     const authStore = dependencies.authStore ?? createAuthStore(database as Database);
     await registerAuthRoutes(app, config, authStore);
+    await registerLoyaltyRoutes(app, config, authStore, dependencies.loyaltyStore ?? createLoyaltyStore(database as Database));
     const walletEvents = dependencies.walletEvents ?? await createWalletEvents(config, app.log);
     app.addHook('preClose', async () => { await walletEvents.close(); });
     const gamingStore = dependencies.gamingStore ?? createGamingStore(database as Database,config);
